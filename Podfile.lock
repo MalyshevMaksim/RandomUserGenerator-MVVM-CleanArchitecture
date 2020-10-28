@@ -1,0 +1,42 @@
+PODS:
+  - Alamofire (5.2.2)
+  - Bond (7.6.6):
+    - Differ (~> 1.4)
+    - ReactiveKit (~> 3.14)
+  - Differ (1.4.5)
+  - ReactiveKit (3.17.4)
+  - Realm (5.4.3):
+    - Realm/Headers (= 5.4.3)
+  - Realm/Headers (5.4.3)
+  - RealmSwift (5.4.3):
+    - Realm (= 5.4.3)
+  - SnapKit (5.0.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - Bond
+  - RealmSwift
+  - SnapKit
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Bond
+    - Differ
+    - ReactiveKit
+    - Realm
+    - RealmSwift
+    - SnapKit
+
+SPEC CHECKSUMS:
+  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  Bond: 9e7d901cf4ed825b6004a93dd0a7f1c7479e2834
+  Differ: 3b6bd78e2b20cc795d9a86f7641d087524e4273e
+  ReactiveKit: f9f9e079efa39312c597bf1508ef4810d111ce76
+  Realm: e3d5fcc50fd79ddf87a2d86301f6edbf57531f84
+  RealmSwift: db608068eccc54bce47928e8118bde13c120c307
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+
+PODFILE CHECKSUM: 1004451d9753b3a9c4cc3a5db42fcf142d6f4df1
+
+COCOAPODS: 1.8.4
