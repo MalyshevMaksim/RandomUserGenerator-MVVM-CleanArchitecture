@@ -21,25 +21,27 @@ class UserGeneratorViewModel {
     }
     
     func executeUseCase() {
-        generateUseCase.executeUser { result in
-            switch result {
-                case .success(let user):
-                    self.generatedUser.value = user
-                    self.executePicture(for: user)
-                case .failure(let error):
-                    self.generatedError.value = error
-            }
+        generateUseCase.execute { result in
+            self.userResultHandler(result: result)
+        } completionPicture: { picture in
+            self.pictureResultHandler(picture: picture)
         }
     }
     
-    private func executePicture(for user: User) {
-        generateUseCase.executePicture(user: user) { result in
-            switch result {
-                case .success(let user):
-                    self.generatedPicture.value = user
-                case .failure(let error):
-                    self.generatedError.value = error
-            }
+    private func userResultHandler(result: Result<User, AFError>) {
+        switch result {
+            case .success(let user):
+                self.generatedUser.value = user
+            case .failure(let error):
+                self.generatedError.value = error
         }
+    }
+    
+    private func pictureResultHandler(picture: UIImage?) {
+        guard let picture = picture else {
+            self.generatedPicture.value = nil
+            return
+        }
+        self.generatedPicture.value = picture
     }
 }

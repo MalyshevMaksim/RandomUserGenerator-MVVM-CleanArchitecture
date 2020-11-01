@@ -51,7 +51,7 @@ class GeneratedUserCardView: UIView, Animatable {
         return imageView
     }()
     
-    private lazy var saveButton: UIButton = {
+    lazy var saveButton: UIButton = {
         let button = UIButton()
         button.setTitle("Save", for: .normal)
         button.backgroundColor = .systemBlue

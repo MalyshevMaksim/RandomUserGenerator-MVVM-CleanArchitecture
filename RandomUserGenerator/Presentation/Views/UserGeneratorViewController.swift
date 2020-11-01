@@ -9,7 +9,7 @@ import UIKit
 import Bond
 
 class UserGeneratorViewController: UIViewController, Alertable {
-    private var viewModel = UserGeneratorViewModel(useCase: GenerateUserUseCase(repository: NetworkRepository(storage: UserStorage())))
+    private var viewModel = UserGeneratorViewModel(useCase: UserGeneratorInteractor(usersRepository: UsersNetworkRepository(storage: UsersRealmStorage()), picturesRepository: PicturesNetworkRepository(storage: PicturesRealmStorage())))
     private var activityIndicator = UIActivityIndicatorView(style: .large)
     private var userCardView: GeneratedUserCardView!
     
