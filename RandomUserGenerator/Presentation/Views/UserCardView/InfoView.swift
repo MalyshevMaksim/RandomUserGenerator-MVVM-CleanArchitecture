@@ -9,16 +9,16 @@ import Foundation
 import UIKit
 
 class InfoFieldView: UIView {
-    var icon: UIImageView = UIImageView()
+    private var icon: UIImageView = UIImageView()
     
-    lazy var text: UILabel = {
+    lazy var valueLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    lazy var title: UILabel = {
+    private lazy var title: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -34,8 +34,8 @@ class InfoFieldView: UIView {
     
     init(icon: UIImage, title: String) {
         self.icon.image = icon
-        self.title.text = title
         super.init(frame: .zero)
+        self.title.text = title
         setupStack()
     }
     
@@ -46,7 +46,7 @@ class InfoFieldView: UIView {
     private func setupSubviews() {
         addSubview(icon)
         addSubview(title)
-        addSubview(text)
+        addSubview(valueLabel)
         addSubview(divider)
     }
     
@@ -60,7 +60,7 @@ class InfoFieldView: UIView {
             make.leading.equalTo(icon.snp.trailing).inset(-10)
             make.centerY.equalToSuperview()
         }
-        text.snp.makeConstraints { make in
+        valueLabel.snp.makeConstraints { make in
             make.trailing.equalToSuperview()
             make.centerY.equalToSuperview()
         }

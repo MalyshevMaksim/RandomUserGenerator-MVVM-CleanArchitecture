@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class RealmStorage: UsersPersistentStorage {
+class UserStorage: UsersPersistentStorage {
     private var realm: Realm = try! Realm()
     
     func fetchRecentQueries() -> [String] {

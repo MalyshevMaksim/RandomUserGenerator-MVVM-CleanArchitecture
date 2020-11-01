@@ -18,7 +18,9 @@ class GeneratedUserCardView: UIView, Animatable {
         springShowing(willShowingCompletion: {
             self.name.text = user.name?.fullName
             self.email.text = user.email
-            self.phone.text.text = user.phone
+            self.infoStack.phone = user.phone
+            self.infoStack.location = user.location!.fullLocation
+            self.infoStack.dateBirth = user.dob!.formattedDate
         })
         completion(true)
     }
@@ -38,7 +40,7 @@ class GeneratedUserCardView: UIView, Animatable {
         return label
     }()
     
-    private lazy var poster: UIImageView = {
+    lazy var poster: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "user"))
         imageView.layer.cornerRadius = 70
         imageView.contentMode = .scaleAspectFill
@@ -79,31 +81,8 @@ class GeneratedUserCardView: UIView, Animatable {
         return devider
     }()
     
-    private lazy var phone: InfoFieldView = {
-        let view = InfoFieldView(icon: UIImage(systemName: "phone.fill")!, title: "Phone")
-        view.title.text = "Phone"
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    private lazy var location: InfoFieldView = {
-        let testView = InfoFieldView(icon: UIImage(systemName: "location.fill")!, title: "Location")
-        testView.translatesAutoresizingMaskIntoConstraints = false
-        return testView
-    }()
-    
-    private lazy var dateBirth: InfoFieldView = {
-        let testView = InfoFieldView(icon: UIImage(systemName: "gift.fill")!, title: "Date of Birth")
-        testView.translatesAutoresizingMaskIntoConstraints = false
-        return testView
-    }()
-    
-    private lazy var infoStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.addArrangedSubview(phone)
-        stack.addArrangedSubview(location)
-        stack.addArrangedSubview(dateBirth)
+    private lazy var infoStack: InfoStackView = {
+        let stack = InfoStackView()
         return stack
     }()
     
@@ -159,6 +138,7 @@ class GeneratedUserCardView: UIView, Animatable {
             make.width.equalToSuperview().multipliedBy(0.85)
             make.centerX.equalToSuperview()
             make.top.equalTo(divider.snp.bottom)
+            make.height.equalTo(150)
         }
     }
 }

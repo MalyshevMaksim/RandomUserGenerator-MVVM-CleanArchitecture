@@ -8,24 +8,35 @@
 import Foundation
 import Alamofire
 
-protocol UseCase {
-    func execute(completion: @escaping (Result<[User], AFError>) -> ())
+protocol GenerateUseCase {
+    func executeUser(completion: @escaping (Result<User, AFError>) -> ())
+    func executePicture(user: User, completion: @escaping (Result<UIImage, AFError>) -> ())
 }
 
-class GenerateUserUseCase: UseCase {
+class GenerateUserUseCase: GenerateUseCase {
     private var repository: UsersRepository
     
     init(repository: UsersRepository) {
         self.repository = repository
     }
     
-    func execute(completion: @escaping (Result<[User], AFError>) -> ()) {
-        repository.generateUser { user, error in
+    func executeUser(completion: @escaping (Result<User, AFError>) -> ()) {
+        repository.fetch { user, error in
             guard let user = user else {
                 completion(.failure(error!))
                 return
             }
             completion(.success(user))
+        }
+    }
+    
+    func executePicture(user: User, completion: @escaping (Result<UIImage, AFError>) -> ()) {
+        repository.fetchPicture(for: user) { image in
+            guard let picture = image else {
+                completion(.success(UIImage()))
+                return
+            }
+            completion(.success(picture))
         }
     }
 }

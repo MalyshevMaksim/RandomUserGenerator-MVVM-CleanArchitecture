@@ -10,21 +10,35 @@ import Bond
 import Alamofire
 
 class UserGeneratorViewModel {
-    private var useCase: GenerateUseCase
-    private(set) var generatedUser = Observable<User>(User())
-    private(set) var error: Observable<AFError>?
+    private var generateUseCase: GenerateUseCase
+    
+    private(set) var generatedUser = Observable<User?>(nil)
+    private(set) var generatedPicture = Observable<UIImage?>(nil)
+    private(set) var generatedError = Observable<AFError?>(nil)
     
     init(useCase: GenerateUseCase) {
-        self.useCase = useCase
+        self.generateUseCase = useCase
     }
     
     func executeUseCase() {
-        useCase.execute { result in
+        generateUseCase.executeUser { result in
             switch result {
                 case .success(let user):
                     self.generatedUser.value = user
+                    self.executePicture(for: user)
                 case .failure(let error):
-                    self.error?.value = error
+                    self.generatedError.value = error
+            }
+        }
+    }
+    
+    private func executePicture(for user: User) {
+        generateUseCase.executePicture(user: user) { result in
+            switch result {
+                case .success(let user):
+                    self.generatedPicture.value = user
+                case .failure(let error):
+                    self.generatedError.value = error
             }
         }
     }
