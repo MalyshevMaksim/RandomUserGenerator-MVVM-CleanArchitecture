@@ -10,7 +10,7 @@ Implementing a mobile client for [Random User Generator](https://randomuser.me/)
 
 ## Screenshots
 <p align="center">
-  <img src = "https://github.com/MalyshevMaksim/RandomUserGenerator-MVVM-CleanArchitecture/raw/master/Images/UserGenerated.png" width="250"/>
+  <img src = "https://github.com/MalyshevMaksim/RandomUserGenerator-MVVM-CleanArchitecture/blob/main/Images/UserGenerated.png" width="250"/>
 </p>
 
 ## Architecture Details
