@@ -10,13 +10,13 @@ import Alamofire
 
 protocol UsersRepository {
     func fetch(completion: @escaping (User?, AFError?) -> ())
-    func saveUser(user: User)
+    func save(user: User)
 }
 
 class UsersNetworkRepository: UsersRepository {
-    private var persistentStorage: UsersStorage
+    private var persistentStorage: UsersPersistentStorage
     
-    init(storage: UsersStorage) {
+    init(storage: UsersPersistentStorage) {
         self.persistentStorage = storage
     }
     
@@ -31,7 +31,7 @@ class UsersNetworkRepository: UsersRepository {
         }
     }
     
-    func saveUser(user: User) {
+    func save(user: User) {
         persistentStorage.save(user: user)
     }
 }

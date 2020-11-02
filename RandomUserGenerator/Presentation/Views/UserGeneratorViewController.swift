@@ -9,7 +9,8 @@ import UIKit
 import Bond
 
 class UserGeneratorViewController: UIViewController, Alertable {
-    private var viewModel = UserGeneratorViewModel(useCase: UserGeneratorInteractor(usersRepository: UsersNetworkRepository(storage: UsersRealmStorage()), picturesRepository: PicturesNetworkRepository(storage: PicturesRealmStorage())))
+    private var viewModel = UserGeneratorViewModel(generateUseCase: GenerateUserInteractor(usersRepository: UsersNetworkRepository(storage: UsersRealmStorage()), picturesRepository: PicturesNetworkRepository(storage: PicturesRealmStorage())), saveUseCase: SaveUserInteractor(usersRepository: UsersPersistentRepository(storage: UsersRealmStorage()), picturesRepository: PicturesPersistentRepository(storage: PicturesRealmStorage())))
+    
     private var activityIndicator = UIActivityIndicatorView(style: .large)
     private var userCardView: GeneratedUserCardView!
     
@@ -17,7 +18,7 @@ class UserGeneratorViewController: UIViewController, Alertable {
         super.viewDidLoad()
         configureViewController()
         bindViewModel()
-        viewModel.executeUseCase()
+        viewModel.executeGenerateUseCase()
     }
     
     private func configureViewController() {
@@ -51,10 +52,11 @@ class UserGeneratorViewController: UIViewController, Alertable {
         bindViewModelPicture()
         bindViewModelError()
         bindBarButtonTap()
+        bindSaveButtonTap()
     }
     
     private func bindViewModelUserGenerated() {
-        _ = viewModel.generatedUser.observeNext { generatedUser in
+        _ = viewModel.observableUser.observeNext { generatedUser in
             guard let user = generatedUser else {
                 return
             }
@@ -67,18 +69,18 @@ class UserGeneratorViewController: UIViewController, Alertable {
     }
     
     private func bindViewModelPicture() {
-        _ = viewModel.generatedPicture.observeNext { image in
+        _ = viewModel.observablePicture.observeNext { image in
             self.userCardView.poster.image = image
         }
     }
     
     private func bindViewModelError() {
-        _ = viewModel.generatedError.observeNext { [unowned self] error in
+        _ = viewModel.observableError.observeNext { [unowned self] error in
             guard let error = error else { return }
             showError(text: error.localizedDescription) { cancelAction in
                 activityIndicator.stopAnimating()
             } retryAction: { action in
-                viewModel.executeUseCase()
+                viewModel.executeGenerateUseCase()
             }
         }
     }
@@ -86,7 +88,13 @@ class UserGeneratorViewController: UIViewController, Alertable {
     private func bindBarButtonTap() {
         _ = navigationItem.rightBarButtonItem?.reactive.tap.observeNext {
             self.activityIndicator.startAnimating()
-            self.viewModel.executeUseCase()
+            self.viewModel.executeGenerateUseCase()
+        }
+    }
+    
+    private func bindSaveButtonTap() {
+        _ = userCardView.saveButton.reactive.tap.observeNext {
+            self.viewModel.executeSaveUseCase()
         }
     }
 }

@@ -12,6 +12,10 @@
 		B5569B26254BDAC50004AE98 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5569B25254BDAC50004AE98 /* Alertable.swift */; };
 		B5569B2A254BDE6E0004AE98 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5569B29254BDE6E0004AE98 /* Animatable.swift */; };
 		B5569B2E254C66810004AE98 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5569B2D254C66810004AE98 /* InfoView.swift */; };
+		B56B051225501206006746BE /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B051125501206006746BE /* Result.swift */; };
+		B56B051625501288006746BE /* SaveUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B051525501288006746BE /* SaveUserInteractor.swift */; };
+		B56B051D2550162D006746BE /* UsersPersistentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B051C2550162D006746BE /* UsersPersistentRepository.swift */; };
+		B56B05212550163F006746BE /* PicturePersistentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B05202550163F006746BE /* PicturePersistentRepository.swift */; };
 		B586195B254F3F2600ED32D2 /* PictureNetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586195A254F3F2600ED32D2 /* PictureNetworkRepository.swift */; };
 		B586195E254F433600ED32D2 /* PicturesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586195D254F433600ED32D2 /* PicturesStorage.swift */; };
 		B5CC73932549401700CC949D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC73922549401700CC949D /* AppDelegate.swift */; };
@@ -21,7 +25,7 @@
 		B5CC739F2549401900CC949D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5CC739D2549401900CC949D /* LaunchScreen.storyboard */; };
 		B5CC73CB254969EE00CC949D /* UsersNetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC73CA254969EE00CC949D /* UsersNetworkRepository.swift */; };
 		B5CC73D625496C1600CC949D /* UsersStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC73D525496C1600CC949D /* UsersStorage.swift */; };
-		B5CC73E0254A000A00CC949D /* UserGeneratorInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC73DF254A000A00CC949D /* UserGeneratorInteractor.swift */; };
+		B5CC73E0254A000A00CC949D /* GenerateUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC73DF254A000A00CC949D /* GenerateUserInteractor.swift */; };
 		B5CC73E3254A08C000CC949D /* UserGeneratorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC73E2254A08C000CC949D /* UserGeneratorViewModel.swift */; };
 		B5CC73E7254A272800CC949D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC73E6254A272800CC949D /* User.swift */; };
 		B5CC7402254A3FFE00CC949D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC7401254A3FFE00CC949D /* Location.swift */; };
@@ -36,6 +40,10 @@
 		B5569B25254BDAC50004AE98 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		B5569B29254BDE6E0004AE98 /* Animatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
 		B5569B2D254C66810004AE98 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		B56B051125501206006746BE /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		B56B051525501288006746BE /* SaveUserInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveUserInteractor.swift; sourceTree = "<group>"; };
+		B56B051C2550162D006746BE /* UsersPersistentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersPersistentRepository.swift; sourceTree = "<group>"; };
+		B56B05202550163F006746BE /* PicturePersistentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturePersistentRepository.swift; sourceTree = "<group>"; };
 		B586195A254F3F2600ED32D2 /* PictureNetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureNetworkRepository.swift; sourceTree = "<group>"; };
 		B586195D254F433600ED32D2 /* PicturesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesStorage.swift; sourceTree = "<group>"; };
 		B5CC738F2549401700CC949D /* RandomUserGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomUserGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,7 +55,7 @@
 		B5CC73A02549401900CC949D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5CC73CA254969EE00CC949D /* UsersNetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersNetworkRepository.swift; sourceTree = "<group>"; };
 		B5CC73D525496C1600CC949D /* UsersStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersStorage.swift; sourceTree = "<group>"; };
-		B5CC73DF254A000A00CC949D /* UserGeneratorInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGeneratorInteractor.swift; sourceTree = "<group>"; };
+		B5CC73DF254A000A00CC949D /* GenerateUserInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateUserInteractor.swift; sourceTree = "<group>"; };
 		B5CC73E2254A08C000CC949D /* UserGeneratorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGeneratorViewModel.swift; sourceTree = "<group>"; };
 		B5CC73E6254A272800CC949D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B5CC7401254A3FFE00CC949D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -83,6 +91,32 @@
 				B5569B2D254C66810004AE98 /* InfoView.swift */,
 			);
 			path = UserCardView;
+			sourceTree = "<group>";
+		};
+		B56B0510255011EC006746BE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B56B051125501206006746BE /* Result.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B56B05192550159B006746BE /* NetworkRepositories */ = {
+			isa = PBXGroup;
+			children = (
+				B5CC73CA254969EE00CC949D /* UsersNetworkRepository.swift */,
+				B586195A254F3F2600ED32D2 /* PictureNetworkRepository.swift */,
+			);
+			path = NetworkRepositories;
+			sourceTree = "<group>";
+		};
+		B56B051B255015A7006746BE /* PersistentRepositories */ = {
+			isa = PBXGroup;
+			children = (
+				B56B051C2550162D006746BE /* UsersPersistentRepository.swift */,
+				B56B05202550163F006746BE /* PicturePersistentRepository.swift */,
+			);
+			path = PersistentRepositories;
 			sourceTree = "<group>";
 		};
 		B5CC73862549401700CC949D = {
@@ -128,8 +162,8 @@
 		B5CC73D325496B8500CC949D /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				B5CC73CA254969EE00CC949D /* UsersNetworkRepository.swift */,
-				B586195A254F3F2600ED32D2 /* PictureNetworkRepository.swift */,
+				B56B05192550159B006746BE /* NetworkRepositories */,
+				B56B051B255015A7006746BE /* PersistentRepositories */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -139,6 +173,7 @@
 			children = (
 				B5CC73D525496C1600CC949D /* UsersStorage.swift */,
 				B586195D254F433600ED32D2 /* PicturesStorage.swift */,
+				B56B0510255011EC006746BE /* Helpers */,
 			);
 			path = Storages;
 			sourceTree = "<group>";
@@ -164,7 +199,8 @@
 		B5CC73EF254A2EA600CC949D /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				B5CC73DF254A000A00CC949D /* UserGeneratorInteractor.swift */,
+				B5CC73DF254A000A00CC949D /* GenerateUserInteractor.swift */,
+				B56B051525501288006746BE /* SaveUserInteractor.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -348,16 +384,20 @@
 				B5CC73972549401700CC949D /* UserGeneratorViewController.swift in Sources */,
 				B5CC7402254A3FFE00CC949D /* Location.swift in Sources */,
 				B5CC73E3254A08C000CC949D /* UserGeneratorViewModel.swift in Sources */,
-				B5CC73E0254A000A00CC949D /* UserGeneratorInteractor.swift in Sources */,
+				B5CC73E0254A000A00CC949D /* GenerateUserInteractor.swift in Sources */,
 				B5CC73932549401700CC949D /* AppDelegate.swift in Sources */,
 				B5569B26254BDAC50004AE98 /* Alertable.swift in Sources */,
+				B56B05212550163F006746BE /* PicturePersistentRepository.swift in Sources */,
+				B56B051D2550162D006746BE /* UsersPersistentRepository.swift in Sources */,
 				B5CC73D625496C1600CC949D /* UsersStorage.swift in Sources */,
 				B586195B254F3F2600ED32D2 /* PictureNetworkRepository.swift in Sources */,
 				B5569B1E254A7FFB0004AE98 /* GeneratedUserCardView.swift in Sources */,
 				B5CC73CB254969EE00CC949D /* UsersNetworkRepository.swift in Sources */,
 				B5CC73952549401700CC949D /* SceneDelegate.swift in Sources */,
+				B56B051625501288006746BE /* SaveUserInteractor.swift in Sources */,
 				B5F4FC9D254D227200D3CEDF /* InfoStackView.swift in Sources */,
 				B5569B2A254BDE6E0004AE98 /* Animatable.swift in Sources */,
+				B56B051225501206006746BE /* Result.swift in Sources */,
 				B5CC73E7254A272800CC949D /* User.swift in Sources */,
 				B5569B2E254C66810004AE98 /* InfoView.swift in Sources */,
 			);

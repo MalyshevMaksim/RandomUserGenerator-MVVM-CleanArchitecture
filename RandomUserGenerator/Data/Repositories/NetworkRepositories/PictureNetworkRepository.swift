@@ -14,9 +14,9 @@ protocol PicturesRepository {
 }
 
 class PicturesNetworkRepository: PicturesRepository {
-    private var persistentStorage: PicturesStorage
+    private var persistentStorage: PicturesPersistentStorage
     
-    init(storage: PicturesStorage) {
+    init(storage: PicturesPersistentStorage) {
         self.persistentStorage = storage
     }
     

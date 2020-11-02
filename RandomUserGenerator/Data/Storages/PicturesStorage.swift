@@ -8,11 +8,11 @@
 import Foundation
 import RealmSwift
 
-protocol PicturesStorage {
+protocol PicturesPersistentStorage {
     func save(picture: UIImage)
 }
 
-class PicturesRealmStorage: PicturesStorage {
+class PicturesRealmStorage: PicturesPersistentStorage {
     private var realm: Realm = try! Realm()
     
     func save(picture: UIImage) {

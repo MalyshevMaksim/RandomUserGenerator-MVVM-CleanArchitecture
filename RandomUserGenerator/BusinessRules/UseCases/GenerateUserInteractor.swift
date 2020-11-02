@@ -12,7 +12,7 @@ protocol GenerateUseCase {
     func execute(completionUser: @escaping (Result<User, AFError>) -> (), completionPicture: @escaping (UIImage?) -> ())
 }
 
-class UserGeneratorInteractor: GenerateUseCase {
+class GenerateUserInteractor: GenerateUseCase {
     private var usersRepository: UsersRepository
     private var picturesRepository: PicturesRepository
     

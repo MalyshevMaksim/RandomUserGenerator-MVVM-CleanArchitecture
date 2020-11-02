@@ -8,14 +8,21 @@
 import Foundation
 import RealmSwift
 
-protocol UsersStorage {
+protocol UsersPersistentStorage {
     func save(user: User)
+    func fetch() -> [User]
 }
 
-class UsersRealmStorage: UsersStorage {
+class UsersRealmStorage: UsersPersistentStorage {
     private var realm: Realm = try! Realm()
     
+    func fetch() -> [User] {
+        return realm.objects(User.self).toArray()
+    }
+    
     func save(user: User) {
-       
+        try! realm.write {
+            realm.add(user)
+        }
     }
 }
