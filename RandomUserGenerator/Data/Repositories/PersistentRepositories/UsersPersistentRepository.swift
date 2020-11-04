@@ -15,7 +15,7 @@ class UsersPersistentRepository: UsersRepository {
         self.persistentStorage = storage
     }
     
-    func fetch(completion: @escaping (User?, AFError?) -> ()) {
+    func fetch(completion: @escaping (UserList?, AFError?) -> ()) {
         let users = persistentStorage.fetch()
         //completion(users, nil)
     }

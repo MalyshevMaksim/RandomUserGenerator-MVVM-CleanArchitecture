@@ -9,7 +9,7 @@ import UIKit
 import Bond
 
 class UserGeneratorViewController: UIViewController, Alertable {
-    private var viewModel = UserGeneratorViewModel(generateUseCase: GenerateUserInteractor(usersRepository: UsersNetworkRepository(storage: UsersRealmStorage()), picturesRepository: PicturesNetworkRepository(storage: PicturesRealmStorage())), saveUseCase: SaveUserInteractor(usersRepository: UsersPersistentRepository(storage: UsersRealmStorage()), picturesRepository: PicturesPersistentRepository(storage: PicturesRealmStorage())))
+    private var viewModel = UserGeneratorViewModel(generateUseCase: FetchUserInteractor(usersRepository: UsersNetworkRepository(storage: UsersRealmStorage()), picturesRepository: PicturesNetworkRepository(storage: PicturesRealmStorage())), saveUseCase: SaveUserInteractor(usersRepository: UsersPersistentRepository(storage: UsersRealmStorage()), picturesRepository: PicturesPersistentRepository(storage: PicturesRealmStorage())))
     
     private var activityIndicator = UIActivityIndicatorView(style: .large)
     private var userCardView: GeneratedUserCardView!
@@ -60,11 +60,8 @@ class UserGeneratorViewController: UIViewController, Alertable {
             guard let user = generatedUser else {
                 return
             }
-            self.userCardView.configure(user: user) { success in
-                if success {
-                    self.activityIndicator.stopAnimating()
-                }
-            }
+            self.userCardView.configure(user: user)
+            self.activityIndicator.stopAnimating()
         }
     }
     

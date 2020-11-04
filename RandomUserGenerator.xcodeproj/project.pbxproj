@@ -25,9 +25,9 @@
 		B5CC739F2549401900CC949D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5CC739D2549401900CC949D /* LaunchScreen.storyboard */; };
 		B5CC73CB254969EE00CC949D /* UsersNetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC73CA254969EE00CC949D /* UsersNetworkRepository.swift */; };
 		B5CC73D625496C1600CC949D /* UsersStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC73D525496C1600CC949D /* UsersStorage.swift */; };
-		B5CC73E0254A000A00CC949D /* GenerateUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC73DF254A000A00CC949D /* GenerateUserInteractor.swift */; };
+		B5CC73E0254A000A00CC949D /* FetchUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC73DF254A000A00CC949D /* FetchUserInteractor.swift */; };
 		B5CC73E3254A08C000CC949D /* UserGeneratorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC73E2254A08C000CC949D /* UserGeneratorViewModel.swift */; };
-		B5CC73E7254A272800CC949D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC73E6254A272800CC949D /* User.swift */; };
+		B5CC73E7254A272800CC949D /* UserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC73E6254A272800CC949D /* UserList.swift */; };
 		B5CC7402254A3FFE00CC949D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC7401254A3FFE00CC949D /* Location.swift */; };
 		B5F4FC9D254D227200D3CEDF /* InfoStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F4FC9C254D227200D3CEDF /* InfoStackView.swift */; };
 /* End PBXBuildFile section */
@@ -55,9 +55,9 @@
 		B5CC73A02549401900CC949D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5CC73CA254969EE00CC949D /* UsersNetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersNetworkRepository.swift; sourceTree = "<group>"; };
 		B5CC73D525496C1600CC949D /* UsersStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersStorage.swift; sourceTree = "<group>"; };
-		B5CC73DF254A000A00CC949D /* GenerateUserInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateUserInteractor.swift; sourceTree = "<group>"; };
+		B5CC73DF254A000A00CC949D /* FetchUserInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserInteractor.swift; sourceTree = "<group>"; };
 		B5CC73E2254A08C000CC949D /* UserGeneratorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGeneratorViewModel.swift; sourceTree = "<group>"; };
-		B5CC73E6254A272800CC949D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B5CC73E6254A272800CC949D /* UserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserList.swift; sourceTree = "<group>"; };
 		B5CC7401254A3FFE00CC949D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		B5F4FC9C254D227200D3CEDF /* InfoStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoStackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,7 +190,7 @@
 		B5CC73ED254A2E9D00CC949D /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				B5CC73E6254A272800CC949D /* User.swift */,
+				B5CC73E6254A272800CC949D /* UserList.swift */,
 				B5CC7401254A3FFE00CC949D /* Location.swift */,
 			);
 			path = Entities;
@@ -199,7 +199,7 @@
 		B5CC73EF254A2EA600CC949D /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				B5CC73DF254A000A00CC949D /* GenerateUserInteractor.swift */,
+				B5CC73DF254A000A00CC949D /* FetchUserInteractor.swift */,
 				B56B051525501288006746BE /* SaveUserInteractor.swift */,
 			);
 			path = UseCases;
@@ -384,7 +384,7 @@
 				B5CC73972549401700CC949D /* UserGeneratorViewController.swift in Sources */,
 				B5CC7402254A3FFE00CC949D /* Location.swift in Sources */,
 				B5CC73E3254A08C000CC949D /* UserGeneratorViewModel.swift in Sources */,
-				B5CC73E0254A000A00CC949D /* GenerateUserInteractor.swift in Sources */,
+				B5CC73E0254A000A00CC949D /* FetchUserInteractor.swift in Sources */,
 				B5CC73932549401700CC949D /* AppDelegate.swift in Sources */,
 				B5569B26254BDAC50004AE98 /* Alertable.swift in Sources */,
 				B56B05212550163F006746BE /* PicturePersistentRepository.swift in Sources */,
@@ -398,7 +398,7 @@
 				B5F4FC9D254D227200D3CEDF /* InfoStackView.swift in Sources */,
 				B5569B2A254BDE6E0004AE98 /* Animatable.swift in Sources */,
 				B56B051225501206006746BE /* Result.swift in Sources */,
-				B5CC73E7254A272800CC949D /* User.swift in Sources */,
+				B5CC73E7254A272800CC949D /* UserList.swift in Sources */,
 				B5569B2E254C66810004AE98 /* InfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

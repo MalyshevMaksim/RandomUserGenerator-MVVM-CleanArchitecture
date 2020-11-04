@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 protocol PicturesRepository {
-    func fetch(for user: User, completion: @escaping (UIImage?) -> ())
+    func fetch(for user: UserList, completion: @escaping (UIImage?) -> ())
     func save(picture: UIImage)
 }
 
@@ -20,7 +20,7 @@ class PicturesNetworkRepository: PicturesRepository {
         self.persistentStorage = storage
     }
     
-    func fetch(for user: User, completion: @escaping (UIImage?) -> ()) {
+    func fetch(for user: UserList, completion: @escaping (UIImage?) -> ()) {
         guard let url = user.results.first?.picture?.large else {
             completion(nil)
             return

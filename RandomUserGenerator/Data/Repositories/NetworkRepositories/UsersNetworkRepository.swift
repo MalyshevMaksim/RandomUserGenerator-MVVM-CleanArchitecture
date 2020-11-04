@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 protocol UsersRepository {
-    func fetch(completion: @escaping (User?, AFError?) -> ())
+    func fetch(completion: @escaping (UserList?, AFError?) -> ())
     func save(user: User)
 }
 
@@ -20,8 +20,8 @@ class UsersNetworkRepository: UsersRepository {
         self.persistentStorage = storage
     }
     
-    func fetch(completion: @escaping (User?, AFError?) -> ()) {
-        AF.request("https://randomuser.me/api/") { $0.timeoutInterval = 5 }.validate().responseDecodable(of: User.self) { response in
+    func fetch(completion: @escaping (UserList?, AFError?) -> ()) {
+        AF.request("https://randomuser.me/api/") { $0.timeoutInterval = 5 }.validate().responseDecodable(of: UserList.self) { response in
             switch response.result {
                 case .success(let user):
                     completion(user, nil)

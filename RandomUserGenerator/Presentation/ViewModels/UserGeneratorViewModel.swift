@@ -10,7 +10,7 @@ import Bond
 import Alamofire
 
 class UserGeneratorViewModel {
-    private var generateUseCase: GenerateUseCase
+    private var generateUseCase: FetchUseCase
     private var saveUseCase: SaveUseCase
     
     private var generatedUser: User? {
@@ -29,7 +29,7 @@ class UserGeneratorViewModel {
     private(set) var observablePicture: Observable<UIImage?>
     private(set) var observableError: Observable<AFError?>
     
-    init(generateUseCase: GenerateUseCase, saveUseCase: SaveUseCase) {
+    init(generateUseCase: FetchUseCase, saveUseCase: SaveUseCase) {
         self.generateUseCase = generateUseCase
         self.saveUseCase = saveUseCase
         
@@ -53,10 +53,10 @@ class UserGeneratorViewModel {
         }
     }
     
-    private func userResultHandler(result: Result<User, AFError>) {
+    private func userResultHandler(result: Result<UserList, AFError>) {
         switch result {
             case .success(let user):
-                self.generatedUser = user
+                self.generatedUser = user.results.first
             case .failure(let error):
                 self.generatedError = error
         }

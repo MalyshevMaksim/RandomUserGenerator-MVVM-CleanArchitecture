@@ -8,11 +8,11 @@
 import Foundation
 import RealmSwift
 
-@objcMembers final class User: Object, Codable {
-    dynamic var results: List<UserInfo> = .init()
+@objcMembers final class UserList: Object, Codable {
+    dynamic var results: List<User> = .init()
 }
 
-@objcMembers final class UserInfo: Object, Codable {
+@objcMembers final class User: Object, Codable {
     dynamic var name: UserName?
     dynamic var location: Location?
     dynamic var email = ""

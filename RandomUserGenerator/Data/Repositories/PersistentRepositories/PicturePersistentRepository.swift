@@ -15,7 +15,7 @@ class PicturesPersistentRepository: PicturesRepository {
         self.persistentStorage = storage
     }
     
-    func fetch(for user: User, completion: @escaping (UIImage?) -> ()) {
+    func fetch(for user: UserList, completion: @escaping (UIImage?) -> ()) {
         
     }
     

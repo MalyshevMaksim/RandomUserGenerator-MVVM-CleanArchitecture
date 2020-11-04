@@ -10,11 +10,7 @@ import UIKit
 import SnapKit
 
 class GeneratedUserCardView: UIView, Animatable {
-    func configure(user: User, completion: (Bool) -> ()) {
-        guard let user = user.results.first else {
-            completion(false)
-            return
-        }
+    func configure(user: User) {
         springShowing(willShowingCompletion: {
             self.name.text = user.name?.fullName
             self.email.text = user.email
@@ -22,7 +18,6 @@ class GeneratedUserCardView: UIView, Animatable {
             self.infoStack.location = user.location!.fullLocation
             self.infoStack.dateBirth = user.dob!.formattedDate
         })
-        completion(true)
     }
     
     private lazy var name: UILabel = {

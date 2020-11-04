@@ -8,11 +8,11 @@
 import Foundation
 import Alamofire
 
-protocol GenerateUseCase {
-    func execute(completionUser: @escaping (Result<User, AFError>) -> (), completionPicture: @escaping (UIImage?) -> ())
+protocol FetchUseCase {
+    func execute(completionUser: @escaping (Result<UserList, AFError>) -> (), completionPicture: @escaping (UIImage?) -> ())
 }
 
-class GenerateUserInteractor: GenerateUseCase {
+class FetchUserInteractor: FetchUseCase {
     private var usersRepository: UsersRepository
     private var picturesRepository: PicturesRepository
     
@@ -21,7 +21,7 @@ class GenerateUserInteractor: GenerateUseCase {
         self.picturesRepository = picturesRepository
     }
     
-    func execute(completionUser: @escaping (Result<User, AFError>) -> (), completionPicture: @escaping (UIImage?) -> ()) {
+    func execute(completionUser: @escaping (Result<UserList, AFError>) -> (), completionPicture: @escaping (UIImage?) -> ()) {
         usersRepository.fetch { user, error in
             guard let user = user else {
                 completionUser(.failure(error!))
@@ -32,7 +32,7 @@ class GenerateUserInteractor: GenerateUseCase {
         }
     }
     
-    private func executePicture(user: User, completion: @escaping (UIImage?) -> ()) {
+    private func executePicture(user: UserList, completion: @escaping (UIImage?) -> ()) {
         picturesRepository.fetch(for: user) { image in
             guard let picture = image else {
                 completion(nil)
