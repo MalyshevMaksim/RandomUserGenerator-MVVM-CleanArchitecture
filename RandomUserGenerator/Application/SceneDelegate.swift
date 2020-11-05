@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let navigationController = UINavigationController(rootViewController: UserGeneratorViewController())
-        let navigationController2 = UINavigationController(rootViewController: UserGeneratorViewController())
+        let navigationController2 = UINavigationController(rootViewController: SavedUserViewController())
         navigationController.tabBarItem = UITabBarItem(title: "User Generator", image: UIImage(systemName: "die.face.5"), selectedImage: nil)
         navigationController2.tabBarItem = UITabBarItem(title: "Saved", image: UIImage(systemName: "person"), selectedImage: nil)
         let tabBarController = UITabBarController()

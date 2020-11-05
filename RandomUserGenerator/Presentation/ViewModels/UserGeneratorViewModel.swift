@@ -13,33 +13,17 @@ class UserGeneratorViewModel {
     private var generateUseCase: FetchUseCase
     private var saveUseCase: SaveUseCase
     
-    private var generatedUser: User? {
-        didSet { observableUser.value = generatedUser }
-    }
-    
-    private var generatedPicture: UIImage? {
-        didSet { observablePicture.value = generatedPicture }
-    }
-    
-    private var generatedError: AFError? {
-        didSet { observableError.value = generatedError }
-    }
-    
-    private(set) var observableUser: Observable<User?>
-    private(set) var observablePicture: Observable<UIImage?>
-    private(set) var observableError: Observable<AFError?>
+    private(set) var observableUser = Observable<User?>(nil)
+    private(set) var observablePicture = Observable<UIImage?>(nil)
+    private(set) var observableError = Observable<AFError?>(nil)
     
     init(generateUseCase: FetchUseCase, saveUseCase: SaveUseCase) {
         self.generateUseCase = generateUseCase
         self.saveUseCase = saveUseCase
-        
-        observableUser = Observable<User?>(generatedUser)
-        observablePicture = Observable<UIImage?>(generatedPicture)
-        observableError = Observable<AFError?>(generatedError)
     }
     
     func executeSaveUseCase() {
-        guard let user = generatedUser, let picture = generatedPicture else {
+        guard let user = observableUser.value, let picture = observablePicture.value else {
             return
         }
         saveUseCase.execute(for: user, with: picture)
@@ -49,24 +33,16 @@ class UserGeneratorViewModel {
         generateUseCase.execute { result in
             self.userResultHandler(result: result)
         } completionPicture: { picture in
-            self.pictureResultHandler(picture: picture)
+            self.observablePicture.value = picture?.first
         }
     }
     
     private func userResultHandler(result: Result<UserList, AFError>) {
         switch result {
             case .success(let user):
-                self.generatedUser = user.results.first
+                self.observableUser.value = user.results.first
             case .failure(let error):
-                self.generatedError = error
+                self.observableError.value = error
         }
-    }
-    
-    private func pictureResultHandler(picture: UIImage?) {
-        guard let picture = picture else {
-            self.generatedPicture = nil
-            return
-        }
-        self.generatedPicture = picture
     }
 }

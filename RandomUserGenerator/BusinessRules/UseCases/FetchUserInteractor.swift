@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 protocol FetchUseCase {
-    func execute(completionUser: @escaping (Result<UserList, AFError>) -> (), completionPicture: @escaping (UIImage?) -> ())
+    func execute(completionUser: @escaping (Result<UserList, AFError>) -> (), completionPicture: @escaping ([UIImage]?) -> ())
 }
 
 class FetchUserInteractor: FetchUseCase {
@@ -21,19 +21,19 @@ class FetchUserInteractor: FetchUseCase {
         self.picturesRepository = picturesRepository
     }
     
-    func execute(completionUser: @escaping (Result<UserList, AFError>) -> (), completionPicture: @escaping (UIImage?) -> ()) {
+    func execute(completionUser: @escaping (Result<UserList, AFError>) -> (), completionPicture: @escaping ([UIImage]?) -> ()) {
         usersRepository.fetch { user, error in
             guard let user = user else {
                 completionUser(.failure(error!))
                 return
             }
             completionUser(.success(user))
-            self.executePicture(user: user, completion: completionPicture)
+            self.executePicture(users: user, completion: completionPicture)
         }
     }
     
-    private func executePicture(user: UserList, completion: @escaping (UIImage?) -> ()) {
-        picturesRepository.fetch(for: user) { image in
+    private func executePicture(users: UserList, completion: @escaping ([UIImage]?) -> ()) {
+        picturesRepository.fetch(for: users) { image in
             guard let picture = image else {
                 completion(nil)
                 return

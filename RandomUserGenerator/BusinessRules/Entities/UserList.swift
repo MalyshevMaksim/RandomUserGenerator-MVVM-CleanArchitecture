@@ -60,4 +60,5 @@ import RealmSwift
     dynamic var large = ""
     dynamic var medium = ""
     dynamic var thumbnail = ""
+    dynamic var data = Data()
 }

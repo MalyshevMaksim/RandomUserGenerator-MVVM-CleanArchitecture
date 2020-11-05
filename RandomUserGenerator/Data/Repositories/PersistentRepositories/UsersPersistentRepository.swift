@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import RealmSwift
 
 class UsersPersistentRepository: UsersRepository {
     private var persistentStorage: UsersPersistentStorage
@@ -17,7 +18,11 @@ class UsersPersistentRepository: UsersRepository {
     
     func fetch(completion: @escaping (UserList?, AFError?) -> ()) {
         let users = persistentStorage.fetch()
-        //completion(users, nil)
+        let list = UserList()
+        for user in users {
+            list.results.append(user)
+        }
+        completion(list, nil)
     }
     
     func save(user: User) {

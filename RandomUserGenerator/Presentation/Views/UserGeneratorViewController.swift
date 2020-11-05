@@ -92,6 +92,7 @@ class UserGeneratorViewController: UIViewController, Alertable {
     private func bindSaveButtonTap() {
         _ = userCardView.saveButton.reactive.tap.observeNext {
             self.viewModel.executeSaveUseCase()
+            self.userCardView.saveButtonUnable()
         }
     }
 }

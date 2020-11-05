@@ -18,6 +18,9 @@
 		B56B05212550163F006746BE /* PicturePersistentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B05202550163F006746BE /* PicturePersistentRepository.swift */; };
 		B586195B254F3F2600ED32D2 /* PictureNetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586195A254F3F2600ED32D2 /* PictureNetworkRepository.swift */; };
 		B586195E254F433600ED32D2 /* PicturesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586195D254F433600ED32D2 /* PicturesStorage.swift */; };
+		B5C4E61D2553395500842B98 /* SavedUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C4E61C2553395500842B98 /* SavedUserViewController.swift */; };
+		B5C4E62025533A2700842B98 /* SavedUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C4E61F25533A2700842B98 /* SavedUserViewModel.swift */; };
+		B5C4E62525534E5A00842B98 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C4E62425534E5A00842B98 /* UserCell.swift */; };
 		B5CC73932549401700CC949D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC73922549401700CC949D /* AppDelegate.swift */; };
 		B5CC73952549401700CC949D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC73942549401700CC949D /* SceneDelegate.swift */; };
 		B5CC73972549401700CC949D /* UserGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC73962549401700CC949D /* UserGeneratorViewController.swift */; };
@@ -46,6 +49,9 @@
 		B56B05202550163F006746BE /* PicturePersistentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturePersistentRepository.swift; sourceTree = "<group>"; };
 		B586195A254F3F2600ED32D2 /* PictureNetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureNetworkRepository.swift; sourceTree = "<group>"; };
 		B586195D254F433600ED32D2 /* PicturesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesStorage.swift; sourceTree = "<group>"; };
+		B5C4E61C2553395500842B98 /* SavedUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedUserViewController.swift; sourceTree = "<group>"; };
+		B5C4E61F25533A2700842B98 /* SavedUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedUserViewModel.swift; sourceTree = "<group>"; };
+		B5C4E62425534E5A00842B98 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		B5CC738F2549401700CC949D /* RandomUserGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomUserGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5CC73922549401700CC949D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5CC73942549401700CC949D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +123,14 @@
 				B56B05202550163F006746BE /* PicturePersistentRepository.swift */,
 			);
 			path = PersistentRepositories;
+			sourceTree = "<group>";
+		};
+		B5C4E62225534CFC00842B98 /* UserCell */ = {
+			isa = PBXGroup;
+			children = (
+				B5C4E62425534E5A00842B98 /* UserCell.swift */,
+			);
+			path = UserCell;
 			sourceTree = "<group>";
 		};
 		B5CC73862549401700CC949D = {
@@ -237,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				B5CC73E2254A08C000CC949D /* UserGeneratorViewModel.swift */,
+				B5C4E61F25533A2700842B98 /* SavedUserViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -245,6 +260,8 @@
 			isa = PBXGroup;
 			children = (
 				B5CC73962549401700CC949D /* UserGeneratorViewController.swift */,
+				B5C4E61C2553395500842B98 /* SavedUserViewController.swift */,
+				B5C4E62225534CFC00842B98 /* UserCell */,
 				B5569B31254C67150004AE98 /* UserCardView */,
 			);
 			path = Views;
@@ -389,13 +406,16 @@
 				B5569B26254BDAC50004AE98 /* Alertable.swift in Sources */,
 				B56B05212550163F006746BE /* PicturePersistentRepository.swift in Sources */,
 				B56B051D2550162D006746BE /* UsersPersistentRepository.swift in Sources */,
+				B5C4E61D2553395500842B98 /* SavedUserViewController.swift in Sources */,
 				B5CC73D625496C1600CC949D /* UsersStorage.swift in Sources */,
+				B5C4E62525534E5A00842B98 /* UserCell.swift in Sources */,
 				B586195B254F3F2600ED32D2 /* PictureNetworkRepository.swift in Sources */,
 				B5569B1E254A7FFB0004AE98 /* GeneratedUserCardView.swift in Sources */,
 				B5CC73CB254969EE00CC949D /* UsersNetworkRepository.swift in Sources */,
 				B5CC73952549401700CC949D /* SceneDelegate.swift in Sources */,
 				B56B051625501288006746BE /* SaveUserInteractor.swift in Sources */,
 				B5F4FC9D254D227200D3CEDF /* InfoStackView.swift in Sources */,
+				B5C4E62025533A2700842B98 /* SavedUserViewModel.swift in Sources */,
 				B5569B2A254BDE6E0004AE98 /* Animatable.swift in Sources */,
 				B56B051225501206006746BE /* Result.swift in Sources */,
 				B5CC73E7254A272800CC949D /* UserList.swift in Sources */,

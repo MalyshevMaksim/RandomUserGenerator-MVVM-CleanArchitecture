@@ -23,8 +23,8 @@ class UsersNetworkRepository: UsersRepository {
     func fetch(completion: @escaping (UserList?, AFError?) -> ()) {
         AF.request("https://randomuser.me/api/") { $0.timeoutInterval = 5 }.validate().responseDecodable(of: UserList.self) { response in
             switch response.result {
-                case .success(let user):
-                    completion(user, nil)
+                case .success(let users):
+                    completion(users, nil)
                 case .failure(let error):
                     completion(nil, error)
             }

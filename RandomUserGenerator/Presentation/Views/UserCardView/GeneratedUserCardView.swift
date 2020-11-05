@@ -11,13 +11,30 @@ import SnapKit
 
 class GeneratedUserCardView: UIView, Animatable {
     func configure(user: User) {
-        springShowing(willShowingCompletion: {
-            self.name.text = user.name?.fullName
-            self.email.text = user.email
-            self.infoStack.phone = user.phone
-            self.infoStack.location = user.location!.fullLocation
-            self.infoStack.dateBirth = user.dob!.formattedDate
-        })
+        DispatchQueue.main.async {
+            self.springShowing(willShowingCompletion: {
+                self.name.text = user.name?.fullName
+                self.email.text = user.email
+                self.infoStack.phone = user.phone
+                self.infoStack.location = user.location!.fullLocation
+                self.infoStack.dateBirth = user.dob!.formattedDate
+                self.saveButtonEnable()
+            })
+        }
+    }
+    
+    func saveButtonUnable() {
+        saveButton.isEnabled = false
+        saveButton.backgroundColor = .systemGreen
+        saveButton.setTitle("User has been saved!", for: .normal)
+    }
+    
+    private func saveButtonEnable() {
+        DispatchQueue.main.async {
+            self.saveButton.isEnabled = true
+            self.saveButton.backgroundColor = .systemBlue
+            self.saveButton.setTitle("Save", for: .normal)
+        }
     }
     
     private lazy var name: UILabel = {
