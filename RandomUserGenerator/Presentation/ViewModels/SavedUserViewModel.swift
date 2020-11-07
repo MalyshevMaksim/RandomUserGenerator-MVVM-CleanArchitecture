@@ -24,6 +24,7 @@ class SavedUserViewModel {
         fetchUseCase.execute { result in
             self.userResultHandler(result: result)
         } completionPicture: { pictures in
+            self.observablePictures.removeAll()
             self.observablePictures.insert(contentsOf: pictures!, at: 0)
         }
     }

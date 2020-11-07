@@ -29,14 +29,14 @@ class UserCell: UITableViewCell {
     
     private lazy var email: UILabel = {
         let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private lazy var phone: UILabel = {
         let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -63,7 +63,6 @@ class UserCell: UITableViewCell {
     
     lazy var poster: UIImageView = {
         let poster = UIImageView()
-        poster.image = UIImage(named: "user")
         poster.layer.cornerRadius = 5
         poster.clipsToBounds = true
         poster.translatesAutoresizingMaskIntoConstraints = false
@@ -100,6 +99,7 @@ class UserCell: UITableViewCell {
         }
         emailStack.snp.makeConstraints { make in
             make.leading.equalTo(name)
+            make.width.equalTo(185)
             make.top.equalTo(name.snp.bottom).inset(-10)
         }
         phoneStack.snp.makeConstraints { make in

@@ -11,6 +11,7 @@ Implementing a mobile client for [Random User Generator](https://randomuser.me/)
 ## Screenshots
 <p align="center">
   <img src = "https://github.com/MalyshevMaksim/RandomUserGenerator-MVVM-CleanArchitecture/blob/main/Images/UserGenerated.png" width="250"/>
+  <img src = "https://github.com/MalyshevMaksim/RandomUserGenerator-MVVM-CleanArchitecture/blob/main/Images/Saved.png" width="250"/>
 </p>
 
 ## Architecture Details
@@ -19,7 +20,7 @@ Clean Achitecture is a method for building an application architecture, [propose
 ### Simplified class diagram
 ![Alt text](Images/Simplified.png?raw=true "Simplified class diagram")
 
-This diagram intentionally does not provide specific frameworks and libraries. The application architecture should not depend on such details. For example, for persistent storage, you can use Core Data, Realm, or even plain text files. 
+This diagram intentionally does not provide specific frameworks and libraries. The application architecture should not depend on such details. For example, for persistent storage, you can use Core Data, Realm, or even plain text files. This application uses Realm as a persistent storage, and the Alamifore library as a network repository.
 
 ### File structure
 ![Alt text](Images/FileStructure.png?raw=true "File structure")
