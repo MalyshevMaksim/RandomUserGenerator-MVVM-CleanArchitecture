@@ -10,7 +10,16 @@ import UIKit
 import Bond
 
 class SavedUserViewController: UITableViewController {
-    var viewModel = SavedUserViewModel(fetchUseCase: FetchUserInteractor(usersRepository: UsersPersistentRepository(storage: UsersRealmStorage()), picturesRepository: PicturesPersistentRepository(storage: PicturesRealmStorage())))
+    var viewModel: SavedUserViewModel!
+    
+    init(viewModel: SavedUserViewModel) {
+        super.init(nibName: nil, bundle: nil)
+        self.viewModel = viewModel
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

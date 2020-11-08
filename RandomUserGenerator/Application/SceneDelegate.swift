@@ -17,8 +17,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let navigationController = UINavigationController(rootViewController: UserGeneratorViewController())
-        let navigationController2 = UINavigationController(rootViewController: SavedUserViewController())
+        let userGeneratorBuilder = UserGeneratorBuilder()
+        let savedUserBuilder = SavedUserBuilder()
+        
+        let director = ViewModelDirector(builder: userGeneratorBuilder)
+        director.makeUserGeneratorViewModel()
+        director.setBuilder(builder: savedUserBuilder)
+        director.makeSavedUserViewModel()
+        
+        let savedUserViewModel = savedUserBuilder.getResult()
+        let userGeneratorViewModel = userGeneratorBuilder.getResult()
+        
+        let navigationController = UINavigationController(rootViewController: UserGeneratorViewController(viewModel: userGeneratorViewModel!))
+        let navigationController2 = UINavigationController(rootViewController: SavedUserViewController(viewModel: savedUserViewModel!))
         navigationController.tabBarItem = UITabBarItem(title: "User Generator", image: UIImage(systemName: "die.face.5"), selectedImage: nil)
         navigationController2.tabBarItem = UITabBarItem(title: "Saved", image: UIImage(systemName: "person"), selectedImage: nil)
         let tabBarController = UITabBarController()
@@ -29,6 +40,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
     }
+    
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

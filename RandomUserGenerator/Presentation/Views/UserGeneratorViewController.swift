@@ -9,10 +9,18 @@ import UIKit
 import Bond
 
 class UserGeneratorViewController: UIViewController, Alertable {
-    private var viewModel = UserGeneratorViewModel(generateUseCase: FetchUserInteractor(usersRepository: UsersNetworkRepository(storage: UsersRealmStorage()), picturesRepository: PicturesNetworkRepository(storage: PicturesRealmStorage())), saveUseCase: SaveUserInteractor(usersRepository: UsersPersistentRepository(storage: UsersRealmStorage()), picturesRepository: PicturesPersistentRepository(storage: PicturesRealmStorage())))
-    
-    private var activityIndicator = UIActivityIndicatorView(style: .large)
+    private var viewModel: UserGeneratorViewModel!
     private var userCardView: GeneratedUserCardView!
+    private var activityIndicator = UIActivityIndicatorView(style: .large)
+    
+    init(viewModel: UserGeneratorViewModel) {
+        super.init(nibName: nil, bundle: nil)
+        self.viewModel = viewModel
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
