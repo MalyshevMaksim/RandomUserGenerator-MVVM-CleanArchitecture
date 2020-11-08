@@ -17,8 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let userGeneratorBuilder = UserGeneratorBuilder()
-        let savedUserBuilder = SavedUserBuilder()
+        let userGeneratorBuilder = UserGeneratorViewModelBuilder()
+        let savedUserBuilder = SavedUserViewModelBuilder()
         
         let director = ViewModelDirector(builder: userGeneratorBuilder)
         director.makeUserGeneratorViewModel()

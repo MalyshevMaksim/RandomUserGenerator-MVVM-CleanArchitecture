@@ -1,5 +1,5 @@
 //
-//  SavedUserBuilder.swift
+//  UserGeneratorBuilder.swift
 //  RandomUserGenerator
 //
 //  Created by Малышев Максим Алексеевич on 11/8/20.
@@ -7,13 +7,11 @@
 
 import Foundation
 
-class SavedUserBuilder: ViewModelBuilder {
-    private var result: SavedUserViewModel?
+class UserGeneratorViewModelBuilder: ViewModelBuilder {
+    private var result: UserGeneratorViewModel?
     private var usersRepository: UsersRepository?
     private var picturesRepository: PicturesRepository?
-    private var usersStorage: UsersPersistentStorage?
-    private var picturesStorage: PicturesPersistentStorage?
-    
+
     func setUsersRepository(usersRepository: UsersRepository) {
         self.usersRepository = usersRepository
     }
@@ -24,10 +22,11 @@ class SavedUserBuilder: ViewModelBuilder {
     
     func build() {
         let fetchInteractor = FetchUserInteractor(usersRepository: usersRepository!, picturesRepository: picturesRepository!)
-        result = SavedUserViewModel(fetchUseCase: fetchInteractor)
+        let saveInteractor = SaveUserInteractor(usersRepository: usersRepository!, picturesRepository: picturesRepository!)
+        result = UserGeneratorViewModel(generateUseCase: fetchInteractor, saveUseCase: saveInteractor)
     }
     
-    func getResult() -> SavedUserViewModel? {
+    func getResult() -> UserGeneratorViewModel? {
         return result
     }
 }

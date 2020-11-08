@@ -251,7 +251,6 @@
 			children = (
 				B5CC73922549401700CC949D /* AppDelegate.swift */,
 				B5CC73942549401700CC949D /* SceneDelegate.swift */,
-				B5E30943255773BC00870BA2 /* ViewModelBuilders */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -261,6 +260,7 @@
 			children = (
 				B5CC73E2254A08C000CC949D /* UserGeneratorViewModel.swift */,
 				B5C4E61F25533A2700842B98 /* SavedUserViewModel.swift */,
+				B5E30943255773BC00870BA2 /* ViewModelBuilders */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
