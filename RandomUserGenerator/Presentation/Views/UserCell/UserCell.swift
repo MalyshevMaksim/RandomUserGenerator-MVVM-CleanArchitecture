@@ -17,6 +17,7 @@ class UserCell: UITableViewCell {
             self.name.text = user.name?.fullName
             self.email.text = user.email
             self.phone.text = user.phone
+            self.poster.image = UIImage(data: (user.picture?.data)!)
         }
     }
     

@@ -57,7 +57,6 @@ class UserGeneratorViewController: UIViewController, Alertable {
     
     private func bindViewModel() {
         bindViewModelUserGenerated()
-        bindViewModelPicture()
         bindViewModelError()
         bindBarButtonTap()
         bindSaveButtonTap()
@@ -70,12 +69,6 @@ class UserGeneratorViewController: UIViewController, Alertable {
             }
             self.userCardView.configure(user: user)
             self.activityIndicator.stopAnimating()
-        }
-    }
-    
-    private func bindViewModelPicture() {
-        _ = viewModel.observablePicture.observeNext { image in
-            self.userCardView.poster.image = image
         }
     }
     

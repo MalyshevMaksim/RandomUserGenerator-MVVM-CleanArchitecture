@@ -8,11 +8,6 @@
 import Foundation
 import Alamofire
 
-protocol UsersRepository {
-    func fetch(completion: @escaping (UserList?, AFError?) -> ())
-    func save(user: User)
-}
-
 class UsersNetworkRepository: UsersRepository {
     private var persistentStorage: UsersPersistentStorage
     
@@ -20,10 +15,15 @@ class UsersNetworkRepository: UsersRepository {
         self.persistentStorage = storage
     }
     
+    func save(user: User) {
+        persistentStorage.save(user: user)
+    }
+    
     func fetch(completion: @escaping (UserList?, AFError?) -> ()) {
         AF.request("https://randomuser.me/api/") { $0.timeoutInterval = 5 }.validate().responseDecodable(of: UserList.self) { response in
             switch response.result {
                 case .success(let users):
+                    self.fetchPicture(for: users)
                     completion(users, nil)
                 case .failure(let error):
                     completion(nil, error)
@@ -31,7 +31,19 @@ class UsersNetworkRepository: UsersRepository {
         }
     }
     
-    func save(user: User) {
-        persistentStorage.save(user: user)
+    private func fetchPicture(for users: UserList) {
+        for user in users.results {
+            guard let url = users.results.first?.picture?.large else {
+                break
+            }
+            AF.request(url).validate().response { response in
+                switch response.result {
+                    case .success(let pictureData):
+                        user.picture?.data = pictureData
+                    case .failure:
+                        user.picture?.data = nil
+                }
+            }
+        }
     }
 }

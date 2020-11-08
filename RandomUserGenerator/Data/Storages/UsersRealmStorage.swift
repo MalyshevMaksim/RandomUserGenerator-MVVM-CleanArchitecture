@@ -8,11 +8,6 @@
 import Foundation
 import RealmSwift
 
-protocol UsersPersistentStorage {
-    func save(user: User)
-    func fetch() -> [User]
-}
-
 class UsersRealmStorage: UsersPersistentStorage {
     private var realm: Realm = try! Realm()
     

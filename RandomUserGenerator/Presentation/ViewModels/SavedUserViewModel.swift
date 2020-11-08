@@ -10,32 +10,52 @@ import Alamofire
 import Bond
 
 class SavedUserViewModel {
+    private var router: Router
+    
     private var fetchUseCase: FetchUseCase
+    private var searchUseCase: SearchUseCase
     
-    private(set) var observableUsers = MutableObservableArray<User>([])
-    private(set) var observablePictures = MutableObservableArray<UIImage>([])
+    private var fetchedUsers = [User]()
+    
     private(set) var observableError = Observable<AFError?>(nil)
+    private(set) var observableUsers = MutableObservableArray<User>([])
     
-    init(fetchUseCase: FetchUseCase) {
+    init(fetchUseCase: FetchUseCase, router: Router) {
+        self.router = router
+        self.searchUseCase = SearchUserInteractor()
         self.fetchUseCase = fetchUseCase
+        executeFetchUseCase()
+    }
+    
+    func showDetail(for indexPath: IndexPath) {
+        let user = observableUsers.array[indexPath.row]
+        router.showDetail(user: user, method: .push)
+    }
+    
+    func executeSearchUseCase(searchText: String?) {
+        guard let searchQuery = searchText, searchQuery != "" else {
+            if fetchedUsers.count == observableUsers.count {
+                return
+            }
+            self.observableUsers.removeAll()
+            self.observableUsers.insert(contentsOf: fetchedUsers, at: 0)
+            return
+        }
+        searchUseCase.execute(users: fetchedUsers, searchQuery: searchQuery) { users in
+            self.observableUsers.removeAll()
+            self.observableUsers.insert(contentsOf: users, at: 0)
+        }
     }
     
     func executeFetchUseCase() {
         fetchUseCase.execute { result in
-            self.userResultHandler(result: result)
-        } completionPicture: { pictures in
-            self.observablePictures.removeAll()
-            self.observablePictures.insert(contentsOf: pictures!, at: 0)
-        }
-    }
-    
-    private func userResultHandler(result: Result<UserList, AFError>) {
-        switch result {
-            case .success(let users):
-                observableUsers.removeAll()
-                observableUsers.insert(contentsOf: Array(users.results), at: 0)
-            case .failure(let error):
-                observableError.value = error
+            switch result {
+                case .success(let users):
+                    self.fetchedUsers = Array(users.results)
+                    self.observableUsers.insert(contentsOf: self.fetchedUsers, at: 0)
+                case .failure(let error):
+                    self.observableError.value = error
+            }
         }
     }
 }

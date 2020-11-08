@@ -17,19 +17,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let userGeneratorBuilder = UserGeneratorViewModelBuilder()
-        let savedUserBuilder = SavedUserViewModelBuilder()
+        let navigationController = UINavigationController()
+        let router = Router(rootNavigationController: navigationController, factory: UserGeneratorViewControllerFactory())
+        router.initialNavigationController()
         
-        let director = ViewModelDirector(builder: userGeneratorBuilder)
-        director.makeUserGeneratorViewModel()
-        director.setBuilder(builder: savedUserBuilder)
-        director.makeSavedUserViewModel()
+        let navigationController2 = UINavigationController()
+        let router2 = Router(rootNavigationController: navigationController2, factory: SavedUserViewControllerFactory())
+        router2.initialNavigationController()
         
-        let savedUserViewModel = savedUserBuilder.getResult()
-        let userGeneratorViewModel = userGeneratorBuilder.getResult()
-        
-        let navigationController = UINavigationController(rootViewController: UserGeneratorViewController(viewModel: userGeneratorViewModel!))
-        let navigationController2 = UINavigationController(rootViewController: SavedUserViewController(viewModel: savedUserViewModel!))
         navigationController.tabBarItem = UITabBarItem(title: "User Generator", image: UIImage(systemName: "die.face.5"), selectedImage: nil)
         navigationController2.tabBarItem = UITabBarItem(title: "Saved", image: UIImage(systemName: "person"), selectedImage: nil)
         let tabBarController = UITabBarController()

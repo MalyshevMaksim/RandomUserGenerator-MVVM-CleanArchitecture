@@ -18,6 +18,7 @@ class GeneratedUserCardView: UIView, Animatable {
                 self.infoStack.phone = user.phone
                 self.infoStack.location = user.location!.fullLocation
                 self.infoStack.dateBirth = user.dob!.formattedDate
+                self.poster.image = UIImage(data: (user.picture?.data)!)
                 self.saveButtonEnable()
             })
         }
@@ -53,7 +54,7 @@ class GeneratedUserCardView: UIView, Animatable {
     }()
     
     lazy var poster: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "user"))
+        let imageView = UIImageView()
         imageView.layer.cornerRadius = 70
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -124,7 +125,7 @@ class GeneratedUserCardView: UIView, Animatable {
         poster.snp.makeConstraints { make in
             make.width.height.equalTo(background.snp.height).multipliedBy(0.25)
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(poster.frame.height * 0.2)
+            make.top.equalToSuperview().inset(40)
         }
         name.snp.makeConstraints { make in
             make.top.equalTo(poster.snp.bottom).inset(-25)

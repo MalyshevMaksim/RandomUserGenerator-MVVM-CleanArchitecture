@@ -14,7 +14,6 @@ class UserGeneratorViewModel {
     private var saveUseCase: SaveUseCase
     
     private(set) var observableUser = Observable<User?>(nil)
-    private(set) var observablePicture = Observable<UIImage?>(nil)
     private(set) var observableError = Observable<AFError?>(nil)
     
     init(generateUseCase: FetchUseCase, saveUseCase: SaveUseCase) {
@@ -23,26 +22,20 @@ class UserGeneratorViewModel {
     }
     
     func executeSaveUseCase() {
-        guard let user = observableUser.value, let picture = observablePicture.value else {
+        guard let user = observableUser.value else {
             return
         }
-        saveUseCase.execute(for: user, with: picture)
+        saveUseCase.execute(user: user)
     }
     
     func executeGenerateUseCase() {
         generateUseCase.execute { result in
-            self.userResultHandler(result: result)
-        } completionPicture: { picture in
-            self.observablePicture.value = picture?.first
-        }
-    }
-    
-    private func userResultHandler(result: Result<UserList, AFError>) {
-        switch result {
-            case .success(let user):
-                self.observableUser.value = user.results.first
-            case .failure(let error):
-                self.observableError.value = error
+            switch result {
+                case .success(let user):
+                    self.observableUser.value = user.results.first
+                case .failure(let error):
+                    self.observableError.value = error
+            }
         }
     }
 }

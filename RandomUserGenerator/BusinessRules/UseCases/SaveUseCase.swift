@@ -9,20 +9,17 @@ import Foundation
 import UIKit
 
 protocol SaveUseCase {
-    func execute(for user: User, with picture: UIImage)
+    func execute(user: User)
 }
 
 class SaveUserInteractor: SaveUseCase {
     private var usersRepository: UsersRepository
-    private var picturesRepository: PicturesRepository
     
-    init(usersRepository: UsersRepository, picturesRepository: PicturesRepository) {
+    init(usersRepository: UsersRepository) {
         self.usersRepository = usersRepository
-        self.picturesRepository = picturesRepository
     }
     
-    func execute(for user: User, with picture: UIImage) {
+    func execute(user: User) {
         usersRepository.save(user: user)
-        picturesRepository.save(picture: picture)
     }
 }
