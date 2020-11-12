@@ -28,4 +28,8 @@ class UsersPersistentRepository: UsersRepository {
     func save(user: User) {
         persistentStorage.save(user: user)
     }
+    
+    func delete(user: User) {
+        persistentStorage.delete(user: user)
+    }
 }

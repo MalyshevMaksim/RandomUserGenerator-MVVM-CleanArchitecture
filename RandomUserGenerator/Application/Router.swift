@@ -29,6 +29,7 @@ class Router {
     
     func showDetail(user: User, method: PresentationMethod) {
         let detailViewController = UIViewController()
+        detailViewController.view.backgroundColor = .systemBackground
         
         switch method {
             case .present:

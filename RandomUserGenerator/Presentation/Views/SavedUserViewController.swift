@@ -61,4 +61,13 @@ extension SavedUserViewController: UISearchResultsUpdating {
             return cell
         }
     }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let contextAction = UIContextualAction(style: .destructive, title: "Delete") { action, view, _ in
+            self.viewModel.executeRemoveUseCase(indexPath: indexPath)
+        }
+        contextAction.image = UIImage(systemName: "trash.fill")
+        return UISwipeActionsConfiguration(actions: [contextAction])
+    }
 }

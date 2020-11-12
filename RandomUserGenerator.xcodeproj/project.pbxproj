@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A0484365E613EB0ECB88CBFB /* Pods_RandomUserGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8F31AE79CB575ECEDAB212 /* Pods_RandomUserGenerator.framework */; };
+		B51B751A255D9D4400592200 /* DeleteUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51B7519255D9D4400592200 /* DeleteUseCase.swift */; };
 		B5569B1E254A7FFB0004AE98 /* GeneratedUserCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5569B1D254A7FFB0004AE98 /* GeneratedUserCardView.swift */; };
 		B5569B26254BDAC50004AE98 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5569B25254BDAC50004AE98 /* Alertable.swift */; };
 		B5569B2A254BDE6E0004AE98 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5569B29254BDE6E0004AE98 /* Animatable.swift */; };
@@ -41,6 +42,7 @@
 		A865D68D8F0601F458EEF966 /* Pods-RandomUserGenerator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomUserGenerator.release.xcconfig"; path = "Target Support Files/Pods-RandomUserGenerator/Pods-RandomUserGenerator.release.xcconfig"; sourceTree = "<group>"; };
 		AB8F31AE79CB575ECEDAB212 /* Pods_RandomUserGenerator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RandomUserGenerator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B408E3A8C870BCA14C4E0AB7 /* Pods-RandomUserGenerator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomUserGenerator.debug.xcconfig"; path = "Target Support Files/Pods-RandomUserGenerator/Pods-RandomUserGenerator.debug.xcconfig"; sourceTree = "<group>"; };
+		B51B7519255D9D4400592200 /* DeleteUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUseCase.swift; sourceTree = "<group>"; };
 		B5569B1D254A7FFB0004AE98 /* GeneratedUserCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratedUserCardView.swift; sourceTree = "<group>"; };
 		B5569B25254BDAC50004AE98 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		B5569B29254BDE6E0004AE98 /* Animatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				B5CC73DF254A000A00CC949D /* FetchUseCase.swift */,
 				B5ADDE25255845B800B0C823 /* SearchUseCase.swift */,
 				B56B051525501288006746BE /* SaveUseCase.swift */,
+				B51B7519255D9D4400592200 /* DeleteUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 			files = (
 				B5ADDE3225585E3D00B0C823 /* UsersPersistentStorage.swift in Sources */,
 				B5CC73972549401700CC949D /* UserGeneratorViewController.swift in Sources */,
+				B51B751A255D9D4400592200 /* DeleteUseCase.swift in Sources */,
 				B5ADDE372558919300B0C823 /* Router.swift in Sources */,
 				B5CC7402254A3FFE00CC949D /* Location.swift in Sources */,
 				B5CC73E3254A08C000CC949D /* UserGeneratorViewModel.swift in Sources */,

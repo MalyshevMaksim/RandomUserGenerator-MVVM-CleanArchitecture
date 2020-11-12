@@ -14,6 +14,7 @@ class SavedUserViewModel {
     
     private var fetchUseCase: FetchUseCase
     private var searchUseCase: SearchUseCase
+    private var deleteUseCase: DeleteUseCase
     
     private var fetchedUsers = [User]()
     
@@ -24,6 +25,7 @@ class SavedUserViewModel {
         self.router = router
         self.searchUseCase = SearchUserInteractor()
         self.fetchUseCase = fetchUseCase
+        self.deleteUseCase = DeleteInteractor(repository: UsersPersistentRepository(storage: UsersRealmStorage()))
         executeFetchUseCase()
     }
     
@@ -57,5 +59,11 @@ class SavedUserViewModel {
                     self.observableError.value = error
             }
         }
+    }
+    
+    func executeRemoveUseCase(indexPath: IndexPath) {
+        let user = observableUsers.array[indexPath.row]
+        deleteUseCase.execute(user: user)
+        observableUsers.remove(at: indexPath.row)
     }
 }

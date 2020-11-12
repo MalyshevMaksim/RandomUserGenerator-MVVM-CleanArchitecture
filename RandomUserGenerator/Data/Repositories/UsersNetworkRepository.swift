@@ -15,10 +15,6 @@ class UsersNetworkRepository: UsersRepository {
         self.persistentStorage = storage
     }
     
-    func save(user: User) {
-        persistentStorage.save(user: user)
-    }
-    
     func fetch(completion: @escaping (UserList?, AFError?) -> ()) {
         AF.request("https://randomuser.me/api/") { $0.timeoutInterval = 5 }.validate().responseDecodable(of: UserList.self) { response in
             switch response.result {
@@ -45,5 +41,13 @@ class UsersNetworkRepository: UsersRepository {
                 }
             }
         }
+    }
+    
+    func save(user: User) {
+        persistentStorage.save(user: user)
+    }
+    
+    func delete(user: User) {
+        
     }
 }

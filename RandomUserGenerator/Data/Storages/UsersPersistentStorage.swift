@@ -9,5 +9,6 @@ import Foundation
 
 protocol UsersPersistentStorage {
     func save(user: User)
+    func delete(user: User)
     func fetch() -> [User]
 }

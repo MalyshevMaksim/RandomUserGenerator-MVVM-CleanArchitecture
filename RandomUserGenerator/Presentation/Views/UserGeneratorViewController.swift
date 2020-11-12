@@ -60,6 +60,7 @@ class UserGeneratorViewController: UIViewController, Alertable {
         bindViewModelError()
         bindBarButtonTap()
         bindSaveButtonTap()
+        bindMoreInfoButtonTap()
     }
     
     private func bindViewModelUserGenerated() {
@@ -80,6 +81,12 @@ class UserGeneratorViewController: UIViewController, Alertable {
             } retryAction: { action in
                 viewModel.executeGenerateUseCase()
             }
+        }
+    }
+    
+    private func bindMoreInfoButtonTap() {
+        _ = userCardView.moreInfoButton.reactive.tap.observeNext {
+            self.viewModel.showDetail()
         }
     }
     

@@ -74,6 +74,12 @@ class GeneratedUserCardView: UIView, Animatable {
         return button
     }()
     
+    lazy var moreInfoButton: UIButton = {
+        let button = UIButton(type: .detailDisclosure)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     private lazy var background: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 20
@@ -116,6 +122,7 @@ class GeneratedUserCardView: UIView, Animatable {
         background.addSubview(divider)
         background.addSubview(saveButton)
         background.addSubview(infoStack)
+        background.addSubview(moreInfoButton)
         self.alpha = 0
     }
     
@@ -152,6 +159,9 @@ class GeneratedUserCardView: UIView, Animatable {
             make.centerX.equalToSuperview()
             make.top.equalTo(divider.snp.bottom)
             make.height.equalTo(150)
+        }
+        moreInfoButton.snp.makeConstraints { make in
+            make.top.trailing.equalToSuperview().inset(25)
         }
     }
 }

@@ -11,4 +11,5 @@ import Alamofire
 protocol UsersRepository {
     func fetch(completion: @escaping (UserList?, AFError?) -> ())
     func save(user: User)
+    func delete(user: User)
 }

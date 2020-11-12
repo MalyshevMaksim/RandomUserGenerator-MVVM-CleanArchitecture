@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 
 class UsersRealmStorage: UsersPersistentStorage {
+    
     private var realm: Realm = try! Realm()
     
     func fetch() -> [User] {
@@ -18,6 +19,12 @@ class UsersRealmStorage: UsersPersistentStorage {
     func save(user: User) {
         try! realm.write {
             realm.add(user)
+        }
+    }
+    
+    func delete(user: User) {
+        try! realm.write {
+            realm.delete(user)
         }
     }
 }

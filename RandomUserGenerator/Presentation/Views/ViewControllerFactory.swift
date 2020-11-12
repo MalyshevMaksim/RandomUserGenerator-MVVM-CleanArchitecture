@@ -19,7 +19,7 @@ class UserGeneratorViewControllerFactory: ViewControllerFactory {
         let repository = UsersNetworkRepository(storage: storage)
         let generateUseCase = FetchUserInteractor(repository: repository)
         let saveUseCase = SaveUserInteractor(usersRepository: repository)
-        let viewModel = UserGeneratorViewModel(generateUseCase: generateUseCase, saveUseCase: saveUseCase)
+        let viewModel = UserGeneratorViewModel(generateUseCase: generateUseCase, saveUseCase: saveUseCase, router: router)
         return UserGeneratorViewController(viewModel: viewModel)
     }
 }

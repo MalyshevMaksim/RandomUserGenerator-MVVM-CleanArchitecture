@@ -12,13 +12,15 @@ import Alamofire
 class UserGeneratorViewModel {
     private var generateUseCase: FetchUseCase
     private var saveUseCase: SaveUseCase
+    private var router: Router
     
     private(set) var observableUser = Observable<User?>(nil)
     private(set) var observableError = Observable<AFError?>(nil)
     
-    init(generateUseCase: FetchUseCase, saveUseCase: SaveUseCase) {
+    init(generateUseCase: FetchUseCase, saveUseCase: SaveUseCase, router: Router) {
         self.generateUseCase = generateUseCase
         self.saveUseCase = saveUseCase
+        self.router = router
     }
     
     func executeSaveUseCase() {
@@ -26,6 +28,10 @@ class UserGeneratorViewModel {
             return
         }
         saveUseCase.execute(user: user)
+    }
+    
+    func showDetail() {
+        router.showDetail(user: observableUser.value!, method: .present)
     }
     
     func executeGenerateUseCase() {
