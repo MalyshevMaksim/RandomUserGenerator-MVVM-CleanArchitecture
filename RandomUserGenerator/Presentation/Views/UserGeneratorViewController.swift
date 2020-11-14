@@ -29,6 +29,13 @@ class UserGeneratorViewController: UIViewController, Alertable {
         viewModel.executeGenerateUseCase()
     }
     
+    override func updateViewConstraints() {
+        super.updateViewConstraints()
+        userCardView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
     private func configureViewController() {
         configureView()
         configureActivityIndicator()
@@ -75,7 +82,9 @@ class UserGeneratorViewController: UIViewController, Alertable {
     
     private func bindViewModelError() {
         _ = viewModel.observableError.observeNext { [unowned self] error in
-            guard let error = error else { return }
+            guard let error = error else {
+                return
+            }
             showError(text: error.localizedDescription) { cancelAction in
                 activityIndicator.stopAnimating()
             } retryAction: { action in
@@ -99,8 +108,14 @@ class UserGeneratorViewController: UIViewController, Alertable {
     
     private func bindSaveButtonTap() {
         _ = userCardView.saveButton.reactive.tap.observeNext {
-            self.viewModel.executeSaveUseCase()
             self.userCardView.saveButtonUnable()
+            
+            if self.userCardView.toggle {
+                self.viewModel.executeSaveUseCase()
+            }
+            else {
+                self.viewModel.executeDeleteUseCase()
+            }
         }
     }
 }

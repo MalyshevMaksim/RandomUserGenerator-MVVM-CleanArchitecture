@@ -30,19 +30,16 @@ class InfoStackView: UIView {
     
     private lazy var phoneInfoView: InfoFieldView = {
         let view = InfoFieldView(icon: UIImage(systemName: "phone.fill")!, title: "Phone")
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var locationInfoView: InfoFieldView = {
         let view = InfoFieldView(icon: UIImage(systemName: "location.fill")!, title: "Location")
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var dateBirthInfoView: InfoFieldView = {
         let view = InfoFieldView(icon: UIImage(systemName: "gift.fill")!, title: "Date of Birth")
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -55,20 +52,22 @@ class InfoStackView: UIView {
     private func setupView() {
         setupSubviews()
         
-        phoneInfoView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.width.equalToSuperview()
-            make.height.equalTo(50)
+        phoneInfoView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.width.equalToSuperview()
+            $0.height.equalTo(50)
         }
-        locationInfoView.snp.makeConstraints { make in
-            make.width.equalToSuperview()
-            make.height.equalTo(50)
-            make.top.equalTo(phoneInfoView.snp.bottom)
+        
+        locationInfoView.snp.makeConstraints {
+            $0.width.equalToSuperview()
+            $0.height.equalTo(50)
+            $0.top.equalTo(phoneInfoView.snp.bottom)
         }
-        dateBirthInfoView.snp.makeConstraints { make in
-            make.width.equalToSuperview()
-            make.height.equalTo(50)
-            make.top.equalTo(locationInfoView.snp.bottom)
+        
+        dateBirthInfoView.snp.makeConstraints {
+            $0.width.equalToSuperview()
+            $0.height.equalTo(50)
+            $0.top.equalTo(locationInfoView.snp.bottom)
         }
     }
 }

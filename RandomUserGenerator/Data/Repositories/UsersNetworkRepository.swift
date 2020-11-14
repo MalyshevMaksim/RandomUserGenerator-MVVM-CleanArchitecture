@@ -48,6 +48,6 @@ class UsersNetworkRepository: UsersRepository {
     }
     
     func delete(user: User) {
-        
+        persistentStorage.delete(user: user)
     }
 }

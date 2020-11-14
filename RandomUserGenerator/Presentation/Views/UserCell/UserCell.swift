@@ -5,68 +5,32 @@
 //  Created by Малышев Максим Алексеевич on 11/5/20.
 //
 
-import Foundation
 import UIKit
 import SnapKit
 
 class UserCell: UITableViewCell {
     static var reuseIdentifier = "UserCell"
     
-    func configure(user: User) {
-        DispatchQueue.main.async {
-            self.name.text = user.name?.fullName
-            self.email.text = user.email
-            self.phone.text = user.phone
-            self.poster.image = UIImage(data: (user.picture?.data)!)
-        }
-    }
-    
-    lazy var name: UILabel = {
+    private lazy var name: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .headline)
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private lazy var email: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private lazy var phone: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private lazy var phoneStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.addArrangedSubview(UIImageView(image: UIImage(systemName: "phone")))
-        stack.addArrangedSubview(phone)
-        stack.spacing = 5
-        stack.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var emailStack: HorizontalStackView = {
+        let stack = HorizontalStackView(icon: UIImage(systemName: "envelope")!)
         return stack
     }()
     
-    private lazy var emailStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.addArrangedSubview(UIImageView(image: UIImage(systemName: "envelope")))
-        stack.addArrangedSubview(email)
-        stack.spacing = 5
-        stack.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var phoneStack: HorizontalStackView = {
+        let stack = HorizontalStackView(icon: UIImage(systemName: "phone")!)
         return stack
     }()
     
-    lazy var poster: UIImageView = {
+    private lazy var poster: UIImageView = {
         let poster = UIImageView()
         poster.layer.cornerRadius = 5
         poster.clipsToBounds = true
-        poster.translatesAutoresizingMaskIntoConstraints = false
         return poster
     }()
     
@@ -79,6 +43,15 @@ class UserCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func configure(user: User) {
+        DispatchQueue.main.async {
+            self.name.text = user.name?.fullName
+            self.emailStack.label.text = user.email
+            self.phoneStack.label.text = user.phone
+            self.poster.image = UIImage(data: (user.picture?.data)!)
+        }
+    }
+    
     private func setupSubviews() {
         contentView.addSubview(poster)
         contentView.addSubview(name)
@@ -89,26 +62,25 @@ class UserCell: UITableViewCell {
     private func setupCell() {
         setupSubviews()
         
-        poster.snp.makeConstraints { make in
-            make.leading.top.equalToSuperview().inset(16)
-            make.height.equalTo(85)
-            make.width.equalTo(85)
+        poster.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(safeAreaInsets).inset(16)
+            $0.centerY.equalToSuperview()
+            $0.height.width.equalTo(contentView.snp.height).multipliedBy(0.75)
         }
-        name.snp.makeConstraints { make in
-            make.leading.equalTo(poster.snp.trailing).inset(-10)
-            make.top.equalTo(poster)
+        
+        name.snp.makeConstraints {
+            $0.top.equalTo(contentView.snp.top).inset(10)
+            $0.leading.equalTo(poster.snp.trailing).inset(-10)
         }
-        emailStack.snp.makeConstraints { make in
-            make.leading.equalTo(name)
-            make.width.equalTo(185)
-            make.top.equalTo(name.snp.bottom).inset(-10)
+        
+        emailStack.snp.makeConstraints {
+            $0.leading.equalTo(name)
+            $0.top.equalTo(name.snp.bottom).inset(-10)
         }
-        phoneStack.snp.makeConstraints { make in
-            make.leading.equalTo(name)
-            make.top.equalTo(emailStack.snp.bottom).inset(-10)
-        }
-        contentView.snp.makeConstraints { make in
-            make.height.equalTo(115)
+        
+        phoneStack.snp.makeConstraints {
+            $0.leading.equalTo(name)
+            $0.top.equalTo(emailStack.snp.bottom).inset(-10)
         }
     }
 }

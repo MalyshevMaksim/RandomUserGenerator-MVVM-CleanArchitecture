@@ -17,18 +17,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let navigationController = UINavigationController()
-        let router = Router(rootNavigationController: navigationController, factory: UserGeneratorViewControllerFactory())
-        router.initialNavigationController()
+        let generatorUserNavigationController = UINavigationController()
+        let generatorUserRouter = Router(rootNavigationController: generatorUserNavigationController, factory: UserGeneratorViewControllerFactory())
+        generatorUserRouter.initialNavigationController()
         
-        let navigationController2 = UINavigationController()
-        let router2 = Router(rootNavigationController: navigationController2, factory: SavedUserViewControllerFactory())
-        router2.initialNavigationController()
+        let savedUsersController = UINavigationController()
+        let savedUserRouter = Router(rootNavigationController: savedUsersController, factory: SavedUserViewControllerFactory())
+        savedUserRouter.initialNavigationController()
         
-        navigationController.tabBarItem = UITabBarItem(title: "User Generator", image: UIImage(systemName: "die.face.5"), selectedImage: nil)
-        navigationController2.tabBarItem = UITabBarItem(title: "Saved", image: UIImage(systemName: "person"), selectedImage: nil)
+        generatorUserNavigationController.tabBarItem = UITabBarItem(title: "User Generator", image: UIImage(systemName: "die.face.5"), selectedImage: nil)
+        savedUsersController.tabBarItem = UITabBarItem(title: "Saved", image: UIImage(systemName: "person"), selectedImage: nil)
         let tabBarController = UITabBarController()
-        tabBarController.setViewControllers([navigationController, navigationController2], animated: true)
+        tabBarController.setViewControllers([generatorUserNavigationController, savedUsersController], animated: true)
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
@@ -64,7 +64,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
 }
-

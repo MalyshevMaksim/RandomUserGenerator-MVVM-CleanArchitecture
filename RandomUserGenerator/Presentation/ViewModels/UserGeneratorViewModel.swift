@@ -10,16 +10,19 @@ import Bond
 import Alamofire
 
 class UserGeneratorViewModel {
-    private var generateUseCase: FetchUseCase
+    private var fetchUseCase: FetchUseCase
     private var saveUseCase: SaveUseCase
+    private var deleteUseCase: DeleteUseCase
+    
     private var router: Router
     
     private(set) var observableUser = Observable<User?>(nil)
     private(set) var observableError = Observable<AFError?>(nil)
     
-    init(generateUseCase: FetchUseCase, saveUseCase: SaveUseCase, router: Router) {
-        self.generateUseCase = generateUseCase
+    init(generateUseCase: FetchUseCase, saveUseCase: SaveUseCase, deleteUseCase: DeleteUseCase, router: Router) {
+        self.fetchUseCase = generateUseCase
         self.saveUseCase = saveUseCase
+        self.deleteUseCase = deleteUseCase
         self.router = router
     }
     
@@ -35,7 +38,7 @@ class UserGeneratorViewModel {
     }
     
     func executeGenerateUseCase() {
-        generateUseCase.execute { result in
+        fetchUseCase.execute { result in
             switch result {
                 case .success(let user):
                     self.observableUser.value = user.results.first
@@ -43,5 +46,12 @@ class UserGeneratorViewModel {
                     self.observableError.value = error
             }
         }
+    }
+    
+    func executeDeleteUseCase() {
+        guard let user = observableUser.value else {
+            return
+        }
+        deleteUseCase.execute(user: user)
     }
 }

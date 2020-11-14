@@ -24,12 +24,17 @@ class SavedUserViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        tableView.register(UserCell.self, forCellReuseIdentifier: UserCell.reuseIdentifier)
+        configureTableView()
         configureNavigation()
         bindViewModelSearch()
         bindDidSelectRow()
     }
-
+    
+    private func configureTableView() {
+        tableView.register(UserCell.self, forCellReuseIdentifier: UserCell.reuseIdentifier)
+        tableView.rowHeight = UITableView.automaticDimension
+    }
+    
     private func configureNavigation() {
         title = "Saved"
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -55,19 +60,25 @@ extension SavedUserViewController: UISearchResultsUpdating {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: UserCell.reuseIdentifier, for: indexPath) as? UserCell else {
                 return UITableViewCell()
             }
-            cell.accessoryType = .detailDisclosureButton
+            cell.accessoryType = .disclosureIndicator
             let user = dataSource[indexPath.row]
             cell.configure(user: user)
             return cell
         }
     }
-    
+}
+
+extension SavedUserViewController {
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        let contextAction = UIContextualAction(style: .destructive, title: "Delete") { action, view, _ in
+        let contextAction = UIContextualAction(style: .destructive, title: nil) { action, view, _ in
             self.viewModel.executeRemoveUseCase(indexPath: indexPath)
         }
         contextAction.image = UIImage(systemName: "trash.fill")
         return UISwipeActionsConfiguration(actions: [contextAction])
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 115
     }
 }

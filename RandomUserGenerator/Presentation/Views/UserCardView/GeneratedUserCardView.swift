@@ -10,34 +10,7 @@ import UIKit
 import SnapKit
 
 class GeneratedUserCardView: UIView, Animatable {
-    func configure(user: User) {
-        DispatchQueue.main.async {
-            self.springShowing(willShowingCompletion: {
-                self.name.text = user.name?.fullName
-                self.email.text = user.email
-                self.infoStack.phone = user.phone
-                self.infoStack.location = user.location!.fullLocation
-                self.infoStack.dateBirth = user.dob!.formattedDate
-                self.poster.image = UIImage(data: (user.picture?.data)!)
-                self.saveButtonEnable()
-            })
-        }
-    }
-    
-    func saveButtonUnable() {
-        saveButton.isEnabled = false
-        saveButton.backgroundColor = .systemGreen
-        saveButton.setTitle("User has been saved!", for: .normal)
-    }
-    
-    private func saveButtonEnable() {
-        DispatchQueue.main.async {
-            self.saveButton.isEnabled = true
-            self.saveButton.backgroundColor = .systemBlue
-            self.saveButton.setTitle("Save", for: .normal)
-        }
-    }
-    
+
     private lazy var name: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .headline)
@@ -114,6 +87,37 @@ class GeneratedUserCardView: UIView, Animatable {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func configure(user: User) {
+        DispatchQueue.main.async {
+            self.springShowing(willShowingCompletion: {
+                self.name.text = user.name?.fullName
+                self.email.text = user.email
+                self.infoStack.phone = user.phone
+                self.infoStack.location = user.location!.fullLocation
+                self.infoStack.dateBirth = user.dob!.formattedDate
+                self.poster.image = UIImage(data: (user.picture?.data)!)
+                self.toggle = true
+                self.saveButtonUnable()
+            })
+        }
+    }
+    
+    var toggle = false
+    
+    func saveButtonUnable() {
+        toggle.toggle()
+        
+        DispatchQueue.main.async {
+            if self.toggle {
+                self.saveButton.backgroundColor = .systemRed
+                self.saveButton.setTitle("Delete", for: .normal)
+            } else {
+                self.saveButton.backgroundColor = .systemBlue
+                self.saveButton.setTitle("Save", for: .normal)
+            }
+        }
+    }
+    
     private func setupSubviews() {
         addSubview(background)
         background.addSubview(poster)
@@ -128,40 +132,50 @@ class GeneratedUserCardView: UIView, Animatable {
     
     private func setupView() {
         setupSubviews()
-        background.snp.makeConstraints { make in make.edges.equalTo(safeAreaLayoutGuide).inset(16) }
-        poster.snp.makeConstraints { make in
-            make.width.height.equalTo(background.snp.height).multipliedBy(0.25)
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(40)
+        
+        background.snp.makeConstraints {
+            $0.edges.equalTo(safeAreaLayoutGuide).inset(16)
         }
-        name.snp.makeConstraints { make in
-            make.top.equalTo(poster.snp.bottom).inset(-25)
-            make.centerX.equalToSuperview()
+        
+        poster.snp.makeConstraints {
+            $0.width.height.equalTo(background.snp.height).multipliedBy(0.25)
+            $0.centerX.equalToSuperview()
+            $0.top.equalToSuperview().inset(40)
         }
-        email.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(name.snp.bottom).inset(-5)
+        
+        name.snp.makeConstraints {
+            $0.top.equalTo(poster.snp.bottom).inset(-25)
+            $0.centerX.equalToSuperview()
         }
-        divider.snp.makeConstraints { make in
-            make.width.equalToSuperview().multipliedBy(0.85)
-            make.height.equalTo(0.5)
-            make.centerX.equalToSuperview  ()
-            make.top.equalTo(email.snp.bottom).inset(-25)
+        
+        email.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(name.snp.bottom).inset(-5)
         }
-        saveButton.snp.makeConstraints { make in
-            make.width.equalToSuperview().multipliedBy(0.85)
-            make.height.equalTo(40)
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().multipliedBy(0.95)
+        
+        divider.snp.makeConstraints {
+            $0.width.equalToSuperview().multipliedBy(0.85)
+            $0.height.equalTo(0.5)
+            $0.centerX.equalToSuperview  ()
+            $0.top.equalTo(email.snp.bottom).inset(-25)
         }
-        infoStack.snp.makeConstraints { make in
-            make.width.equalToSuperview().multipliedBy(0.85)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(divider.snp.bottom)
-            make.height.equalTo(150)
+        
+        saveButton.snp.makeConstraints {
+            $0.width.equalToSuperview().multipliedBy(0.85)
+            $0.height.equalTo(40)
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalToSuperview().multipliedBy(0.95)
         }
-        moreInfoButton.snp.makeConstraints { make in
-            make.top.trailing.equalToSuperview().inset(25)
+        
+        infoStack.snp.makeConstraints {
+            $0.width.equalToSuperview().multipliedBy(0.85)
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(divider.snp.bottom)
+            $0.height.equalTo(150)
+        }
+        
+        moreInfoButton.snp.makeConstraints {
+            $0.top.trailing.equalToSuperview().inset(25)
         }
     }
 }

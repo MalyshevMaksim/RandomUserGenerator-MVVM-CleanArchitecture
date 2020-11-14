@@ -14,21 +14,18 @@ class InfoFieldView: UIView {
     lazy var valueLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private lazy var title: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private lazy var divider: UIView = {
         let devider = UIView()
         devider.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.25)
-        devider.translatesAutoresizingMaskIntoConstraints = false
         return devider
     }()
     
@@ -52,22 +49,26 @@ class InfoFieldView: UIView {
     
     private func setupStack() {
         setupSubviews()
-        icon.snp.makeConstraints { make in
-            make.leading.equalToSuperview()
-            make.centerY.equalToSuperview()
+        
+        icon.snp.makeConstraints {
+            $0.leading.equalToSuperview()
+            $0.centerY.equalToSuperview()
         }
-        title.snp.makeConstraints { make in
-            make.leading.equalTo(icon.snp.trailing).inset(-10)
-            make.centerY.equalToSuperview()
+        
+        title.snp.makeConstraints {
+            $0.leading.equalTo(icon.snp.trailing).inset(-10)
+            $0.centerY.equalToSuperview()
         }
-        valueLabel.snp.makeConstraints { make in
-            make.trailing.equalToSuperview()
-            make.centerY.equalToSuperview()
+        
+        valueLabel.snp.makeConstraints {
+            $0.trailing.equalToSuperview()
+            $0.centerY.equalToSuperview()
         }
-        divider.snp.makeConstraints { make in
-            make.width.equalToSuperview()
-            make.height.equalTo(0.5)
-            make.bottom.equalToSuperview()
+        
+        divider.snp.makeConstraints {
+            $0.width.equalToSuperview()
+            $0.height.equalTo(0.5)
+            $0.bottom.equalToSuperview()
         }
     }
 }

@@ -21,11 +21,12 @@ class SavedUserViewModel {
     private(set) var observableError = Observable<AFError?>(nil)
     private(set) var observableUsers = MutableObservableArray<User>([])
     
-    init(fetchUseCase: FetchUseCase, router: Router) {
-        self.router = router
-        self.searchUseCase = SearchUserInteractor()
+    init(fetchUseCase: FetchUseCase, searchUseCase: SearchUseCase, deleteUseCase: DeleteUseCase, router: Router) {
+        self.searchUseCase = searchUseCase
         self.fetchUseCase = fetchUseCase
-        self.deleteUseCase = DeleteInteractor(repository: UsersPersistentRepository(storage: UsersRealmStorage()))
+        self.deleteUseCase = deleteUseCase
+        
+        self.router = router
         executeFetchUseCase()
     }
     
