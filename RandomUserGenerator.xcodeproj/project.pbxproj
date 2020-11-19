@@ -16,7 +16,7 @@
 		B5569B2E254C66810004AE98 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5569B2D254C66810004AE98 /* InfoView.swift */; };
 		B56B051225501206006746BE /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B051125501206006746BE /* Result.swift */; };
 		B56B051625501288006746BE /* SaveUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B051525501288006746BE /* SaveUseCase.swift */; };
-		B56B051D2550162D006746BE /* UsersPersistentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B051C2550162D006746BE /* UsersPersistentRepository.swift */; };
+		B56B051D2550162D006746BE /* UsersRealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B051C2550162D006746BE /* UsersRealmRepository.swift */; };
 		B5ADDE26255845B800B0C823 /* SearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ADDE25255845B800B0C823 /* SearchUseCase.swift */; };
 		B5ADDE2E25585DE400B0C823 /* UsersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ADDE2D25585DE400B0C823 /* UsersRepository.swift */; };
 		B5ADDE3225585E3D00B0C823 /* UsersPersistentStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ADDE3125585E3D00B0C823 /* UsersPersistentStorage.swift */; };
@@ -36,6 +36,7 @@
 		B5CC73E7254A272800CC949D /* UserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC73E6254A272800CC949D /* UserList.swift */; };
 		B5CC7402254A3FFE00CC949D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC7401254A3FFE00CC949D /* Location.swift */; };
 		B5E3094D25577E9800870BA2 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E3094C25577E9800870BA2 /* ViewControllerFactory.swift */; };
+		B5E72FBE255FCC7E007AFEA7 /* SaveToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E72FBD255FCC7E007AFEA7 /* SaveToggleButton.swift */; };
 		B5F4FC9D254D227200D3CEDF /* InfoStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F4FC9C254D227200D3CEDF /* InfoStackView.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,7 +52,7 @@
 		B5569B2D254C66810004AE98 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		B56B051125501206006746BE /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		B56B051525501288006746BE /* SaveUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveUseCase.swift; sourceTree = "<group>"; };
-		B56B051C2550162D006746BE /* UsersPersistentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersPersistentRepository.swift; sourceTree = "<group>"; };
+		B56B051C2550162D006746BE /* UsersRealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRealmRepository.swift; sourceTree = "<group>"; };
 		B5ADDE25255845B800B0C823 /* SearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCase.swift; sourceTree = "<group>"; };
 		B5ADDE2D25585DE400B0C823 /* UsersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRepository.swift; sourceTree = "<group>"; };
 		B5ADDE3125585E3D00B0C823 /* UsersPersistentStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersPersistentStorage.swift; sourceTree = "<group>"; };
@@ -73,6 +74,7 @@
 		B5CC73E6254A272800CC949D /* UserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserList.swift; sourceTree = "<group>"; };
 		B5CC7401254A3FFE00CC949D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		B5E3094C25577E9800870BA2 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
+		B5E72FBD255FCC7E007AFEA7 /* SaveToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveToggleButton.swift; sourceTree = "<group>"; };
 		B5F4FC9C254D227200D3CEDF /* InfoStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoStackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				B5569B1D254A7FFB0004AE98 /* GeneratedUserCardView.swift */,
+				B5E72FBD255FCC7E007AFEA7 /* SaveToggleButton.swift */,
 				B5F4FC9C254D227200D3CEDF /* InfoStackView.swift */,
 				B5569B2D254C66810004AE98 /* InfoView.swift */,
 			);
@@ -169,7 +172,7 @@
 			children = (
 				B5ADDE2D25585DE400B0C823 /* UsersRepository.swift */,
 				B5CC73CA254969EE00CC949D /* UsersNetworkRepository.swift */,
-				B56B051C2550162D006746BE /* UsersPersistentRepository.swift */,
+				B56B051C2550162D006746BE /* UsersRealmRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -402,11 +405,12 @@
 				B5CC73E0254A000A00CC949D /* FetchUseCase.swift in Sources */,
 				B5CC73932549401700CC949D /* AppDelegate.swift in Sources */,
 				B5569B26254BDAC50004AE98 /* Alertable.swift in Sources */,
-				B56B051D2550162D006746BE /* UsersPersistentRepository.swift in Sources */,
+				B56B051D2550162D006746BE /* UsersRealmRepository.swift in Sources */,
 				B5ADDE2E25585DE400B0C823 /* UsersRepository.swift in Sources */,
 				B5C4E61D2553395500842B98 /* SavedUserViewController.swift in Sources */,
 				B5CC73D625496C1600CC949D /* UsersRealmStorage.swift in Sources */,
 				B5C4E62525534E5A00842B98 /* UserCell.swift in Sources */,
+				B5E72FBE255FCC7E007AFEA7 /* SaveToggleButton.swift in Sources */,
 				B5E3094D25577E9800870BA2 /* ViewControllerFactory.swift in Sources */,
 				B5569B1E254A7FFB0004AE98 /* GeneratedUserCardView.swift in Sources */,
 				B5CC73CB254969EE00CC949D /* UsersNetworkRepository.swift in Sources */,

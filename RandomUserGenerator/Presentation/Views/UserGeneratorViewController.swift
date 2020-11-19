@@ -9,6 +9,7 @@ import UIKit
 import Bond
 
 class UserGeneratorViewController: UIViewController, Alertable {
+    
     private var viewModel: UserGeneratorViewModel!
     private var userCardView: GeneratedUserCardView!
     private var activityIndicator = UIActivityIndicatorView(style: .large)
@@ -54,7 +55,7 @@ class UserGeneratorViewController: UIViewController, Alertable {
         view.addSubview(activityIndicator)
         activityIndicator.hidesWhenStopped = true
         activityIndicator.startAnimating()
-        activityIndicator.snp.makeConstraints { make in make.center.equalToSuperview() }
+        activityIndicator.snp.makeConstraints { $0.center.equalToSuperview() }
     }
     
     private func configureUserView() {
@@ -108,13 +109,12 @@ class UserGeneratorViewController: UIViewController, Alertable {
     
     private func bindSaveButtonTap() {
         _ = userCardView.saveButton.reactive.tap.observeNext {
-            self.userCardView.saveButtonUnable()
-            
-            if self.userCardView.toggle {
-                self.viewModel.executeSaveUseCase()
-            }
-            else {
-                self.viewModel.executeDeleteUseCase()
+            self.userCardView.saveButton.toggle { selected in
+                if selected {
+                    self.viewModel.executeSaveUseCase()
+                } else {
+                    self.viewModel.executeDeleteUseCase()
+                }
             }
         }
     }

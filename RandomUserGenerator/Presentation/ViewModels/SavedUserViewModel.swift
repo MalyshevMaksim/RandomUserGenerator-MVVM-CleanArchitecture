@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 import Bond
+import RealmSwift
 
 class SavedUserViewModel {
     private var router: Router
@@ -40,8 +41,8 @@ class SavedUserViewModel {
             if fetchedUsers.count == observableUsers.count {
                 return
             }
-            self.observableUsers.removeAll()
-            self.observableUsers.insert(contentsOf: fetchedUsers, at: 0)
+            observableUsers.removeAll()
+            observableUsers.insert(contentsOf: fetchedUsers, at: 0)
             return
         }
         searchUseCase.execute(users: fetchedUsers, searchQuery: searchQuery) { users in

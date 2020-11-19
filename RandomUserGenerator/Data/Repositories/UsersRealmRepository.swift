@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 import RealmSwift
 
-class UsersPersistentRepository: UsersRepository {
+class UsersRealmRepository: UsersRepository {
     private var persistentStorage: UsersPersistentStorage
     
     init(storage: UsersPersistentStorage) {

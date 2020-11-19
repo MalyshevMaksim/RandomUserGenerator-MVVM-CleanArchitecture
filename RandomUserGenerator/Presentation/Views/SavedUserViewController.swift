@@ -27,7 +27,6 @@ class SavedUserViewController: UITableViewController {
         configureTableView()
         configureNavigation()
         bindViewModelSearch()
-        bindDidSelectRow()
     }
     
     private func configureTableView() {
@@ -42,12 +41,6 @@ class SavedUserViewController: UITableViewController {
         navigationItem.searchController?.searchResultsUpdater = self
         navigationItem.searchController?.obscuresBackgroundDuringPresentation = false
     }
-    
-    private func bindDidSelectRow() {
-        _ = tableView.reactive.selectedRowIndexPath.observeNext { indexPath in
-            self.viewModel.showDetail(for: indexPath)
-        }
-    }
 }
 
 extension SavedUserViewController: UISearchResultsUpdating {
@@ -60,7 +53,6 @@ extension SavedUserViewController: UISearchResultsUpdating {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: UserCell.reuseIdentifier, for: indexPath) as? UserCell else {
                 return UITableViewCell()
             }
-            cell.accessoryType = .disclosureIndicator
             let user = dataSource[indexPath.row]
             cell.configure(user: user)
             return cell
@@ -76,6 +68,10 @@ extension SavedUserViewController {
         }
         contextAction.image = UIImage(systemName: "trash.fill")
         return UISwipeActionsConfiguration(actions: [contextAction])
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.showDetail(for: indexPath)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

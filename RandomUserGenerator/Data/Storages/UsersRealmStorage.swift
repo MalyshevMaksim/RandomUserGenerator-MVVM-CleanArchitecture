@@ -9,7 +9,6 @@ import Foundation
 import RealmSwift
 
 class UsersRealmStorage: UsersPersistentStorage {
-    
     private var realm: Realm = try! Realm()
     
     func fetch() -> [User] {

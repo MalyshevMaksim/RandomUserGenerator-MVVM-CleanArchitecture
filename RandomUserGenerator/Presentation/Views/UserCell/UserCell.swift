@@ -49,6 +49,7 @@ class UserCell: UITableViewCell {
             self.emailStack.label.text = user.email
             self.phoneStack.label.text = user.phone
             self.poster.image = UIImage(data: (user.picture?.data)!)
+            self.accessoryType = .disclosureIndicator
         }
     }
     

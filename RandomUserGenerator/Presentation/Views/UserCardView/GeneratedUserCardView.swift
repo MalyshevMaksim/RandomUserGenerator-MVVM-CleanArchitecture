@@ -14,7 +14,6 @@ class GeneratedUserCardView: UIView, Animatable {
     private lazy var name: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .headline)
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -22,7 +21,6 @@ class GeneratedUserCardView: UIView, Animatable {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .subheadline)
         label.textColor = .secondaryLabel
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -33,23 +31,19 @@ class GeneratedUserCardView: UIView, Animatable {
         imageView.clipsToBounds = true
         imageView.layer.borderWidth = 4
         imageView.layer.borderColor = UIColor.lightGray.cgColor
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    lazy var saveButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Save", for: .normal)
-        button.backgroundColor = .systemBlue
+    lazy var saveButton: SaveToggleButton = {
+        let button = SaveToggleButton()
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.layer.cornerRadius = 5
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
+    
     lazy var moreInfoButton: UIButton = {
         let button = UIButton(type: .detailDisclosure)
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
@@ -58,7 +52,6 @@ class GeneratedUserCardView: UIView, Animatable {
         view.layer.cornerRadius = 20
         view.backgroundColor = .secondarySystemBackground
         view.layer.shadowRadius = 10
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.masksToBounds = false
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.2
@@ -69,7 +62,6 @@ class GeneratedUserCardView: UIView, Animatable {
     private lazy var divider: UIView = {
         let devider = UIView()
         devider.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.25)
-        devider.translatesAutoresizingMaskIntoConstraints = false
         return devider
     }()
     
@@ -96,25 +88,8 @@ class GeneratedUserCardView: UIView, Animatable {
                 self.infoStack.location = user.location!.fullLocation
                 self.infoStack.dateBirth = user.dob!.formattedDate
                 self.poster.image = UIImage(data: (user.picture?.data)!)
-                self.toggle = true
-                self.saveButtonUnable()
+                self.saveButton.isSelected = false
             })
-        }
-    }
-    
-    var toggle = false
-    
-    func saveButtonUnable() {
-        toggle.toggle()
-        
-        DispatchQueue.main.async {
-            if self.toggle {
-                self.saveButton.backgroundColor = .systemRed
-                self.saveButton.setTitle("Delete", for: .normal)
-            } else {
-                self.saveButton.backgroundColor = .systemBlue
-                self.saveButton.setTitle("Save", for: .normal)
-            }
         }
     }
     

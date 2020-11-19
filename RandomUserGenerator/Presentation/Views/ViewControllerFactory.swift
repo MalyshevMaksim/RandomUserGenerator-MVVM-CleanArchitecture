@@ -31,7 +31,7 @@ class SavedUserViewControllerFactory: ViewControllerFactory {
     
     func makeViewController(router: Router) -> UIViewController {
         let storage = UsersRealmStorage()
-        let repository = UsersPersistentRepository(storage: storage)
+        let repository = UsersRealmRepository(storage: storage)
         
         let fetchInteractor = FetchUserInteractor(repository: repository)
         let searchInteractor = SearchUserInteractor()
