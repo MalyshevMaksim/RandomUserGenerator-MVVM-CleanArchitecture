@@ -10,6 +10,7 @@ import Bond
 import Alamofire
 
 class UserGeneratorViewModel {
+    
     private var fetchUseCase: FetchUseCase
     private var saveUseCase: SaveUseCase
     private var deleteUseCase: DeleteUseCase

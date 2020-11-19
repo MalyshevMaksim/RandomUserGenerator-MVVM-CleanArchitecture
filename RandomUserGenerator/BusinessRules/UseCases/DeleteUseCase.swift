@@ -12,6 +12,7 @@ protocol DeleteUseCase {
 }
 
 class DeleteInteractor: DeleteUseCase {
+    
     private var repository: UsersRepository
     
     init(repository: UsersRepository) {

@@ -11,6 +11,7 @@ import Bond
 import RealmSwift
 
 class SavedUserViewModel {
+    
     private var router: Router
     
     private var fetchUseCase: FetchUseCase

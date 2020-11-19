@@ -13,6 +13,7 @@ protocol FetchUseCase {
 }
 
 class FetchUserInteractor: FetchUseCase {
+    
     private var repository: UsersRepository
     
     init(repository: UsersRepository) {

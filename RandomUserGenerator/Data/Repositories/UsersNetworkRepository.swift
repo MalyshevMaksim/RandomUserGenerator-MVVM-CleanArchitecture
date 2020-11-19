@@ -9,6 +9,7 @@ import Foundation
 import Alamofire
 
 class UsersNetworkRepository: UsersRepository {
+    
     private var persistentStorage: UsersPersistentStorage
     
     init(storage: UsersPersistentStorage) {

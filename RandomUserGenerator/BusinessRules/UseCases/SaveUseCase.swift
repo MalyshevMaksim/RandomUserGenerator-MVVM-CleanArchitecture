@@ -13,6 +13,7 @@ protocol SaveUseCase {
 }
 
 class SaveUserInteractor: SaveUseCase {
+    
     private var usersRepository: UsersRepository
     
     init(usersRepository: UsersRepository) {

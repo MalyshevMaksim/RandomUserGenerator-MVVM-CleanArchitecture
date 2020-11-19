@@ -10,6 +10,7 @@ import UIKit
 import Bond
 
 class SavedUserViewController: UITableViewController {
+   
     var viewModel: SavedUserViewModel!
     
     init(viewModel: SavedUserViewModel) {
