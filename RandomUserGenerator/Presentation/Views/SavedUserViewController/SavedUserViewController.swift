@@ -8,9 +8,10 @@
 import Foundation
 import UIKit
 import Bond
+import RealmSwift
 
 class SavedUserViewController: UITableViewController {
-   
+
     var viewModel: SavedUserViewModel!
     
     init(viewModel: SavedUserViewModel) {
@@ -46,7 +47,7 @@ class SavedUserViewController: UITableViewController {
 
 extension SavedUserViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        viewModel.executeSearchUseCase(searchText: searchController.searchBar.text)
+        viewModel.search(with: searchController.searchBar.text)
     }
     
     private func bindViewModelSearch() {
@@ -65,7 +66,7 @@ extension SavedUserViewController {
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let contextAction = UIContextualAction(style: .destructive, title: nil) { action, view, _ in
-            self.viewModel.executeRemoveUseCase(indexPath: indexPath)
+            self.viewModel.remove(from: indexPath)
         }
         contextAction.image = UIImage(systemName: "trash.fill")
         return UISwipeActionsConfiguration(actions: [contextAction])

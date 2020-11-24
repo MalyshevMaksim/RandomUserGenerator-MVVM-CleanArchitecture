@@ -8,6 +8,7 @@
 import Foundation
 import Bond
 import Alamofire
+import Swinject
 
 class UserGeneratorViewModel {
     
@@ -27,18 +28,18 @@ class UserGeneratorViewModel {
         self.router = router
     }
     
-    func executeSaveUseCase() {
+    func showDetail() {
+        router.showDetail(user: observableUser.value!, method: .present)
+    }
+    
+    func saveCurrentUser() {
         guard let user = observableUser.value else {
             return
         }
         saveUseCase.execute(user: user)
     }
     
-    func showDetail() {
-        router.showDetail(user: observableUser.value!, method: .present)
-    }
-    
-    func executeGenerateUseCase() {
+    func generateUser() {
         fetchUseCase.execute { result in
             switch result {
                 case .success(let user):
@@ -49,7 +50,7 @@ class UserGeneratorViewModel {
         }
     }
     
-    func executeDeleteUseCase() {
+    func removeCurrentUser() {
         guard let user = observableUser.value else {
             return
         }

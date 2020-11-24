@@ -4,8 +4,9 @@ Implementing a mobile client for [Random User Generator](https://randomuser.me/)
 ## Technologies
 - MVVM using Bond binding framework
 - Alamofire for network layer
-- Realm Database for persistent storage
+- Realm for persistent storage
 - Programmatically UI using SnapKit
+- Swinject for dependency injection
 - Unit and UI tests
 
 ## Screenshots

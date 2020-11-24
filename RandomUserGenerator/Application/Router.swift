@@ -22,14 +22,13 @@ class Router {
         self.viewControllerFactory = factory
     }
     
-    func initialNavigationController() {
+    func initialSubjectNavigationController() {
         let rootViewController = viewControllerFactory.makeViewController(router: self)
         rootNavigationController.viewControllers = [rootViewController]
     }
     
     func showDetail(user: User, method: PresentationMethod) {
-        let detailViewController = UIViewController()
-        detailViewController.view.backgroundColor = .systemBackground
+        let detailViewController = viewControllerFactory.makeDetailViewController()
         
         switch method {
             case .present:

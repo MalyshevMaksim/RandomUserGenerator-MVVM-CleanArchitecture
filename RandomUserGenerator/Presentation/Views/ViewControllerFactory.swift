@@ -12,32 +12,29 @@ protocol ViewControllerFactory {
     func makeViewController(router: Router) -> UIViewController
 }
 
+extension ViewControllerFactory {
+    
+    func makeDetailViewController() -> UIViewController {
+        let detailViewController = UIViewController()
+        detailViewController.view.backgroundColor = .systemBackground
+        return detailViewController
+    }
+}
+
 class UserGeneratorViewControllerFactory: ViewControllerFactory {
     
     func makeViewController(router: Router) -> UIViewController {
-        let storage = UsersRealmStorage()
-        let repository = UsersNetworkRepository(storage: storage)
-        
-        let generateInteractor = FetchUserInteractor(repository: repository)
-        let saveInteractor = SaveUserInteractor(usersRepository: repository)
-        let deleteInteractor = DeleteInteractor(repository: repository)
-        
-        let viewModel = UserGeneratorViewModel(generateUseCase: generateInteractor, saveUseCase: saveInteractor, deleteUseCase: deleteInteractor, router: router)
-        return UserGeneratorViewController(viewModel: viewModel)
+        let DIContainer = ViewModelDIContainer()
+        let viewModel = DIContainer.get(type: UserGeneratorViewModel.self, router: router)
+        return UserGeneratorViewController(viewModel: viewModel!)
     }
 }
 
 class SavedUserViewControllerFactory: ViewControllerFactory {
-    
+
     func makeViewController(router: Router) -> UIViewController {
-        let storage = UsersRealmStorage()
-        let repository = UsersRealmRepository(storage: storage)
-        
-        let fetchInteractor = FetchUserInteractor(repository: repository)
-        let searchInteractor = SearchUserInteractor()
-        let deleteInteractor = DeleteInteractor(repository: repository)
-        
-        let viewModel = SavedUserViewModel(fetchUseCase: fetchInteractor, searchUseCase: searchInteractor, deleteUseCase: deleteInteractor, router: router)
-        return SavedUserViewController(viewModel: viewModel)
+        let DIContainer = ViewModelDIContainer()
+        let viewModel = DIContainer.get(type: SavedUserViewModel.self, router: router)
+        return SavedUserViewController(viewModel: viewModel!)
     }
 }

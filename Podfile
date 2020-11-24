@@ -8,5 +8,6 @@ target 'RandomUserGenerator' do
   pod 'Alamofire'
   pod 'SnapKit'
   pod 'Bond'
+  pod 'Swinject'
   # Pods for RandomUserGenerator
 end

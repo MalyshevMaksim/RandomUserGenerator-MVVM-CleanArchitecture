@@ -14,6 +14,8 @@
 		B5569B26254BDAC50004AE98 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5569B25254BDAC50004AE98 /* Alertable.swift */; };
 		B5569B2A254BDE6E0004AE98 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5569B29254BDE6E0004AE98 /* Animatable.swift */; };
 		B5569B2E254C66810004AE98 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5569B2D254C66810004AE98 /* InfoView.swift */; };
+		B5623AA4256C3B5C0096C160 /* ViewModelDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5623AA3256C3B5C0096C160 /* ViewModelDIContainer.swift */; };
+		B5623AB3256CBFEE0096C160 /* RouterDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5623AB2256CBFEE0096C160 /* RouterDIContainer.swift */; };
 		B56B051225501206006746BE /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B051125501206006746BE /* Result.swift */; };
 		B56B051625501288006746BE /* SaveUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B051525501288006746BE /* SaveUseCase.swift */; };
 		B56B051D2550162D006746BE /* UsersRealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B051C2550162D006746BE /* UsersRealmRepository.swift */; };
@@ -50,6 +52,8 @@
 		B5569B25254BDAC50004AE98 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		B5569B29254BDE6E0004AE98 /* Animatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
 		B5569B2D254C66810004AE98 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		B5623AA3256C3B5C0096C160 /* ViewModelDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelDIContainer.swift; sourceTree = "<group>"; };
+		B5623AB2256CBFEE0096C160 /* RouterDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterDIContainer.swift; sourceTree = "<group>"; };
 		B56B051125501206006746BE /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		B56B051525501288006746BE /* SaveUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveUseCase.swift; sourceTree = "<group>"; };
 		B56B051C2550162D006746BE /* UsersRealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRealmRepository.swift; sourceTree = "<group>"; };
@@ -110,6 +114,33 @@
 			path = UserCardView;
 			sourceTree = "<group>";
 		};
+		B5623AA2256C3B460096C160 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				B5623AA3256C3B5C0096C160 /* ViewModelDIContainer.swift */,
+				B5623AB2256CBFEE0096C160 /* RouterDIContainer.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		B5623AA7256C3C440096C160 /* SavedUserViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B5C4E61C2553395500842B98 /* SavedUserViewController.swift */,
+				B5C4E62225534CFC00842B98 /* UserCell */,
+			);
+			path = SavedUserViewController;
+			sourceTree = "<group>";
+		};
+		B5623AA9256C3C520096C160 /* UserGeneratorViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B5CC73962549401700CC949D /* UserGeneratorViewController.swift */,
+				B5569B31254C67150004AE98 /* UserCardView */,
+			);
+			path = UserGeneratorViewController;
+			sourceTree = "<group>";
+		};
 		B56B0510255011EC006746BE /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +183,7 @@
 				B5CC73F3254A337600CC949D /* Presentation */,
 				B5CC73E9254A274E00CC949D /* BusinessRules */,
 				B5CC73D225496B6500CC949D /* Data */,
+				B5623AA2256C3B460096C160 /* DI */,
 				B5CC73F5254A33CD00CC949D /* Resources */,
 				B5CC73A02549401900CC949D /* Info.plist */,
 			);
@@ -257,11 +289,9 @@
 		B5CC73FB254A33FF00CC949D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B5CC73962549401700CC949D /* UserGeneratorViewController.swift */,
-				B5C4E61C2553395500842B98 /* SavedUserViewController.swift */,
+				B5623AA9256C3C520096C160 /* UserGeneratorViewController */,
+				B5623AA7256C3C440096C160 /* SavedUserViewController */,
 				B5E3094C25577E9800870BA2 /* ViewControllerFactory.swift */,
-				B5C4E62225534CFC00842B98 /* UserCell */,
-				B5569B31254C67150004AE98 /* UserCardView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -413,7 +443,9 @@
 				B5E72FBE255FCC7E007AFEA7 /* SaveToggleButton.swift in Sources */,
 				B5E3094D25577E9800870BA2 /* ViewControllerFactory.swift in Sources */,
 				B5569B1E254A7FFB0004AE98 /* GeneratedUserCardView.swift in Sources */,
+				B5623AA4256C3B5C0096C160 /* ViewModelDIContainer.swift in Sources */,
 				B5CC73CB254969EE00CC949D /* UsersNetworkRepository.swift in Sources */,
+				B5623AB3256CBFEE0096C160 /* RouterDIContainer.swift in Sources */,
 				B5CC73952549401700CC949D /* SceneDelegate.swift in Sources */,
 				B56B051625501288006746BE /* SaveUseCase.swift in Sources */,
 				B5ADDE26255845B800B0C823 /* SearchUseCase.swift in Sources */,

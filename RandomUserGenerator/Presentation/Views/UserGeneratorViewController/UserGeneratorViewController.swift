@@ -7,6 +7,7 @@
 
 import UIKit
 import Bond
+import SnapKit
 
 class UserGeneratorViewController: UIViewController, Alertable {
     
@@ -27,7 +28,7 @@ class UserGeneratorViewController: UIViewController, Alertable {
         super.viewDidLoad()
         configureViewController()
         bindViewModel()
-        viewModel.executeGenerateUseCase()
+        viewModel.generateUser()
     }
     
     override func updateViewConstraints() {
@@ -89,7 +90,7 @@ class UserGeneratorViewController: UIViewController, Alertable {
             showError(text: error.localizedDescription) { cancelAction in
                 activityIndicator.stopAnimating()
             } retryAction: { action in
-                viewModel.executeGenerateUseCase()
+                viewModel.generateUser()
             }
         }
     }
@@ -103,7 +104,7 @@ class UserGeneratorViewController: UIViewController, Alertable {
     private func bindBarButtonTap() {
         _ = navigationItem.rightBarButtonItem?.reactive.tap.observeNext {
             self.activityIndicator.startAnimating()
-            self.viewModel.executeGenerateUseCase()
+            self.viewModel.generateUser()
         }
     }
     
@@ -111,9 +112,9 @@ class UserGeneratorViewController: UIViewController, Alertable {
         _ = userCardView.saveButton.reactive.tap.observeNext {
             self.userCardView.saveButton.toggle { selected in
                 if selected {
-                    self.viewModel.executeSaveUseCase()
+                    self.viewModel.saveCurrentUser()
                 } else {
-                    self.viewModel.executeDeleteUseCase()
+                    self.viewModel.removeCurrentUser()
                 }
             }
         }
