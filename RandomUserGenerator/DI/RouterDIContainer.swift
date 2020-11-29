@@ -5,7 +5,6 @@
 //  Created by Малышев Максим Алексеевич on 11/24/20.
 //
 
-import Foundation
 import Swinject
 
 enum FactoryType: String {
@@ -13,7 +12,7 @@ enum FactoryType: String {
     case savedUser = "Saved User"
 }
 
-class RouterDIContainer {
+class RouterInjector {
     private let containter = Container()
     
     init() {

@@ -5,10 +5,8 @@
 //  Created by Малышев Максим Алексеевич on 11/4/20.
 //
 
-import Foundation
 import Alamofire
 import Bond
-import RealmSwift
 
 class SavedUserViewModel {
     
@@ -44,9 +42,9 @@ class SavedUserViewModel {
             observableUsers.insert(contentsOf: fetchedUsers, at: 0)
             return
         }
-        searchUseCase.execute(users: fetchedUsers, searchQuery: searchQuery) { users in
+        searchUseCase.execute(users: fetchedUsers, searchQuery: searchQuery) { searchResult in
             self.observableUsers.removeAll()
-            self.observableUsers.insert(contentsOf: users, at: 0)
+            self.observableUsers.insert(contentsOf: searchResult, at: 0)
         }
     }
     

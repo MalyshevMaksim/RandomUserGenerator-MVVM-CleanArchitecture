@@ -5,9 +5,6 @@
 //  Created by Малышев Максим Алексеевич on 11/2/20.
 //
 
-import Foundation
-import UIKit
-
 protocol SaveUseCase {
     func execute(user: User)
 }

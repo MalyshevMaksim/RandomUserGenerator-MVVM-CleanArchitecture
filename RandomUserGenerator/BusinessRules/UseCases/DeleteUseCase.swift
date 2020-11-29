@@ -5,8 +5,6 @@
 //  Created by Малышев Максим Алексеевич on 11/12/20.
 //
 
-import Foundation
-
 protocol DeleteUseCase {
     func execute(user: User)
 }

@@ -13,10 +13,12 @@ import RealmSwift
 class SavedUserViewController: UITableViewController {
 
     var viewModel: SavedUserViewModel!
+    var delegate: UITableViewDelegate!
     
     init(viewModel: SavedUserViewModel) {
         super.init(nibName: nil, bundle: nil)
         self.viewModel = viewModel
+        self.delegate = SavedUserTableViewDelegate(viewModel: viewModel)
     }
     
     required init?(coder: NSCoder) {
@@ -32,6 +34,7 @@ class SavedUserViewController: UITableViewController {
     }
     
     private func configureTableView() {
+        tableView.delegate = delegate
         tableView.register(UserCell.self, forCellReuseIdentifier: UserCell.reuseIdentifier)
         tableView.rowHeight = UITableView.automaticDimension
     }
@@ -42,12 +45,6 @@ class SavedUserViewController: UITableViewController {
         navigationItem.searchController = UISearchController()
         navigationItem.searchController?.searchResultsUpdater = self
         navigationItem.searchController?.obscuresBackgroundDuringPresentation = false
-    }
-}
-
-extension SavedUserViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        viewModel.search(with: searchController.searchBar.text)
     }
     
     private func bindViewModelSearch() {
@@ -62,21 +59,8 @@ extension SavedUserViewController: UISearchResultsUpdating {
     }
 }
 
-extension SavedUserViewController {
-    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
-        let contextAction = UIContextualAction(style: .destructive, title: nil) { action, view, _ in
-            self.viewModel.remove(from: indexPath)
-        }
-        contextAction.image = UIImage(systemName: "trash.fill")
-        return UISwipeActionsConfiguration(actions: [contextAction])
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.showDetail(for: indexPath)
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 115
+extension SavedUserViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        viewModel.search(with: searchController.searchBar.text)
     }
 }

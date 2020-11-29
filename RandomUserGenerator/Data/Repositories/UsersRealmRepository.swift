@@ -5,9 +5,7 @@
 //  Created by Малышев Максим Алексеевич on 11/2/20.
 //
 
-import Foundation
 import Alamofire
-import RealmSwift
 
 class UsersRealmRepository: UsersRepository {
     
@@ -24,7 +22,6 @@ class UsersRealmRepository: UsersRepository {
         for user in users {
             list.results.append(user)
         }
-        
         completion(list, nil)
     }
     

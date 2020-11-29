@@ -5,10 +5,8 @@
 //  Created by Малышев Максим Алексеевич on 10/28/20.
 //
 
-import Foundation
 import Bond
 import Alamofire
-import Swinject
 
 class UserGeneratorViewModel {
     
@@ -28,17 +26,6 @@ class UserGeneratorViewModel {
         self.router = router
     }
     
-    func showDetail() {
-        router.showDetail(user: observableUser.value!, method: .present)
-    }
-    
-    func saveCurrentUser() {
-        guard let user = observableUser.value else {
-            return
-        }
-        saveUseCase.execute(user: user)
-    }
-    
     func generateUser() {
         fetchUseCase.execute { result in
             switch result {
@@ -50,10 +37,28 @@ class UserGeneratorViewModel {
         }
     }
     
+    func saveCurrentUser() {
+        guard let user = observableUser.value else {
+            return
+        }
+        saveUseCase.execute(user: user)
+    }
+    
     func removeCurrentUser() {
         guard let user = observableUser.value else {
             return
         }
         deleteUseCase.execute(user: user)
     }
+    
+    func showDetail() {
+        guard let user = observableUser.value else {
+            return
+        }
+        router.showDetail(user: user, method: .present)
+    }
+}
+
+extension Notification.Name {
+    static let didUserSave = Notification.Name("didUserSave")
 }

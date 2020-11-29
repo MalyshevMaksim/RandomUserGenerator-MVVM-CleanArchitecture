@@ -5,10 +5,9 @@
 //  Created by Малышев Максим Алексеевич on 11/23/20.
 //
 
-import Foundation
 import Swinject
 
-class ViewModelDIContainer {
+class ViewModelInjector {
     private let containter = Container()
     
     init() {

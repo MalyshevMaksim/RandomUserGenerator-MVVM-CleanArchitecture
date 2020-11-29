@@ -5,7 +5,6 @@
 //  Created by Малышев Максим Алексеевич on 10/29/20.
 //
 
-import Foundation
 import RealmSwift
 
 @objcMembers final class Location: Object, Codable {
