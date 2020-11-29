@@ -6,10 +6,9 @@
 //
 
 import Foundation
-import Alamofire
 
 protocol FetchUseCase {
-    func execute(completionUser: @escaping (Result<UserList, AFError>) -> ())
+    func execute(completionUser: @escaping (Result<[User], NSError>) -> ())
 }
 
 class FetchUserInteractor: FetchUseCase {
@@ -20,7 +19,7 @@ class FetchUserInteractor: FetchUseCase {
         self.repository = repository
     }
     
-    func execute(completionUser: @escaping (Result<UserList, AFError>) -> ()) {
+    func execute(completionUser: @escaping (Result<[User], NSError>) -> ()) {
         repository.fetch { user, error in
             guard let user = user else {
                 completionUser(.failure(error!))

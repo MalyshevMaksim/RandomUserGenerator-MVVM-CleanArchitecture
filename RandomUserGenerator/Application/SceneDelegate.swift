@@ -39,8 +39,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func configureRouter(type: FactoryType, subjectNavigationController: UINavigationController) {
-        let container = RouterInjector()
-        let router = container.get(type: type, subjectNavigation: subjectNavigationController)
+        let injector = RouterInjector()
+        let router = injector.get(type: type, subjectNavigation: subjectNavigationController)
         router?.initialSubjectNavigationController()
     }
 }

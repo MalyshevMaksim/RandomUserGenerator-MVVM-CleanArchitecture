@@ -5,8 +5,9 @@
 //  Created by Малышев Максим Алексеевич on 11/4/20.
 //
 
-import Alamofire
+import Foundation
 import Bond
+import RealmSwift
 
 class SavedUserViewModel {
     
@@ -17,7 +18,7 @@ class SavedUserViewModel {
     private var router: Router
     private var fetchedUsers = [User]()
     
-    private(set) var observableError = Observable<AFError?>(nil)
+    private(set) var observableError = Observable<NSError?>(nil)
     private(set) var observableUsers = MutableObservableArray<User>([])
     
     init(fetchUseCase: FetchUseCase, searchUseCase: SearchUseCase, deleteUseCase: DeleteUseCase, router: Router) {
@@ -42,9 +43,9 @@ class SavedUserViewModel {
             observableUsers.insert(contentsOf: fetchedUsers, at: 0)
             return
         }
-        searchUseCase.execute(users: fetchedUsers, searchQuery: searchQuery) { searchResult in
+        searchUseCase.execute(users: fetchedUsers, searchQuery: searchQuery) { users in
             self.observableUsers.removeAll()
-            self.observableUsers.insert(contentsOf: searchResult, at: 0)
+            self.observableUsers.insert(contentsOf: users, at: 0)
         }
     }
     
@@ -52,7 +53,7 @@ class SavedUserViewModel {
         fetchUseCase.execute { result in
             switch result {
                 case .success(let users):
-                    self.fetchedUsers = Array(users.results)
+                    self.fetchedUsers = users
                     self.observableUsers.insert(contentsOf: self.fetchedUsers, at: 0)
                 case .failure(let error):
                     self.observableError.value = error

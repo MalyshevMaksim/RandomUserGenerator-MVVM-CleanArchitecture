@@ -11,6 +11,10 @@
 		B50EB085255F466F000D57B0 /* HorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB084255F466F000D57B0 /* HorizontalStackView.swift */; };
 		B51B751A255D9D4400592200 /* DeleteUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51B7519255D9D4400592200 /* DeleteUseCase.swift */; };
 		B526E4132573D6BD009409FF /* SavedUserTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B526E4122573D6BD009409FF /* SavedUserTableViewDelegate.swift */; };
+		B526E4182573E6F4009409FF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B526E4172573E6F4009409FF /* User.swift */; };
+		B526E41B2573E715009409FF /* UserName.swift in Sources */ = {isa = PBXBuildFile; fileRef = B526E41A2573E715009409FF /* UserName.swift */; };
+		B526E41E2573E72A009409FF /* DateBirth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B526E41D2573E72A009409FF /* DateBirth.swift */; };
+		B526E4212573E74A009409FF /* Pictures.swift in Sources */ = {isa = PBXBuildFile; fileRef = B526E4202573E74A009409FF /* Pictures.swift */; };
 		B5569B1E254A7FFB0004AE98 /* GeneratedUserCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5569B1D254A7FFB0004AE98 /* GeneratedUserCardView.swift */; };
 		B5569B26254BDAC50004AE98 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5569B25254BDAC50004AE98 /* Alertable.swift */; };
 		B5569B2A254BDE6E0004AE98 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5569B29254BDE6E0004AE98 /* Animatable.swift */; };
@@ -50,6 +54,10 @@
 		B50EB084255F466F000D57B0 /* HorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalStackView.swift; sourceTree = "<group>"; };
 		B51B7519255D9D4400592200 /* DeleteUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUseCase.swift; sourceTree = "<group>"; };
 		B526E4122573D6BD009409FF /* SavedUserTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedUserTableViewDelegate.swift; sourceTree = "<group>"; };
+		B526E4172573E6F4009409FF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B526E41A2573E715009409FF /* UserName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserName.swift; sourceTree = "<group>"; };
+		B526E41D2573E72A009409FF /* DateBirth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateBirth.swift; sourceTree = "<group>"; };
+		B526E4202573E74A009409FF /* Pictures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pictures.swift; sourceTree = "<group>"; };
 		B5569B1D254A7FFB0004AE98 /* GeneratedUserCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratedUserCardView.swift; sourceTree = "<group>"; };
 		B5569B25254BDAC50004AE98 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		B5569B29254BDE6E0004AE98 /* Animatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
@@ -235,6 +243,10 @@
 			isa = PBXGroup;
 			children = (
 				B5CC73E6254A272800CC949D /* UserList.swift */,
+				B526E4202573E74A009409FF /* Pictures.swift */,
+				B526E41D2573E72A009409FF /* DateBirth.swift */,
+				B526E41A2573E715009409FF /* UserName.swift */,
+				B526E4172573E6F4009409FF /* User.swift */,
 				B5CC7401254A3FFE00CC949D /* Location.swift */,
 			);
 			path = Entities;
@@ -433,6 +445,7 @@
 				B5CC73972549401700CC949D /* UserGeneratorViewController.swift in Sources */,
 				B51B751A255D9D4400592200 /* DeleteUseCase.swift in Sources */,
 				B5ADDE372558919300B0C823 /* Router.swift in Sources */,
+				B526E4182573E6F4009409FF /* User.swift in Sources */,
 				B5CC7402254A3FFE00CC949D /* Location.swift in Sources */,
 				B5CC73E3254A08C000CC949D /* UserGeneratorViewModel.swift in Sources */,
 				B5CC73E0254A000A00CC949D /* FetchUseCase.swift in Sources */,
@@ -451,8 +464,10 @@
 				B5623AB3256CBFEE0096C160 /* RouterInjector.swift in Sources */,
 				B5CC73952549401700CC949D /* SceneDelegate.swift in Sources */,
 				B56B051625501288006746BE /* SaveUseCase.swift in Sources */,
+				B526E41E2573E72A009409FF /* DateBirth.swift in Sources */,
 				B5ADDE26255845B800B0C823 /* SearchUseCase.swift in Sources */,
 				B5F4FC9D254D227200D3CEDF /* InfoStackView.swift in Sources */,
+				B526E4212573E74A009409FF /* Pictures.swift in Sources */,
 				B5C4E62025533A2700842B98 /* SavedUserViewModel.swift in Sources */,
 				B5569B2A254BDE6E0004AE98 /* Animatable.swift in Sources */,
 				B56B051225501206006746BE /* Result.swift in Sources */,
@@ -460,6 +475,7 @@
 				B526E4132573D6BD009409FF /* SavedUserTableViewDelegate.swift in Sources */,
 				B5CC73E7254A272800CC949D /* UserList.swift in Sources */,
 				B5569B2E254C66810004AE98 /* InfoView.swift in Sources */,
+				B526E41B2573E715009409FF /* UserName.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

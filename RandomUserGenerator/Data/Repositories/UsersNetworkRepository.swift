@@ -15,14 +15,14 @@ class UsersNetworkRepository: UsersRepository {
         self.persistentStorage = storage
     }
     
-    func fetch(completion: @escaping (UserList?, AFError?) -> ()) {
+    func fetch(completion: @escaping ([User]?, NSError?) -> ()) {
         AF.request("https://randomuser.me/api/") { $0.timeoutInterval = 5 }.validate().responseDecodable(of: UserList.self) { response in
             switch response.result {
                 case .success(let users):
                     self.fetchPicture(for: users)
-                    completion(users, nil)
+                    completion(users.toArray(), nil)
                 case .failure(let error):
-                    completion(nil, error)
+                    completion(nil, error as NSError)
             }
         }
     }

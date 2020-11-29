@@ -6,7 +6,6 @@
 //
 
 import Bond
-import Alamofire
 
 class UserGeneratorViewModel {
     
@@ -17,7 +16,7 @@ class UserGeneratorViewModel {
     private var router: Router
     
     private(set) var observableUser = Observable<User?>(nil)
-    private(set) var observableError = Observable<AFError?>(nil)
+    private(set) var observableError = Observable<NSError?>(nil)
     
     init(generateUseCase: FetchUseCase, saveUseCase: SaveUseCase, deleteUseCase: DeleteUseCase, router: Router) {
         self.fetchUseCase = generateUseCase
@@ -29,8 +28,8 @@ class UserGeneratorViewModel {
     func generateUser() {
         fetchUseCase.execute { result in
             switch result {
-                case .success(let user):
-                    self.observableUser.value = user.results.first
+                case .success(let users):
+                    self.observableUser.value = users.first
                 case .failure(let error):
                     self.observableError.value = error
             }
@@ -57,8 +56,4 @@ class UserGeneratorViewModel {
         }
         router.showDetail(user: user, method: .present)
     }
-}
-
-extension Notification.Name {
-    static let didUserSave = Notification.Name("didUserSave")
 }

@@ -15,14 +15,9 @@ class UsersRealmRepository: UsersRepository {
         self.persistentStorage = storage
     }
     
-    func fetch(completion: @escaping (UserList?, AFError?) -> ()) {
+    func fetch(completion: @escaping ([User]?, NSError?) -> ()) {
         let users = persistentStorage.fetch()
-        
-        let list = UserList()
-        for user in users {
-            list.results.append(user)
-        }
-        completion(list, nil)
+        completion(Array(users), nil)
     }
     
     func save(user: User) {
