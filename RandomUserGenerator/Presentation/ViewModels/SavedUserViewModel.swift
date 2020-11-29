@@ -27,6 +27,9 @@ class SavedUserViewModel {
         self.deleteUseCase = deleteUseCase
         self.router = router
         fetchAll()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(addNotify(_:)), name: .didUserSave, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removeNotify(_:)), name: .didUserRemove, object: nil)
     }
     
     func showDetail(for indexPath: IndexPath) {
@@ -65,5 +68,22 @@ class SavedUserViewModel {
         let user = observableUsers.array[indexPath.row]
         deleteUseCase.execute(user: user)
         observableUsers.remove(at: indexPath.row)
+    }
+}
+
+extension SavedUserViewModel {
+    
+    @objc func addNotify(_ notification: Notification) {
+        guard let user: User = notification.userInfo?["User"] as? User else {
+            return
+        }
+        observableUsers.append(user)
+    }
+    
+    @objc func removeNotify(_ notification: Notification) {
+        guard let user: User = notification.userInfo?["User"] as? User, let index = observableUsers.array.firstIndex(of: user)  else {
+            return
+        }
+        observableUsers.remove(at: index)
     }
 }

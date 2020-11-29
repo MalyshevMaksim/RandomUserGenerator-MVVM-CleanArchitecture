@@ -41,6 +41,7 @@ class UserGeneratorViewModel {
             return
         }
         saveUseCase.execute(user: user)
+        NotificationCenter.default.post(name: .didUserSave, object: nil, userInfo: ["User" : user])
     }
     
     func removeCurrentUser() {
@@ -48,6 +49,7 @@ class UserGeneratorViewModel {
             return
         }
         deleteUseCase.execute(user: user)
+        NotificationCenter.default.post(name: .didUserRemove, object: nil, userInfo: ["User" : user])
     }
     
     func showDetail() {
