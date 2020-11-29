@@ -23,8 +23,8 @@ extension ViewControllerFactory {
 class UserGeneratorViewControllerFactory: ViewControllerFactory {
     
     func makeViewController(router: Router) -> UIViewController {
-        let DIContainer = ViewModelInjector()
-        let viewModel = DIContainer.get(type: UserGeneratorViewModel.self, router: router)
+        let injector = ViewModelInjector()
+        let viewModel = injector.get(type: UserGeneratorViewModel.self, router: router)
         return UserGeneratorViewController(viewModel: viewModel!)
     }
 }
@@ -32,8 +32,8 @@ class UserGeneratorViewControllerFactory: ViewControllerFactory {
 class SavedUserViewControllerFactory: ViewControllerFactory {
 
     func makeViewController(router: Router) -> UIViewController {
-        let DIContainer = ViewModelInjector()
-        let viewModel = DIContainer.get(type: SavedUserViewModel.self, router: router)
+        let injector = ViewModelInjector()
+        let viewModel = injector.get(type: SavedUserViewModel.self, router: router)
         return SavedUserViewController(viewModel: viewModel!)
     }
 }
