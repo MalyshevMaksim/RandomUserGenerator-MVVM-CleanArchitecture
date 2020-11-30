@@ -9,5 +9,6 @@ target 'RandomUserGenerator' do
   pod 'SnapKit'
   pod 'Bond'
   pod 'Swinject'
+  target :RandomUserGeneratorTests
   # Pods for RandomUserGenerator
 end

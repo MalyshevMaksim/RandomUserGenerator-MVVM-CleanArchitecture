@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-RandomUserGenerator-RandomUserGeneratorTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-RandomUserGenerator.xcscheme</key>
 		<dict>
 			<key>isShown</key>

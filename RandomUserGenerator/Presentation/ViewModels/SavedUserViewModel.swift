@@ -9,7 +9,14 @@ import Foundation
 import Bond
 import RealmSwift
 
-class SavedUserViewModel {
+protocol SavedUserViewModelProtocol {
+    func search(with searchText: String?)
+    func fetchAll()
+    func remove(from indexPath: IndexPath)
+    func showDetail(for indexPath: IndexPath)
+}
+
+class SavedUserViewModel: SavedUserViewModelProtocol {
     
     private var fetchUseCase: FetchUseCase
     private var searchUseCase: SearchUseCase

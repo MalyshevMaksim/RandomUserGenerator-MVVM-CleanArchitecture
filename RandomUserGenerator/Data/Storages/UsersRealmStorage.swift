@@ -9,7 +9,11 @@ import RealmSwift
 
 class UsersRealmStorage: UsersPersistentStorage {
     
-    private var realm: Realm = try! Realm()
+    private var realm: Realm
+    
+    init(realm: Realm) {
+        self.realm = realm
+    }
     
     func fetch() -> [User] {
         return realm.objects(User.self).toArray()
@@ -30,4 +34,8 @@ class UsersRealmStorage: UsersPersistentStorage {
             realm.delete(deleted)
         }
     }
+}
+
+extension Realm {
+    
 }

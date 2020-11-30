@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_RandomUserGenerator_RandomUserGeneratorTests : NSObject
+@end
+@implementation PodsDummy_Pods_RandomUserGenerator_RandomUserGeneratorTests
+@end

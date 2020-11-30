@@ -6,6 +6,7 @@
 //
 
 import Swinject
+import RealmSwift
 
 class ViewModelInjector {
     private let containter = Container()
@@ -22,7 +23,7 @@ class ViewModelInjector {
     private func registerUserGeneratorViewModel() {
         
         containter.register(UserGeneratorViewModel.self) { (_, router: Router) in
-            let persistentStorage = UsersRealmStorage()
+            let persistentStorage = UsersRealmStorage(realm: try! Realm())
             let repository = UsersNetworkRepository(storage: persistentStorage)
             
             return UserGeneratorViewModel(generateUseCase: FetchUserInteractor(repository: repository), saveUseCase: SaveUserInteractor(usersRepository: repository), deleteUseCase: DeleteInteractor(repository: repository), router: router)
@@ -32,7 +33,7 @@ class ViewModelInjector {
     private func registerSavedUserViewModel() {
     
         containter.register(SavedUserViewModel.self) { (_, router: Router) in
-            let persistentStorage = UsersRealmStorage()
+            let persistentStorage = UsersRealmStorage(realm: try! Realm())
             let repository = UsersRealmRepository(storage: persistentStorage)
             
             return SavedUserViewModel(fetchUseCase: FetchUserInteractor(repository: repository), searchUseCase: SearchUserInteractor(), deleteUseCase: DeleteInteractor(repository: repository), router: router)

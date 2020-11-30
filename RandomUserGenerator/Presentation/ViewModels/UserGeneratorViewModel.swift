@@ -7,7 +7,14 @@
 
 import Bond
 
-class UserGeneratorViewModel {
+protocol UserGeneratorViewModelProtocol {
+    func generateUser()
+    func saveCurrentUser()
+    func removeCurrentUser()
+    func showDetail()
+}
+
+class UserGeneratorViewModel: UserGeneratorViewModelProtocol {
     
     private var fetchUseCase: FetchUseCase
     private var saveUseCase: SaveUseCase

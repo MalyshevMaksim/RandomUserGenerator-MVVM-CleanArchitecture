@@ -8,6 +8,7 @@
 import UIKit
 
 class Router {
+    
     enum PresentationMethod {
         case present
         case push
