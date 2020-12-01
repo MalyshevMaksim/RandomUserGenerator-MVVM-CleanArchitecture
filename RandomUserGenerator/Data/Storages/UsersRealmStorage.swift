@@ -35,7 +35,3 @@ class UsersRealmStorage: UsersPersistentStorage {
         }
     }
 }
-
-extension Realm {
-    
-}

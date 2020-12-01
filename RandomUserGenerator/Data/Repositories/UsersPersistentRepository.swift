@@ -7,7 +7,7 @@
 
 import Alamofire
 
-class UsersRealmRepository: UsersRepository {
+class UsersPersistentRepository: UsersRepository {
     
     private var persistentStorage: UsersPersistentStorage
     

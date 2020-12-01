@@ -25,14 +25,14 @@ class UsersRealmStorageTests: XCTestCase {
         let expectedUser = User()
         expectedUser.email = "expected@expected.com"
         sut.save(user: expectedUser)
-        XCTAssertEqual(stubRealm.objects(User.self).first?.email, expectedUser.email, "User was not added")
+        XCTAssertEqual(stubRealm.objects(User.self).first?.email, expectedUser.email, "The entry was not added")
     }
 
     func testRemoveUser() {
         let user = User()
         sut.save(user: user)
         sut.delete(user: user)
-        XCTAssertEqual(stubRealm.objects(User.self).count, 0)
+        XCTAssertEqual(stubRealm.objects(User.self).count, 0, "The entry was not deleted")
     }
 
     func testFetchUsers() {
@@ -50,7 +50,7 @@ class UsersRealmStorageTests: XCTestCase {
         }
         
         let array = sut.fetch()
-        XCTAssertEqual(expectedUsers.count, array.count)
+        XCTAssertEqual(expectedUsers.count, array.count, "The fetched objects do not match the saved ones")
     }
 
     override func tearDown() {

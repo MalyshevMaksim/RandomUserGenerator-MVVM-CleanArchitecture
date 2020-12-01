@@ -34,7 +34,7 @@ class ViewModelInjector {
     
         containter.register(SavedUserViewModel.self) { (_, router: Router) in
             let persistentStorage = UsersRealmStorage(realm: try! Realm())
-            let repository = UsersRealmRepository(storage: persistentStorage)
+            let repository = UsersPersistentRepository(storage: persistentStorage)
             
             return SavedUserViewModel(fetchUseCase: FetchUserInteractor(repository: repository), searchUseCase: SearchUserInteractor(), deleteUseCase: DeleteInteractor(repository: repository), router: router)
         }
