@@ -1,23 +1,31 @@
 //
-//  UsersRealmRepositoryTests.swift
+//  UsersNetworkRepositoryTests.swift
 //  RandomUserGeneratorTests
 //
 //  Created by Малышев Максим Алексеевич on 12/1/20.
 //
 
 @testable import RandomUserGenerator
-import XCTest
 import RealmSwift
+import XCTest
 
-class UsersPersistentRepositoryTests: XCTestCase {
-    
+class UsersNetworkRepositoryTests: XCTestCase {
+
     private var persistentStorageMock: UsersPersistentStorageMock!
     private var savedUsersStub = [User(), User(), User(), User(), User()]
     private var sut: UsersRepository!
     
     override func setUp() {
         persistentStorageMock = UsersPersistentStorageMock(savedUsers: savedUsersStub)
-        sut = UsersPersistentRepository(storage: persistentStorageMock)
+        sut = UsersNetworkRepository(storage: persistentStorageMock, networkService: AlamofireNetworkService())
+    }
+    
+    func testResponseSuccessful() {
+        
+    }
+    
+    func testResponseFailure() {
+        
     }
     
     func testSaveUser() {
@@ -29,12 +37,6 @@ class UsersPersistentRepositoryTests: XCTestCase {
         let user = savedUsersStub.first
         sut.delete(user: user!)
         XCTAssertEqual(persistentStorageMock.fetch().count, savedUsersStub.count - 1, "The entry was not deleted")
-    }
-    
-    func testFetchUserSuccessful() {
-        var fetchedUser: [User] = []
-        sut.fetch { users, error in fetchedUser = users ?? [] }
-        XCTAssertEqual(persistentStorageMock.fetch().count, fetchedUser.count, "The fetched objects do not match the saved ones")
     }
     
     override func tearDown() {
