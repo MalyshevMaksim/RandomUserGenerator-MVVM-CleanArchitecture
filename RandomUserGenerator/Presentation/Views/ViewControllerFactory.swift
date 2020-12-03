@@ -8,6 +8,7 @@
 import UIKit
 
 protocol ViewControllerFactory {
+    
     func makeViewController(router: Router) -> UIViewController
 }
 

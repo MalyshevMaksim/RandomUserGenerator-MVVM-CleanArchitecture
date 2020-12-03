@@ -26,13 +26,14 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B5D31CDD2574459400BFA917"
+               BlueprintIdentifier = "B5DA672725751D1400BA00E8"
                BuildableName = "RandomUserGeneratorTests.xctest"
                BlueprintName = "RandomUserGeneratorTests"
                ReferencedContainer = "container:RandomUserGenerator.xcodeproj">
