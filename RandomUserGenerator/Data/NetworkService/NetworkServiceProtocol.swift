@@ -10,6 +10,8 @@ import UIKit
 
 protocol NetworkServiceProtocol {
     
-    func execute<T: Decodable>(url: URL, completion: @escaping (T?, NSError?) -> ())
-    func downloadPicture(url: URL, completion: @escaping (UIImage?, NSError?) -> ())
+    var url: URL? { get set }
+    
+    func execute<T: Decodable>(completion: @escaping (Result<T, NSError>) -> ())
+    func downloadPicture(url: URL, completion: @escaping (Result<Data, NSError>) -> ())
 }

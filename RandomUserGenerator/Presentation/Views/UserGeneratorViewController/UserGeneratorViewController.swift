@@ -67,7 +67,8 @@ class UserGeneratorViewController: UIViewController, Alertable {
     private func bindViewModel() {
         bindViewModelUserGenerated()
         bindViewModelError()
-        bindBarButtonTap()
+        
+        bindGenerateButtonTap()
         bindSaveButtonTap()
         bindMoreInfoButtonTap()
     }
@@ -78,7 +79,9 @@ class UserGeneratorViewController: UIViewController, Alertable {
                 return
             }
             self.userCardView.configure(user: user)
+            self.userCardView.springShowing()
             self.activityIndicator.stopAnimating()
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
         }
     }
     
@@ -95,15 +98,11 @@ class UserGeneratorViewController: UIViewController, Alertable {
         }
     }
     
-    private func bindMoreInfoButtonTap() {
-        _ = userCardView.moreInfoButton.reactive.tap.observeNext {
-            self.viewModel.showDetail()
-        }
-    }
-    
-    private func bindBarButtonTap() {
+    private func bindGenerateButtonTap() {
         _ = navigationItem.rightBarButtonItem?.reactive.tap.observeNext {
+            self.userCardView.springHiding()
             self.activityIndicator.startAnimating()
+            self.navigationItem.rightBarButtonItem?.isEnabled = false
             self.viewModel.generateUser()
         }
     }
@@ -117,6 +116,12 @@ class UserGeneratorViewController: UIViewController, Alertable {
                     self.viewModel.removeCurrentUser()
                 }
             }
+        }
+    }
+    
+    private func bindMoreInfoButtonTap() {
+        _ = userCardView.moreInfoButton.reactive.tap.observeNext {
+            self.viewModel.showDetail()
         }
     }
 }

@@ -5,40 +5,29 @@
 //  Created by Малышев Максим Алексеевич on 10/28/20.
 //
 
-import Alamofire
+import Foundation
 
 class UsersNetworkRepository: UsersRepository {
     
     private var persistentStorage: UsersPersistentStorage
+    private var networkService: NetworkServiceProtocol
     
-    init(storage: UsersPersistentStorage) {
+    init(storage: UsersPersistentStorage, networkService: NetworkServiceProtocol) {
         self.persistentStorage = storage
+        self.networkService = networkService
     }
     
     func fetch(completion: @escaping ([User]?, NSError?) -> ()) {
-        AF.request("https://randomuser.me/api/") { $0.timeoutInterval = 5 }.validate().responseDecodable(of: UserList.self) { response in
-            switch response.result {
+        guard networkService.url != nil else {
+            completion(nil, NSError.makeError(withMessage: "Invalid URL"))
+            return
+        }
+        networkService.execute { (result: Result<UserList, NSError>) in
+            switch result {
                 case .success(let users):
-                    self.fetchPicture(for: users)
                     completion(users.toArray(), nil)
                 case .failure(let error):
-                    completion(nil, error as NSError)
-            }
-        }
-    }
-    
-    private func fetchPicture(for users: UserList) {
-        for user in users.results {
-            guard let url = users.results.first?.picture?.large else {
-                break
-            }
-            AF.request(url).validate().response { response in
-                switch response.result {
-                    case .success(let pictureData):
-                        user.picture?.data = pictureData
-                    case .failure:
-                        user.picture?.data = nil
-                }
+                    completion(nil, error)
             }
         }
     }

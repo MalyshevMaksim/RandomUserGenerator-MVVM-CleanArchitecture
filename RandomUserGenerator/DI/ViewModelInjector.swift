@@ -24,7 +24,7 @@ class ViewModelInjector {
         
         containter.register(UserGeneratorViewModel.self) { (_, router: Router) in
             let persistentStorage = UsersRealmStorage(realm: try! Realm())
-            let repository = UsersNetworkRepository(storage: persistentStorage)
+            let repository = UsersNetworkRepository(storage: persistentStorage, networkService: AlamofireNetworkService(url: URL(string: "https://randomuser.me/api/")))
             
             return UserGeneratorViewModel(generateUseCase: FetchUserInteractor(repository: repository), saveUseCase: SaveUserInteractor(usersRepository: repository), deleteUseCase: DeleteInteractor(repository: repository), router: router)
         }

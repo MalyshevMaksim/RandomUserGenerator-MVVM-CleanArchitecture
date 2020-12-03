@@ -10,25 +10,34 @@ import Alamofire
 
 class AlamofireNetworkService: NetworkServiceProtocol {
     
-    func execute<T: Decodable>(url: URL, completion: @escaping (T?, NSError?) -> ()) {
+    var url: URL?
+    
+    init(url: URL?) {
+        self.url = url
+    }
+    
+    func execute<T: Decodable>(completion: @escaping (Result<T, NSError>) -> ()) {
+        guard let url = url else {
+            completion(.failure(NSError.makeError(withMessage: "Invalid URL")))
+            return
+        }
         AF.request(url) { $0.timeoutInterval = 5 }.validate().responseDecodable(of: T.self) { response in
             switch response.result {
                 case .success(let users):
-                    completion(users, nil)
+                    completion(.success(users))
                 case .failure(let error):
-                    completion(nil, error as NSError)
+                    completion(.failure(error as NSError))
             }
         }
     }
     
-    func downloadPicture(url: URL, completion: @escaping (UIImage?, NSError?) -> ()) {
+    func downloadPicture(url: URL, completion: @escaping (Result<Data, NSError>) -> ()) {
         AF.request(url).validate().response { response in
             switch response.result {
                 case .success(let pictureData):
-                    let image = UIImage(data: pictureData!)
-                    completion(image, nil)
+                    completion(.success(pictureData!))
                 case .failure(let error):
-                    completion(nil, error as NSError)
+                    completion(.failure(error as NSError))
             }
         }
     }

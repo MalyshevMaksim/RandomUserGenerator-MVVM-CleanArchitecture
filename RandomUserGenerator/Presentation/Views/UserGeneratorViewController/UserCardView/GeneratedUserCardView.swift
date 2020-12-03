@@ -80,15 +80,13 @@ class GeneratedUserCardView: UIView, Animatable {
     
     func configure(user: User) {
         DispatchQueue.main.async {
-            self.springShowing(willShowingCompletion: {
-                self.name.text = user.name?.fullName
-                self.email.text = user.email
-                self.infoStack.phone = user.phone
-                self.infoStack.location = user.location!.fullLocation
-                self.infoStack.dateBirth = user.dob!.formattedDate
-                self.poster.image = UIImage(data: (user.picture?.data)!)
-                self.saveButton.isSelected = false
-            })
+            self.name.text = user.name?.fullName
+            self.email.text = user.email
+            self.infoStack.phone = user.phone
+            self.infoStack.location = user.location!.fullLocation
+            self.infoStack.dateBirth = user.dob!.formattedDate
+            //self.poster.image = UIImage(data: (user.picture?.data)!)
+            self.saveButton.isSelected = false
         }
     }
     

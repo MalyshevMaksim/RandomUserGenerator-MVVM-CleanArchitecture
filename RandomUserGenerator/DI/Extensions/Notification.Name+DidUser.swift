@@ -1,8 +1,8 @@
 //
-//  Notification.Name.swift
+//  Neame.swift
 //  RandomUserGenerator
 //
-//  Created by Малышев Максим Алексеевич on 11/29/20.
+//  Created by Малышев Максим Алексеевич on 12/1/20.
 //
 
 import Foundation
