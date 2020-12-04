@@ -11,7 +11,6 @@
 		AD955CB4F4A4D052D6D1EE5F /* Pods_RandomUserGenerator_RandomUserGeneratorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854CAE699160E46298F4B5C8 /* Pods_RandomUserGenerator_RandomUserGeneratorTests.framework */; };
 		B50EB085255F466F000D57B0 /* HorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB084255F466F000D57B0 /* HorizontalStackView.swift */; };
 		B5166AD625763A2D0097219E /* UsersPersistentRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5166AD525763A2D0097219E /* UsersPersistentRepositoryTests.swift */; };
-		B5166ADF25763E1E0097219E /* UsersPersistentStorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5166ADE25763E1E0097219E /* UsersPersistentStorageMock.swift */; };
 		B5166AF025768D1F0097219E /* UsersNetworkRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5166AEF25768D1F0097219E /* UsersNetworkRepositoryTests.swift */; };
 		B51B751A255D9D4400592200 /* DeleteUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51B7519255D9D4400592200 /* DeleteUseCase.swift */; };
 		B526E4132573D6BD009409FF /* SavedUserTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B526E4122573D6BD009409FF /* SavedUserTableViewDelegate.swift */; };
@@ -25,6 +24,12 @@
 		B543CBA02576A9AA000D20AC /* Notification.Name+DidUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B543CB9F2576A9AA000D20AC /* Notification.Name+DidUser.swift */; };
 		B543CBA6257834C1000D20AC /* AlamofireNetworkServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B543CBA5257834C1000D20AC /* AlamofireNetworkServiceMock.swift */; };
 		B543CBAE25784BA7000D20AC /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B543CBAD25784BA7000D20AC /* URL.swift */; };
+		B543CBB82578FBA8000D20AC /* FetchUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B543CBB72578FBA8000D20AC /* FetchUseCaseTests.swift */; };
+		B543CBBC2578FD03000D20AC /* UsersRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B543CBBB2578FD03000D20AC /* UsersRepositoryMock.swift */; };
+		B543CBC7257904EF000D20AC /* SaveUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B543CBC6257904EF000D20AC /* SaveUseCaseTests.swift */; };
+		B543CBCD25790718000D20AC /* DeleteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B543CBCC25790718000D20AC /* DeleteUseCaseTests.swift */; };
+		B543CBD125790874000D20AC /* SearchUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B543CBD025790874000D20AC /* SearchUseCaseTests.swift */; };
+		B5522238257A703A00EEF29E /* UsersPersistentStorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5522237257A703A00EEF29E /* UsersPersistentStorageMock.swift */; };
 		B5569B1E254A7FFB0004AE98 /* GeneratedUserCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5569B1D254A7FFB0004AE98 /* GeneratedUserCardView.swift */; };
 		B5569B26254BDAC50004AE98 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5569B25254BDAC50004AE98 /* Alertable.swift */; };
 		B5569B2A254BDE6E0004AE98 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5569B29254BDE6E0004AE98 /* Animatable.swift */; };
@@ -77,7 +82,6 @@
 		B408E3A8C870BCA14C4E0AB7 /* Pods-RandomUserGenerator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomUserGenerator.debug.xcconfig"; path = "Target Support Files/Pods-RandomUserGenerator/Pods-RandomUserGenerator.debug.xcconfig"; sourceTree = "<group>"; };
 		B50EB084255F466F000D57B0 /* HorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalStackView.swift; sourceTree = "<group>"; };
 		B5166AD525763A2D0097219E /* UsersPersistentRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersPersistentRepositoryTests.swift; sourceTree = "<group>"; };
-		B5166ADE25763E1E0097219E /* UsersPersistentStorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UsersPersistentStorageMock.swift; path = "/Users/maksim/Desktop/RandomUserGenerator-MVVM-CleanArchitecture/RandomUserGeneratorTests/DataTests/UsersPersistentStorageMock.swift"; sourceTree = "<absolute>"; };
 		B5166AEF25768D1F0097219E /* UsersNetworkRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersNetworkRepositoryTests.swift; sourceTree = "<group>"; };
 		B51B7519255D9D4400592200 /* DeleteUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUseCase.swift; sourceTree = "<group>"; };
 		B526E4122573D6BD009409FF /* SavedUserTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedUserTableViewDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +95,12 @@
 		B543CB9F2576A9AA000D20AC /* Notification.Name+DidUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+DidUser.swift"; sourceTree = "<group>"; };
 		B543CBA5257834C1000D20AC /* AlamofireNetworkServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireNetworkServiceMock.swift; sourceTree = "<group>"; };
 		B543CBAD25784BA7000D20AC /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		B543CBB72578FBA8000D20AC /* FetchUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUseCaseTests.swift; sourceTree = "<group>"; };
+		B543CBBB2578FD03000D20AC /* UsersRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRepositoryMock.swift; sourceTree = "<group>"; };
+		B543CBC6257904EF000D20AC /* SaveUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveUseCaseTests.swift; sourceTree = "<group>"; };
+		B543CBCC25790718000D20AC /* DeleteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUseCaseTests.swift; sourceTree = "<group>"; };
+		B543CBD025790874000D20AC /* SearchUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCaseTests.swift; sourceTree = "<group>"; };
+		B5522237257A703A00EEF29E /* UsersPersistentStorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersPersistentStorageMock.swift; sourceTree = "<group>"; };
 		B5569B1D254A7FFB0004AE98 /* GeneratedUserCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratedUserCardView.swift; sourceTree = "<group>"; };
 		B5569B25254BDAC50004AE98 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		B5569B29254BDE6E0004AE98 /* Animatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
@@ -171,6 +181,11 @@
 		B5166AF325768E2B0097219E /* UseCasesTests */ = {
 			isa = PBXGroup;
 			children = (
+				B543CBB72578FBA8000D20AC /* FetchUseCaseTests.swift */,
+				B543CBC6257904EF000D20AC /* SaveUseCaseTests.swift */,
+				B543CBD025790874000D20AC /* SearchUseCaseTests.swift */,
+				B543CBCC25790718000D20AC /* DeleteUseCaseTests.swift */,
+				B543CBBF2578FD0D000D20AC /* Heplers */,
 			);
 			path = UseCasesTests;
 			sourceTree = "<group>";
@@ -204,7 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				B543CBA5257834C1000D20AC /* AlamofireNetworkServiceMock.swift */,
-				B5166ADE25763E1E0097219E /* UsersPersistentStorageMock.swift */,
+				B5522237257A703A00EEF29E /* UsersPersistentStorageMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -215,6 +230,22 @@
 				B543CBAD25784BA7000D20AC /* URL.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B543CBBF2578FD0D000D20AC /* Heplers */ = {
+			isa = PBXGroup;
+			children = (
+				B543CBD825796ABB000D20AC /* Mocks */,
+			);
+			path = Heplers;
+			sourceTree = "<group>";
+		};
+		B543CBD825796ABB000D20AC /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				B543CBBB2578FD03000D20AC /* UsersRepositoryMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		B5569B24254BDAB80004AE98 /* Helpers */ = {
@@ -689,9 +720,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5166ADF25763E1E0097219E /* UsersPersistentStorageMock.swift in Sources */,
+				B543CBBC2578FD03000D20AC /* UsersRepositoryMock.swift in Sources */,
+				B543CBCD25790718000D20AC /* DeleteUseCaseTests.swift in Sources */,
 				B5166AF025768D1F0097219E /* UsersNetworkRepositoryTests.swift in Sources */,
+				B543CBB82578FBA8000D20AC /* FetchUseCaseTests.swift in Sources */,
 				B543CBA6257834C1000D20AC /* AlamofireNetworkServiceMock.swift in Sources */,
+				B5522238257A703A00EEF29E /* UsersPersistentStorageMock.swift in Sources */,
+				B543CBD125790874000D20AC /* SearchUseCaseTests.swift in Sources */,
+				B543CBC7257904EF000D20AC /* SaveUseCaseTests.swift in Sources */,
 				B5DA673525751D3900BA00E8 /* UsersRealmStorageTests.swift in Sources */,
 				B5166AD625763A2D0097219E /* UsersPersistentRepositoryTests.swift in Sources */,
 				B543CBAE25784BA7000D20AC /* URL.swift in Sources */,

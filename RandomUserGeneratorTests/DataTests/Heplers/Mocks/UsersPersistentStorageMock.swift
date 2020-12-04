@@ -1,9 +1,11 @@
 //
 //  UsersPersistentStorageMock.swift
-//  
+//  RandomUserGeneratorTests
 //
-//  Created by Малышев Максим Алексеевич on 12/1/20.
+//  Created by Малышев Максим Алексеевич on 12/4/20.
 //
+
+import Foundation
 
 @testable import RandomUserGenerator
 
