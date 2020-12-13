@@ -26,7 +26,7 @@ class ViewModelInjector {
             let persistentStorage = UsersRealmStorage(realm: try! Realm())
             let repository = UsersNetworkRepository(storage: persistentStorage, networkService: AlamofireNetworkService(url: URL(string: "https://randomuser.me/api/")))
             
-            return UserGeneratorViewModel(generateUseCase: FetchUserInteractor(repository: repository), saveUseCase: SaveUserInteractor(usersRepository: repository), deleteUseCase: DeleteInteractor(repository: repository), router: router)
+            return UserGeneratorViewModel(generateUseCase: FetchAllUserInteractor(repository: repository), saveUseCase: SaveUserInteractor(usersRepository: repository), deleteUseCase: DeleteInteractor(repository: repository), router: router)
         }
     }
     
@@ -36,7 +36,7 @@ class ViewModelInjector {
             let persistentStorage = UsersRealmStorage(realm: try! Realm())
             let repository = UsersPersistentRepository(storage: persistentStorage)
             
-            return SavedUserViewModel(fetchUseCase: FetchUserInteractor(repository: repository), searchUseCase: SearchUserInteractor(), deleteUseCase: DeleteInteractor(repository: repository), router: router)
+            return SavedUserViewModel(fetchUseCase: FetchAllUserInteractor(repository: repository), searchUseCase: SearchUserInteractor(), deleteUseCase: DeleteInteractor(repository: repository), router: router)
         }
     }
 }

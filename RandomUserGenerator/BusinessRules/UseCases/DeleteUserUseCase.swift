@@ -5,11 +5,11 @@
 //  Created by Малышев Максим Алексеевич on 11/12/20.
 //
 
-protocol DeleteUseCase {
+protocol DeleteUserUseCase {
     func execute(user: User)
 }
 
-class DeleteInteractor: DeleteUseCase {
+class DeleteInteractor: DeleteUserUseCase {
     
     private var repository: UsersRepository
     

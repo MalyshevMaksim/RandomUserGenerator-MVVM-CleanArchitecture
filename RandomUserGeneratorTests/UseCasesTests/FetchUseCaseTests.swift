@@ -11,12 +11,12 @@ import XCTest
 class FetchUseCaseTest: XCTestCase {
     
     private var repositoryMock: UsersRepository!
-    private var sut: FetchUserInteractor!
+    private var sut: FetchAllUserInteractor!
     
     func testExecuteSuccessful() {
         let usersStub = [User(), User(), User()]
         repositoryMock = UsersRepositoryMock(usersStub: usersStub)
-        sut = FetchUserInteractor(repository: repositoryMock)
+        sut = FetchAllUserInteractor(repository: repositoryMock)
         
         var users: [User]?
         var error: NSError?
@@ -35,7 +35,7 @@ class FetchUseCaseTest: XCTestCase {
     
     func testExecuteFailure() {
         repositoryMock = UsersRepositoryMock(usersStub: nil)
-        sut = FetchUserInteractor(repository: repositoryMock)
+        sut = FetchAllUserInteractor(repository: repositoryMock)
         
         var users: [User]?
         var error: NSError?

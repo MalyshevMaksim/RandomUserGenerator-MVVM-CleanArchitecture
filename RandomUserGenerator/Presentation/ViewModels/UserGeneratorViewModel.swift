@@ -16,16 +16,16 @@ protocol UserGeneratorViewModelProtocol {
 
 class UserGeneratorViewModel: UserGeneratorViewModelProtocol {
     
-    private var fetchUseCase: FetchUseCase
-    private var saveUseCase: SaveUseCase
-    private var deleteUseCase: DeleteUseCase
+    private var fetchUseCase: FetchUserUseCase
+    private var saveUseCase: SaveUserUseCase
+    private var deleteUseCase: DeleteUserUseCase
     
     private var router: Router
     
     private(set) var observableUser = Observable<User?>(nil)
     private(set) var observableError = Observable<NSError?>(nil)
     
-    init(generateUseCase: FetchUseCase, saveUseCase: SaveUseCase, deleteUseCase: DeleteUseCase, router: Router) {
+    init(generateUseCase: FetchUserUseCase, saveUseCase: SaveUserUseCase, deleteUseCase: DeleteUserUseCase, router: Router) {
         self.fetchUseCase = generateUseCase
         self.saveUseCase = saveUseCase
         self.deleteUseCase = deleteUseCase

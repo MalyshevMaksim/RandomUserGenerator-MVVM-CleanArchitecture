@@ -18,9 +18,9 @@ protocol SavedUserViewModelProtocol {
 
 class SavedUserViewModel: SavedUserViewModelProtocol {
     
-    private var fetchUseCase: FetchUseCase
-    private var searchUseCase: SearchUseCase
-    private var deleteUseCase: DeleteUseCase
+    private var fetchUseCase: FetchUserUseCase
+    private var searchUseCase: SearchUserUseCase
+    private var deleteUseCase: DeleteUserUseCase
     
     private var router: Router
     private var fetchedUsers = [User]()
@@ -28,7 +28,7 @@ class SavedUserViewModel: SavedUserViewModelProtocol {
     private(set) var observableError = Observable<NSError?>(nil)
     private(set) var observableUsers = MutableObservableArray<User>([])
     
-    init(fetchUseCase: FetchUseCase, searchUseCase: SearchUseCase, deleteUseCase: DeleteUseCase, router: Router) {
+    init(fetchUseCase: FetchUserUseCase, searchUseCase: SearchUserUseCase, deleteUseCase: DeleteUserUseCase, router: Router) {
         self.searchUseCase = searchUseCase
         self.fetchUseCase = fetchUseCase
         self.deleteUseCase = deleteUseCase
@@ -39,9 +39,16 @@ class SavedUserViewModel: SavedUserViewModelProtocol {
         NotificationCenter.default.addObserver(self, selector: #selector(removeNotify(_:)), name: .didUserRemove, object: nil)
     }
     
-    func showDetail(for indexPath: IndexPath) {
-        let user = observableUsers.array[indexPath.row]
-        router.showDetail(user: user, method: .push)
+    func fetchAll() {
+        fetchUseCase.execute { result in
+            switch result {
+                case .success(let users):
+                    self.fetchedUsers = users
+                    self.observableUsers.insert(contentsOf: self.fetchedUsers, at: 0)
+                case .failure(let error):
+                    self.observableError.value = error
+            }
+        }
     }
     
     func search(with searchText: String?) {
@@ -59,22 +66,15 @@ class SavedUserViewModel: SavedUserViewModelProtocol {
         }
     }
     
-    func fetchAll() {
-        fetchUseCase.execute { result in
-            switch result {
-                case .success(let users):
-                    self.fetchedUsers = users
-                    self.observableUsers.insert(contentsOf: self.fetchedUsers, at: 0)
-                case .failure(let error):
-                    self.observableError.value = error
-            }
-        }
-    }
-    
     func remove(from indexPath: IndexPath) {
         let user = observableUsers.array[indexPath.row]
         deleteUseCase.execute(user: user)
         observableUsers.remove(at: indexPath.row)
+    }
+    
+    func showDetail(for indexPath: IndexPath) {
+        let user = observableUsers.array[indexPath.row]
+        router.showDetail(user: user, method: .push)
     }
 }
 

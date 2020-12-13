@@ -12,7 +12,7 @@
 		B50EB085255F466F000D57B0 /* HorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB084255F466F000D57B0 /* HorizontalStackView.swift */; };
 		B5166AD625763A2D0097219E /* UsersPersistentRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5166AD525763A2D0097219E /* UsersPersistentRepositoryTests.swift */; };
 		B5166AF025768D1F0097219E /* UsersNetworkRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5166AEF25768D1F0097219E /* UsersNetworkRepositoryTests.swift */; };
-		B51B751A255D9D4400592200 /* DeleteUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51B7519255D9D4400592200 /* DeleteUseCase.swift */; };
+		B51B751A255D9D4400592200 /* DeleteUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51B7519255D9D4400592200 /* DeleteUserUseCase.swift */; };
 		B526E4132573D6BD009409FF /* SavedUserTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B526E4122573D6BD009409FF /* SavedUserTableViewDelegate.swift */; };
 		B526E4182573E6F4009409FF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B526E4172573E6F4009409FF /* User.swift */; };
 		B526E41B2573E715009409FF /* UserName.swift in Sources */ = {isa = PBXBuildFile; fileRef = B526E41A2573E715009409FF /* UserName.swift */; };
@@ -37,9 +37,9 @@
 		B5623AA4256C3B5C0096C160 /* ViewModelInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5623AA3256C3B5C0096C160 /* ViewModelInjector.swift */; };
 		B5623AB3256CBFEE0096C160 /* RouterInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5623AB2256CBFEE0096C160 /* RouterInjector.swift */; };
 		B56B051225501206006746BE /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B051125501206006746BE /* Result.swift */; };
-		B56B051625501288006746BE /* SaveUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B051525501288006746BE /* SaveUseCase.swift */; };
+		B56B051625501288006746BE /* SaveUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B051525501288006746BE /* SaveUserUseCase.swift */; };
 		B56B051D2550162D006746BE /* UsersPersistentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B051C2550162D006746BE /* UsersPersistentRepository.swift */; };
-		B5ADDE26255845B800B0C823 /* SearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ADDE25255845B800B0C823 /* SearchUseCase.swift */; };
+		B5ADDE26255845B800B0C823 /* SearchUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ADDE25255845B800B0C823 /* SearchUserUseCase.swift */; };
 		B5ADDE2E25585DE400B0C823 /* UsersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ADDE2D25585DE400B0C823 /* UsersRepository.swift */; };
 		B5ADDE3225585E3D00B0C823 /* UsersPersistentStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ADDE3125585E3D00B0C823 /* UsersPersistentStorage.swift */; };
 		B5ADDE372558919300B0C823 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ADDE362558919300B0C823 /* Router.swift */; };
@@ -53,7 +53,7 @@
 		B5CC739F2549401900CC949D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5CC739D2549401900CC949D /* LaunchScreen.storyboard */; };
 		B5CC73CB254969EE00CC949D /* UsersNetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC73CA254969EE00CC949D /* UsersNetworkRepository.swift */; };
 		B5CC73D625496C1600CC949D /* UsersRealmStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC73D525496C1600CC949D /* UsersRealmStorage.swift */; };
-		B5CC73E0254A000A00CC949D /* FetchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC73DF254A000A00CC949D /* FetchUseCase.swift */; };
+		B5CC73E0254A000A00CC949D /* FetchAllUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC73DF254A000A00CC949D /* FetchAllUserUseCase.swift */; };
 		B5CC73E3254A08C000CC949D /* UserGeneratorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC73E2254A08C000CC949D /* UserGeneratorViewModel.swift */; };
 		B5CC73E7254A272800CC949D /* UserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC73E6254A272800CC949D /* UserList.swift */; };
 		B5CC7402254A3FFE00CC949D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC7401254A3FFE00CC949D /* Location.swift */; };
@@ -83,7 +83,7 @@
 		B50EB084255F466F000D57B0 /* HorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalStackView.swift; sourceTree = "<group>"; };
 		B5166AD525763A2D0097219E /* UsersPersistentRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersPersistentRepositoryTests.swift; sourceTree = "<group>"; };
 		B5166AEF25768D1F0097219E /* UsersNetworkRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersNetworkRepositoryTests.swift; sourceTree = "<group>"; };
-		B51B7519255D9D4400592200 /* DeleteUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUseCase.swift; sourceTree = "<group>"; };
+		B51B7519255D9D4400592200 /* DeleteUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserUseCase.swift; sourceTree = "<group>"; };
 		B526E4122573D6BD009409FF /* SavedUserTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedUserTableViewDelegate.swift; sourceTree = "<group>"; };
 		B526E4172573E6F4009409FF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B526E41A2573E715009409FF /* UserName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserName.swift; sourceTree = "<group>"; };
@@ -108,9 +108,9 @@
 		B5623AA3256C3B5C0096C160 /* ViewModelInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelInjector.swift; sourceTree = "<group>"; };
 		B5623AB2256CBFEE0096C160 /* RouterInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterInjector.swift; sourceTree = "<group>"; };
 		B56B051125501206006746BE /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		B56B051525501288006746BE /* SaveUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveUseCase.swift; sourceTree = "<group>"; };
+		B56B051525501288006746BE /* SaveUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveUserUseCase.swift; sourceTree = "<group>"; };
 		B56B051C2550162D006746BE /* UsersPersistentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersPersistentRepository.swift; sourceTree = "<group>"; };
-		B5ADDE25255845B800B0C823 /* SearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCase.swift; sourceTree = "<group>"; };
+		B5ADDE25255845B800B0C823 /* SearchUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserUseCase.swift; sourceTree = "<group>"; };
 		B5ADDE2D25585DE400B0C823 /* UsersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRepository.swift; sourceTree = "<group>"; };
 		B5ADDE3125585E3D00B0C823 /* UsersPersistentStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersPersistentStorage.swift; sourceTree = "<group>"; };
 		B5ADDE362558919300B0C823 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 		B5CC73A02549401900CC949D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5CC73CA254969EE00CC949D /* UsersNetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersNetworkRepository.swift; sourceTree = "<group>"; };
 		B5CC73D525496C1600CC949D /* UsersRealmStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRealmStorage.swift; sourceTree = "<group>"; };
-		B5CC73DF254A000A00CC949D /* FetchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUseCase.swift; sourceTree = "<group>"; };
+		B5CC73DF254A000A00CC949D /* FetchAllUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAllUserUseCase.swift; sourceTree = "<group>"; };
 		B5CC73E2254A08C000CC949D /* UserGeneratorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGeneratorViewModel.swift; sourceTree = "<group>"; };
 		B5CC73E6254A272800CC949D /* UserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserList.swift; sourceTree = "<group>"; };
 		B5CC7401254A3FFE00CC949D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -273,7 +273,6 @@
 			children = (
 				B5623AA3256C3B5C0096C160 /* ViewModelInjector.swift */,
 				B5623AB2256CBFEE0096C160 /* RouterInjector.swift */,
-				B543CB9A2576A996000D20AC /* Extensions */,
 			);
 			path = DI;
 			sourceTree = "<group>";
@@ -342,6 +341,7 @@
 				B5CC73E9254A274E00CC949D /* BusinessRules */,
 				B5CC73D225496B6500CC949D /* Data */,
 				B5623AA2256C3B460096C160 /* DI */,
+				B543CB9A2576A996000D20AC /* Extensions */,
 				B5CC73F5254A33CD00CC949D /* Resources */,
 				B5CC73A02549401900CC949D /* Info.plist */,
 			);
@@ -403,10 +403,10 @@
 		B5CC73EF254A2EA600CC949D /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				B5CC73DF254A000A00CC949D /* FetchUseCase.swift */,
-				B5ADDE25255845B800B0C823 /* SearchUseCase.swift */,
-				B56B051525501288006746BE /* SaveUseCase.swift */,
-				B51B7519255D9D4400592200 /* DeleteUseCase.swift */,
+				B5CC73DF254A000A00CC949D /* FetchAllUserUseCase.swift */,
+				B5ADDE25255845B800B0C823 /* SearchUserUseCase.swift */,
+				B56B051525501288006746BE /* SaveUserUseCase.swift */,
+				B51B7519255D9D4400592200 /* DeleteUserUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -677,12 +677,12 @@
 				B5ADDE3225585E3D00B0C823 /* UsersPersistentStorage.swift in Sources */,
 				B543CBA02576A9AA000D20AC /* Notification.Name+DidUser.swift in Sources */,
 				B5CC73972549401700CC949D /* UserGeneratorViewController.swift in Sources */,
-				B51B751A255D9D4400592200 /* DeleteUseCase.swift in Sources */,
+				B51B751A255D9D4400592200 /* DeleteUserUseCase.swift in Sources */,
 				B5ADDE372558919300B0C823 /* Router.swift in Sources */,
 				B526E4182573E6F4009409FF /* User.swift in Sources */,
 				B5CC7402254A3FFE00CC949D /* Location.swift in Sources */,
 				B5CC73E3254A08C000CC949D /* UserGeneratorViewModel.swift in Sources */,
-				B5CC73E0254A000A00CC949D /* FetchUseCase.swift in Sources */,
+				B5CC73E0254A000A00CC949D /* FetchAllUserUseCase.swift in Sources */,
 				B543CB932576A1DE000D20AC /* AlamofireNetworkService.swift in Sources */,
 				B5CC73932549401700CC949D /* AppDelegate.swift in Sources */,
 				B5569B26254BDAC50004AE98 /* Alertable.swift in Sources */,
@@ -698,9 +698,9 @@
 				B5CC73CB254969EE00CC949D /* UsersNetworkRepository.swift in Sources */,
 				B5623AB3256CBFEE0096C160 /* RouterInjector.swift in Sources */,
 				B5CC73952549401700CC949D /* SceneDelegate.swift in Sources */,
-				B56B051625501288006746BE /* SaveUseCase.swift in Sources */,
+				B56B051625501288006746BE /* SaveUserUseCase.swift in Sources */,
 				B526E41E2573E72A009409FF /* DateBirth.swift in Sources */,
-				B5ADDE26255845B800B0C823 /* SearchUseCase.swift in Sources */,
+				B5ADDE26255845B800B0C823 /* SearchUserUseCase.swift in Sources */,
 				B5F4FC9D254D227200D3CEDF /* InfoStackView.swift in Sources */,
 				B526E4212573E74A009409FF /* Pictures.swift in Sources */,
 				B5C4E62025533A2700842B98 /* SavedUserViewModel.swift in Sources */,
