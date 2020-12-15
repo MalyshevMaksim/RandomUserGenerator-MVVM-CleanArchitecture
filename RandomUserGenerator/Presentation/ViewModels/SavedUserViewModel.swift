@@ -7,28 +7,34 @@
 
 import Foundation
 import Bond
-import RealmSwift
 
-protocol SavedUserViewModelProtocol {
+protocol SavedUserViewModelInput {
+    
     func search(with searchText: String?)
     func fetchAll()
     func remove(from indexPath: IndexPath)
     func showDetail(for indexPath: IndexPath)
 }
 
-class SavedUserViewModel: SavedUserViewModelProtocol {
+protocol SavedUserViewModelOutput {
     
-    private var fetchUseCase: FetchUserUseCase
-    private var searchUseCase: SearchUserUseCase
-    private var deleteUseCase: DeleteUserUseCase
+    var observableError: Observable<NSError?> { get set }
+    var observableUsers: MutableObservableArray<User> { get set }
+}
+
+class SavedUserViewModel: SavedUserViewModelInput, SavedUserViewModelOutput {
+    
+    private var fetchUseCase: FetchAllUserInteractorInput
+    private var searchUseCase: SearchUserInteractorInput
+    private var deleteUseCase: DeleteUserInteractorInput
     
     private var router: Router
     private var fetchedUsers = [User]()
     
-    private(set) var observableError = Observable<NSError?>(nil)
-    private(set) var observableUsers = MutableObservableArray<User>([])
+    var observableError = Observable<NSError?>(nil)
+    var observableUsers = MutableObservableArray<User>([])
     
-    init(fetchUseCase: FetchUserUseCase, searchUseCase: SearchUserUseCase, deleteUseCase: DeleteUserUseCase, router: Router) {
+    init(fetchUseCase: FetchAllUserInteractorInput, searchUseCase: SearchUserInteractorInput, deleteUseCase: DeleteUserInteractorInput, router: Router) {
         self.searchUseCase = searchUseCase
         self.fetchUseCase = fetchUseCase
         self.deleteUseCase = deleteUseCase

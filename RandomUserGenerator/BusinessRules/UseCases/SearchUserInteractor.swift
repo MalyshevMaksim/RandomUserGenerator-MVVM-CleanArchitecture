@@ -5,11 +5,11 @@
 //  Created by Малышев Максим Алексеевич on 11/8/20.
 //
 
-protocol SearchUserUseCase {
+protocol SearchUserInteractorInput {
     func execute(users: [User], searchQuery: String, completion: @escaping ([User]) -> ())
 }
 
-class SearchUserInteractor: SearchUserUseCase {
+class SearchUserInteractor: SearchUserInteractorInput {
   
     func execute(users: [User], searchQuery: String, completion: @escaping ([User]) -> ()) {
         let users = users.filter { user in

@@ -9,23 +9,23 @@ import UIKit
 
 class SavedUserTableViewDelegate: NSObject, UITableViewDelegate {
     
-    private var viewModel: SavedUserViewModel
+    private var viewModelInput: SavedUserViewModelInput
     
-    init(viewModel: SavedUserViewModel) {
-        self.viewModel = viewModel
+    init(input: SavedUserViewModelInput) {
+        self.viewModelInput = input
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let contextAction = UIContextualAction(style: .destructive, title: nil) { action, view, _ in
-            self.viewModel.remove(from: indexPath)
+            self.viewModelInput.remove(from: indexPath)
         }
         contextAction.image = UIImage(systemName: "trash.fill")
         return UISwipeActionsConfiguration(actions: [contextAction])
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.showDetail(for: indexPath)
+        viewModelInput.showDetail(for: indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

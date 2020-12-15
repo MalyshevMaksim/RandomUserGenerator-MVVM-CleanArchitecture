@@ -5,11 +5,11 @@
 //  Created by Малышев Максим Алексеевич on 11/2/20.
 //
 
-protocol SaveUserUseCase {
+protocol SaveUserInteractorInput {
     func execute(user: User)
 }
 
-class SaveUserInteractor: SaveUserUseCase {
+class SaveUserInteractor: SaveUserInteractorInput {
     
     private var usersRepository: UsersRepository
     

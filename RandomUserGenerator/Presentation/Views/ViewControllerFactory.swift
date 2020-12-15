@@ -24,17 +24,19 @@ extension ViewControllerFactory {
 class UserGeneratorViewControllerFactory: ViewControllerFactory {
     
     func makeViewController(router: Router) -> UIViewController {
-        let injector = ViewModelInjector()
-        let viewModel = injector.get(type: UserGeneratorViewModel.self, router: router)
-        return UserGeneratorViewController(viewModel: viewModel!)
+        guard let viewModel = ViewModelInjector().get(type: UserGeneratorViewModel.self, router: router) else {
+            fatalError("Error")
+        }
+        return UserGeneratorViewController(input: viewModel, output: viewModel)
     }
 }
 
 class SavedUserViewControllerFactory: ViewControllerFactory {
 
     func makeViewController(router: Router) -> UIViewController {
-        let injector = ViewModelInjector()
-        let viewModel = injector.get(type: SavedUserViewModel.self, router: router)
-        return SavedUserViewController(viewModel: viewModel!)
+        guard let viewModel = ViewModelInjector().get(type: SavedUserViewModel.self, router: router) else {
+            fatalError("Error")
+        }
+        return SavedUserViewController(input: viewModel, output: viewModel)
     }
 }

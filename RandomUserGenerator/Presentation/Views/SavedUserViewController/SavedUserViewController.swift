@@ -12,13 +12,16 @@ import RealmSwift
 
 class SavedUserViewController: UITableViewController {
 
-    var viewModel: SavedUserViewModel!
+    private var viewModelInput: SavedUserViewModelInput
+    private var viewModelOutput: SavedUserViewModelOutput
+    
     var delegate: UITableViewDelegate!
     
-    init(viewModel: SavedUserViewModel) {
+    init(input: SavedUserViewModelInput, output: SavedUserViewModelOutput) {
+        self.viewModelInput = input
+        self.viewModelOutput = output
+        self.delegate = SavedUserTableViewDelegate(input: viewModelInput)
         super.init(nibName: nil, bundle: nil)
-        self.viewModel = viewModel
-        self.delegate = SavedUserTableViewDelegate(viewModel: viewModel)
     }
     
     required init?(coder: NSCoder) {
@@ -48,7 +51,7 @@ class SavedUserViewController: UITableViewController {
     }
     
     private func bindViewModelSearch() {
-        viewModel.observableUsers.bind(to: tableView) { dataSource, indexPath, tableView in
+        viewModelOutput.observableUsers.bind(to: tableView) { dataSource, indexPath, tableView in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: UserCell.reuseIdentifier, for: indexPath) as? UserCell else {
                 return UITableViewCell()
             }
@@ -61,6 +64,6 @@ class SavedUserViewController: UITableViewController {
 
 extension SavedUserViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        viewModel.search(with: searchController.searchBar.text)
+        viewModelInput.search(with: searchController.searchBar.text)
     }
 }

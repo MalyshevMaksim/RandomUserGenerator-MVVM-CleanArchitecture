@@ -11,13 +11,16 @@ import SnapKit
 
 class UserGeneratorViewController: UIViewController, Alertable {
     
-    private var viewModel: UserGeneratorViewModel!
+    private var viewModelInput: UserGeneratorViewModelInput
+    private var viewModelOutput: UserGeneratorViewModelOutput
+    
     private var userCardView: GeneratedUserCardView!
     private var activityIndicator = UIActivityIndicatorView(style: .large)
     
-    init(viewModel: UserGeneratorViewModel) {
+    init(input: UserGeneratorViewModelInput, output: UserGeneratorViewModelOutput) {
+        self.viewModelInput = input
+        self.viewModelOutput = output
         super.init(nibName: nil, bundle: nil)
-        self.viewModel = viewModel
     }
     
     required init?(coder: NSCoder) {
@@ -28,7 +31,7 @@ class UserGeneratorViewController: UIViewController, Alertable {
         super.viewDidLoad()
         configureViewController()
         bindViewModel()
-        viewModel.generateUser()
+        viewModelInput.generateUser()
     }
     
     override func updateViewConstraints() {
@@ -74,7 +77,7 @@ class UserGeneratorViewController: UIViewController, Alertable {
     }
     
     private func bindViewModelUserGenerated() {
-        _ = viewModel.observableUser.observeNext { generatedUser in
+        _ = viewModelOutput.observableUser.observeNext { generatedUser in
             guard let user = generatedUser else {
                 return
             }
@@ -86,14 +89,14 @@ class UserGeneratorViewController: UIViewController, Alertable {
     }
     
     private func bindViewModelError() {
-        _ = viewModel.observableError.observeNext { [unowned self] error in
+        _ = viewModelOutput.observableError.observeNext { [unowned self] error in
             guard let error = error else {
                 return
             }
             showError(text: error.localizedDescription) { cancelAction in
                 activityIndicator.stopAnimating()
             } retryAction: { action in
-                viewModel.generateUser()
+                viewModelInput.generateUser()
             }
         }
     }
@@ -103,7 +106,7 @@ class UserGeneratorViewController: UIViewController, Alertable {
             self.userCardView.springHiding()
             self.activityIndicator.startAnimating()
             self.navigationItem.rightBarButtonItem?.isEnabled = false
-            self.viewModel.generateUser()
+            self.viewModelInput.generateUser()
         }
     }
     
@@ -111,9 +114,9 @@ class UserGeneratorViewController: UIViewController, Alertable {
         _ = userCardView.saveButton.reactive.tap.observeNext {
             self.userCardView.saveButton.toggle { selected in
                 if selected {
-                    self.viewModel.saveCurrentUser()
+                    self.viewModelInput.saveCurrentUser()
                 } else {
-                    self.viewModel.removeCurrentUser()
+                    self.viewModelInput.removeCurrentUser()
                 }
             }
         }
@@ -121,7 +124,7 @@ class UserGeneratorViewController: UIViewController, Alertable {
     
     private func bindMoreInfoButtonTap() {
         _ = userCardView.moreInfoButton.reactive.tap.observeNext {
-            self.viewModel.showDetail()
+            self.viewModelInput.showDetail()
         }
     }
 }

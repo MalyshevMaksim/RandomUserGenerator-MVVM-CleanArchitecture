@@ -7,25 +7,31 @@
 
 import Bond
 
-protocol UserGeneratorViewModelProtocol {
+protocol UserGeneratorViewModelInput {
+    
     func generateUser()
     func saveCurrentUser()
     func removeCurrentUser()
     func showDetail()
 }
 
-class UserGeneratorViewModel: UserGeneratorViewModelProtocol {
+protocol UserGeneratorViewModelOutput {
     
-    private var fetchUseCase: FetchUserUseCase
-    private var saveUseCase: SaveUserUseCase
-    private var deleteUseCase: DeleteUserUseCase
+    var observableUser: Observable<User?> { get set }
+    var observableError: Observable<NSError?> { get set }
+}
+
+class UserGeneratorViewModel: UserGeneratorViewModelInput, UserGeneratorViewModelOutput {
     
+    private var fetchUseCase: FetchAllUserInteractorInput
+    private var saveUseCase: SaveUserInteractorInput
+    private var deleteUseCase: DeleteUserInteractorInput
     private var router: Router
     
-    private(set) var observableUser = Observable<User?>(nil)
-    private(set) var observableError = Observable<NSError?>(nil)
+    var observableUser = Observable<User?>(nil)
+    var observableError = Observable<NSError?>(nil)
     
-    init(generateUseCase: FetchUserUseCase, saveUseCase: SaveUserUseCase, deleteUseCase: DeleteUserUseCase, router: Router) {
+    init(generateUseCase: FetchAllUserInteractorInput, saveUseCase: SaveUserInteractorInput, deleteUseCase: DeleteUserInteractorInput, router: Router) {
         self.fetchUseCase = generateUseCase
         self.saveUseCase = saveUseCase
         self.deleteUseCase = deleteUseCase
