@@ -15,7 +15,6 @@ class SearchUseCaseTests: XCTestCase {
     
     override func setUp() {
         sut = SearchUserInteractor()
-        
         let user = User()
         user.name = UserName()
         user.name?.first = "foo"
@@ -23,13 +22,14 @@ class SearchUseCaseTests: XCTestCase {
         usersStub = [user]
     }
     
-    func testSearchResult() {
+    func testSearchResultIsSuccessful() {
         var searchResults: [User]?
-    
+        let expectedFullName = (usersStub.first?.name!.first)! + " " + (usersStub.first?.name!.last)!
+        
         sut.execute(users: usersStub, searchQuery: "foo") { users in
             searchResults = users
         }
-        XCTAssertEqual(searchResults?.first?.name?.fullName, "foo bar")
+        XCTAssertEqual(searchResults?.first?.name?.fullName, expectedFullName)
     }
     
     override func tearDown() {

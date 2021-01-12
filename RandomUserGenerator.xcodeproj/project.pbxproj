@@ -183,25 +183,11 @@
 			children = (
 				B543CBB72578FBA8000D20AC /* FetchUseCaseTests.swift */,
 				B543CBC6257904EF000D20AC /* SaveUseCaseTests.swift */,
-				B543CBD025790874000D20AC /* SearchUseCaseTests.swift */,
 				B543CBCC25790718000D20AC /* DeleteUseCaseTests.swift */,
+				B543CBD025790874000D20AC /* SearchUseCaseTests.swift */,
 				B543CBBF2578FD0D000D20AC /* Heplers */,
 			);
 			path = UseCasesTests;
-			sourceTree = "<group>";
-		};
-		B5166AF425768ED40097219E /* ViewModelsTests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModelsTests;
-			sourceTree = "<group>";
-		};
-		B534C8C12588DE77008F0E9C /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		B543CB8B2576A18F000D20AC /* NetworkService */ = {
@@ -349,7 +335,6 @@
 				B5CC73D225496B6500CC949D /* Data */,
 				B5623AA2256C3B460096C160 /* DI */,
 				B543CB9A2576A996000D20AC /* Extensions */,
-				B534C8C12588DE77008F0E9C /* New Group */,
 				B5CC73F5254A33CD00CC949D /* Resources */,
 				B5CC73A02549401900CC949D /* Info.plist */,
 			);
@@ -470,7 +455,6 @@
 		B5DA672925751D1400BA00E8 /* RandomUserGeneratorTests */ = {
 			isa = PBXGroup;
 			children = (
-				B5166AF425768ED40097219E /* ViewModelsTests */,
 				B5166AF325768E2B0097219E /* UseCasesTests */,
 				B5166ADD25763D7D0097219E /* DataTests */,
 				B5DA672C25751D1400BA00E8 /* Info.plist */,

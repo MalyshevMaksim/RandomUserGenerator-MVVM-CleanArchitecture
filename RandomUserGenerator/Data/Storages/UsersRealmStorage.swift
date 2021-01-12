@@ -22,7 +22,7 @@ class UsersRealmStorage: UsersPersistentStorage {
     func save(user: User) {
         user.uuid = UUID().uuidString
         try! realm.write {
-            realm.create(User.self, value: user, update: .all)
+           realm.create(User.self, value: user, update: .all)
         }
     }
     

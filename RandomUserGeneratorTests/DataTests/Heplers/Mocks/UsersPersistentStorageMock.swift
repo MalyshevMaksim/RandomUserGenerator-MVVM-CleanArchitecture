@@ -11,22 +11,20 @@ import Foundation
 
 class UsersPersistentStorageMock: UsersPersistentStorage {
     
-    private var users: [User] = []
-    
-    init(savedUsers: [User]) {
-        self.users = savedUsers
-    }
+    var isUserSaved = false
+    var isUserDeleted = false
+    var isUsersFetched = false
     
     func save(user: User) {
-        users.append(user)
+        isUserSaved = true
     }
     
     func delete(user: User) {
-        let index = users.firstIndex(of: user)
-        users.remove(at: index!)
+        isUserDeleted = true
     }
     
     func fetch() -> [User] {
-        return users
+        isUsersFetched = true
+        return []
     }
 }

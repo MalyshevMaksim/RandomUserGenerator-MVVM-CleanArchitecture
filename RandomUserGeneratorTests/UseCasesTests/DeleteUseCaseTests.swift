@@ -15,15 +15,16 @@ class DeleteUseCaseTests: XCTestCase {
     private var usersStub: [User]!
     
     override func setUp() {
-        usersStub = [User(), User(), User()]
+        usersStub = [User(), User()]
         repositoryMock = UsersRepositoryMock(usersStub: usersStub)
         sut = DeleteInteractor(repository: repositoryMock)
     }
     
-    func testDeleteExecute() {
+    func testNumberOfUsersDecreasesAfterExecute() {
         let deletedUser = usersStub.first
+        let initialUserCount = usersStub.count
         sut.execute(user: deletedUser!)
-        XCTAssertEqual(repositoryMock.users?.count, usersStub.count - 1)
+        XCTAssertEqual(repositoryMock.users?.count, initialUserCount - 1)
     }
     
     override func tearDown() {

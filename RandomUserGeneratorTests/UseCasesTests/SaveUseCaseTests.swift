@@ -20,9 +20,10 @@ class SaveUseCaseTests: XCTestCase {
         sut = SaveUserInteractor(usersRepository: repositoryMock)
     }
     
-    func testSaveExecute() {
+    func testNumberOfUsersIncreasingAfterExecute() {
         sut.execute(user: User())
-        XCTAssertEqual(repositoryMock.users?.count, usersStub.count + 1)
+        let initialUserCount = usersStub.count
+        XCTAssertEqual(repositoryMock.users?.count, initialUserCount + 1)
     }
     
     override func tearDown() {

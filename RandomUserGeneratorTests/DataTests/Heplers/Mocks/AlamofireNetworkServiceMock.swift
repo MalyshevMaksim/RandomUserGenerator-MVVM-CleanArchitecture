@@ -13,8 +13,8 @@ class AlamofireNetworkServiceMock: NetworkServiceProtocol {
     var url: URL?
     var data: Data?
     
-    init(url: URL?) {
-        self.url = url
+    init(data: Data? = nil, url: URL? = nil) {
+        self.data = data
     }
     
     func execute<T: Decodable>(completion: @escaping (Result<T, NSError>) -> ()) {

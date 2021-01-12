@@ -11,50 +11,53 @@ import RealmSwift
 
 class UsersRealmStorageTests: XCTestCase {
 
-    private var stubRealm: Realm!
+    private var realm: Realm!
     private var sut: UsersRealmStorage!
     private var config = Realm.Configuration.defaultConfiguration
+    private var stubUsers: [User]!
 
     override func setUp() {
         config.inMemoryIdentifier = UUID().uuidString
-        stubRealm = try! Realm(configuration: config)
-        sut = UsersRealmStorage(realm: stubRealm)
-    }
-
-    func testSaveUser() {
-        let expectedUser = User()
-        expectedUser.email = "expected@expected.com"
-        sut.save(user: expectedUser)
-        XCTAssertEqual(stubRealm.objects(User.self).first?.email, expectedUser.email, "The entry was not added")
-    }
-
-    func testRemoveUser() {
-        let user = User()
-        sut.save(user: user)
-        sut.delete(user: user)
-        XCTAssertEqual(stubRealm.objects(User.self).count, 0, "The entry was not deleted")
-    }
-
-    func testFetchUsers() {
-        let expectedUsers = [User(), User(), User(), User(), User()]
+        realm = try! Realm(configuration: config)
+        sut = UsersRealmStorage(realm: realm)
         
-        // The result of the test that checks the save method should not affect the test that checks the fetch
-        // Therefore, you cannot use the prepared sut object
-        // We use the Realm file with the prepared data to be independent of the save method
+        stubUsers = [User(), User(), User()]
         
-        expectedUsers.forEach { expectedUser in
-            expectedUser.uuid = UUID().uuidString
-            try! stubRealm.write {
-                stubRealm.add(expectedUser)
+        stubUsers.forEach { stubUser in
+            stubUser.uuid = UUID().uuidString
+            try! realm.write {
+                realm.add(stubUser)
             }
         }
+    }
+
+    func testNumberOfUsersIncreasingAfterSave() {
+        let newUser = User()
+        let initialUserCount = realm.objects(User.self).count
         
-        let array = sut.fetch()
-        XCTAssertEqual(expectedUsers.count, array.count, "The fetched objects do not match the saved ones")
+        sut.save(user: newUser)
+    
+        XCTAssertEqual(realm.objects(User.self).count, initialUserCount + 1)
+    }
+
+    func testNumberOfUsersDecreasesAfterDelete() {
+        let users = realm.objects(User.self)
+        let initialUserCount = users.count
+        
+        sut.delete(user: users.first!)
+        
+        XCTAssertEqual(realm.objects(User.self).count, initialUserCount - 1)
+    }
+
+    func testFetchedUsersCountEqualityWithExpectedCount() {
+        let expectedUsersCount = realm.objects(User.self).count
+        let fetchedUsers = sut.fetch()
+        XCTAssertEqual(expectedUsersCount, fetchedUsers.count)
     }
 
     override func tearDown() {
-        stubRealm = nil
+        realm = nil
         sut = nil
+        stubUsers = nil
     }
 }
