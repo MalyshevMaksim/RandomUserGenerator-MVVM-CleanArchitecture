@@ -13,7 +13,7 @@ class AlamofireNetworkServiceMock: NetworkServiceProtocol {
     var url: URL?
     var data: Data?
     
-    init(data: Data? = nil, url: URL? = nil) {
+    init(data: Data? = nil) {
         self.data = data
     }
     

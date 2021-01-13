@@ -13,21 +13,20 @@ class FetchUseCaseTest: XCTestCase {
     private var repositoryMock: UsersRepository!
     private var sut: FetchAllUserInteractor!
     
-    func testFetchUsersExecuteIsSuccessful() {
+    func testCompletedHandlerResultWithInvalidDataIsFailure() {
         let usersStub = [User(), User()]
         let result = getExecuteResutl(usersStub: usersStub)
-        verifyExecute(result, expectedUsers: usersStub, expectedError: nil)
+        verifyExecute(result, expectedUsers: usersStub, isErrorExpected: false)
     }
     
-    func testFetchUsersExecuteIsFailure() {
+    func testCompletedHandlerResultIsSuccess() {
         let result = getExecuteResutl(usersStub: nil)
-        let expectedError = NSError.makeError(withMessage: "foo")
-        verifyExecute(result, expectedUsers: nil, expectedError: expectedError)
+        verifyExecute(result, expectedUsers: nil, isErrorExpected: true)
     }
     
-    private func verifyExecute(_ result: (users: [User]?, error: NSError?), expectedUsers: [User]?, expectedError: NSError?) {
+    private func verifyExecute(_ result: (users: [User]?, error: NSError?), expectedUsers: [User]?, isErrorExpected: Bool) {
         XCTAssertEqual(result.users, expectedUsers)
-        XCTAssertEqual(result.error, expectedError)
+        XCTAssertEqual(result.error != nil, isErrorExpected)
     }
     
     private func getExecuteResutl(usersStub: [User]?) -> (users: [User]?, error: NSError?) {

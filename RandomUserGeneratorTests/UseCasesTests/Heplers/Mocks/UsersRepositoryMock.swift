@@ -10,6 +10,9 @@ import Foundation
 
 class UsersRepositoryMock: UsersRepository {
     
+    var isUserSaved = false
+    var isUserDeleted = false
+    
     var users: [User]?
     
     init(usersStub: [User]?) {
@@ -25,11 +28,10 @@ class UsersRepositoryMock: UsersRepository {
     }
     
     func save(user: User) {
-        users?.append(user)
+        isUserSaved = true
     }
     
     func delete(user: User) {
-        let index = users?.firstIndex(of: user)
-        users?.remove(at: index!)
+        isUserDeleted = true
     }
 }

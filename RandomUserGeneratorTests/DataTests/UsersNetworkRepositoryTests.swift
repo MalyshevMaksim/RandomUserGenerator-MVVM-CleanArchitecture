@@ -17,29 +17,37 @@ class UsersNetworkRepositoryTests: XCTestCase {
     
     override func setUp() {
         persistentStorageMock = UsersPersistentStorageMock()
-        let networkService = AlamofireNetworkService(url: URL.successUrl)
+        let networkService = AlamofireNetworkServiceMock()
         sut = UsersNetworkRepository(storage: persistentStorageMock, networkService: networkService)
     }
     
     func testCompletedHandlerResultIsSuccess() {
-        let userStub = User()
-        let stubData = try! JSONEncoder().encode(userStub)
-        let networkServiceMock = AlamofireNetworkServiceMock(data: stubData, url: URL.successUrl)
+        let userListStub = UserList()
+        
+        let stubData = try! JSONEncoder().encode(userListStub)
+        let networkServiceMock = AlamofireNetworkServiceMock(data: stubData)
+        networkServiceMock.url = URL.successUrl
         
         let result = getFetchResult(from: networkServiceMock)
-        verifyFetchedExpected(result, expectedUsers: userStub, isErrorExpected: false)
+
+        verifyFetchedExpected(result, expectedUsers: userListStub.toArray(), isErrorExpected: false)
     }
     
     func testCompletedHandlerResultWithInvalidDataIsFailure() {
-        let networkServiceMock = AlamofireNetworkServiceMock(data: nil, url: URL.successUrl)
+        let networkServiceMock = AlamofireNetworkServiceMock(data: nil)
+        networkServiceMock.url = URL.successUrl
+        
         let result = getFetchResult(from: networkServiceMock)
+        
         verifyFetchedExpected(result, expectedUsers: nil, isErrorExpected: true)
     }
     
     func testCompletedHandlerResultWithInvalidURLIsFailure() {
-        let failureUrlStub = URL.failureUrl
-        let networkServiceMock = AlamofireNetworkServiceMock(url: failureUrlStub)
+        let networkServiceMock = AlamofireNetworkServiceMock()
+        networkServiceMock.url = URL.failureUrl
+        
         let result = getFetchResult(from: networkServiceMock)
+        
         verifyFetchedExpected(result, expectedUsers: nil, isErrorExpected: true)
     }
     
