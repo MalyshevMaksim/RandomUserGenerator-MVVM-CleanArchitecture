@@ -23,7 +23,7 @@ protocol UserGeneratorViewModelOutput {
 
 class UserGeneratorViewModel: UserGeneratorViewModelInput, UserGeneratorViewModelOutput {
     
-    private var fetchUseCase: FetchAllUserInteractorInput
+    private var fetchUseCase: FetchUserInteractorInput
     private var saveUseCase: SaveUserInteractorInput
     private var deleteUseCase: DeleteUserInteractorInput
     private var router: Router
@@ -31,7 +31,7 @@ class UserGeneratorViewModel: UserGeneratorViewModelInput, UserGeneratorViewMode
     var observableUser = Observable<User?>(nil)
     var observableError = Observable<NSError?>(nil)
     
-    init(generateUseCase: FetchAllUserInteractorInput, saveUseCase: SaveUserInteractorInput, deleteUseCase: DeleteUserInteractorInput, router: Router) {
+    init(generateUseCase: FetchUserInteractorInput, saveUseCase: SaveUserInteractorInput, deleteUseCase: DeleteUserInteractorInput, router: Router) {
         self.fetchUseCase = generateUseCase
         self.saveUseCase = saveUseCase
         self.deleteUseCase = deleteUseCase
@@ -69,6 +69,6 @@ class UserGeneratorViewModel: UserGeneratorViewModelInput, UserGeneratorViewMode
         guard let user = observableUser.value else {
             return
         }
-        router.showDetail(user: user, method: .present)
+        //router.showDetail(user: user, method: .present)
     }
 }

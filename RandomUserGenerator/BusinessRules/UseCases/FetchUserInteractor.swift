@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol FetchAllUserInteractorInput {
+protocol FetchUserInteractorInput {
     func execute(completionUser: @escaping (Result<[User], NSError>) -> ())
 }
 
-class FetchAllUserInteractor: FetchAllUserInteractorInput {
+class FetchUserInteractor: FetchUserInteractorInput {
     
     private var repository: UsersRepository
     

@@ -24,7 +24,7 @@ protocol SavedUserViewModelOutput {
 
 class SavedUserViewModel: SavedUserViewModelInput, SavedUserViewModelOutput {
     
-    private var fetchUseCase: FetchAllUserInteractorInput
+    private var fetchUseCase: FetchUserInteractorInput
     private var searchUseCase: SearchUserInteractorInput
     private var deleteUseCase: DeleteUserInteractorInput
     
@@ -34,7 +34,7 @@ class SavedUserViewModel: SavedUserViewModelInput, SavedUserViewModelOutput {
     var observableError = Observable<NSError?>(nil)
     var observableUsers = MutableObservableArray<User>([])
     
-    init(fetchUseCase: FetchAllUserInteractorInput, searchUseCase: SearchUserInteractorInput, deleteUseCase: DeleteUserInteractorInput, router: Router) {
+    init(fetchUseCase: FetchUserInteractorInput, searchUseCase: SearchUserInteractorInput, deleteUseCase: DeleteUserInteractorInput, router: Router) {
         self.searchUseCase = searchUseCase
         self.fetchUseCase = fetchUseCase
         self.deleteUseCase = deleteUseCase
@@ -80,7 +80,7 @@ class SavedUserViewModel: SavedUserViewModelInput, SavedUserViewModelOutput {
     
     func showDetail(for indexPath: IndexPath) {
         let user = observableUsers.array[indexPath.row]
-        router.showDetail(user: user, method: .push)
+        //router.showDetail(user: user, method: .push)
     }
 }
 
