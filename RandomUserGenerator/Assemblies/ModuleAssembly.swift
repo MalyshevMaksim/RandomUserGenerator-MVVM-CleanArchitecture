@@ -7,7 +7,6 @@
 
 import Swinject
 
-
 class ModuleAssembly {
 
     private let container = Container()
