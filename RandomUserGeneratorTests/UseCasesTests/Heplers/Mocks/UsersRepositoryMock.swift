@@ -12,16 +12,11 @@ class UsersRepositoryMock: UsersRepository {
     
     var isUserSaved = false
     var isUserDeleted = false
-    
-    var users: [User]?
-    
-    init(usersStub: [User]?) {
-        self.users = usersStub
-    }
+    var fetchedUsers: [User]?
     
     func fetch(completion: @escaping ([User]?, NSError?) -> ()) {
-        guard let users = users else {
-            completion(nil, NSError.makeError(withMessage: "foo"))
+        guard let users = fetchedUsers else {
+            completion(nil, NSError.makeError(withMessage: "foosss"))
             return
         }
         completion(users, nil)

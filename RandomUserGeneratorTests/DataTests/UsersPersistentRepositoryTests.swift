@@ -19,19 +19,19 @@ class UsersPersistentRepositoryTests: XCTestCase {
         sut = UsersPersistentRepository(storage: persistentStorageMock)
     }
     
-    func testSaveUserMethodIsCalled() {
+    func testSaveUserMethodWasCalled() {
         let dummy = User()
         sut.save(user: dummy)
         XCTAssertEqual(persistentStorageMock.isUserSaved, true)
     }
     
-    func testDeleteUserMethodIsCalled() {
+    func testDeleteUserMethodWasCalled() {
         let dummy = User()
         sut.delete(user: dummy)
         XCTAssertEqual(persistentStorageMock.isUserDeleted, true)
     }
     
-    func testFetchedUsersMethodIsCalled() {
+    func testFetchedUsersMethodWasCalled() {
         sut.fetch { users, error in }
         XCTAssertEqual(persistentStorageMock.isUsersFetched, true)
     }

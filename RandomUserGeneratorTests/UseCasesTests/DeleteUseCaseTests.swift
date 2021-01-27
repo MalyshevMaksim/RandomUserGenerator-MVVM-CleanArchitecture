@@ -14,11 +14,12 @@ class DeleteUseCaseTests: XCTestCase {
     private var sut: DeleteInteractor!
     
     override func setUp() {
-        repositoryMock = UsersRepositoryMock(usersStub: nil)
+        repositoryMock = UsersRepositoryMock()
+        repositoryMock.fetchedUsers = nil
         sut = DeleteInteractor(repository: repositoryMock)
     }
     
-    func testDeleteUserMethodIsCalled() {
+    func testDeleteUserMethodWasCalled() {
         let dummy = User()
         sut.execute(user: dummy)
         XCTAssertEqual(repositoryMock.isUserDeleted, true)

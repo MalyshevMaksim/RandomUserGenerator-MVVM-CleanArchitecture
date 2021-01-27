@@ -14,11 +14,12 @@ class SaveUseCaseTests: XCTestCase {
     private var sut: SaveUserInteractor!
     
     override func setUp() {
-        repositoryMock = UsersRepositoryMock(usersStub: nil)
+        repositoryMock = UsersRepositoryMock()
+        repositoryMock.fetchedUsers = nil
         sut = SaveUserInteractor(usersRepository: repositoryMock)
     }
     
-    func testSaveUserMethodIsCalled() {
+    func testSaveUserMethodWasCalled() {
         let dummy = User()
         sut.execute(user: dummy)
         XCTAssertEqual(repositoryMock.isUserSaved, true)

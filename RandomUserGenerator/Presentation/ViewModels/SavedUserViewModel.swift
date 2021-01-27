@@ -57,8 +57,8 @@ class SavedUserViewModel: SavedUserViewModelInput, SavedUserViewModelOutput {
         }
     }
     
-    func search(with searchText: String?) {
-        guard let searchQuery = searchText, searchQuery != "" else {
+    func search(with searchQuery: String?) {
+        guard let searchQuery = searchQuery, searchQuery != "" else {
             if fetchedUsers.count == observableUsers.count {
                 return
             }
@@ -66,9 +66,9 @@ class SavedUserViewModel: SavedUserViewModelInput, SavedUserViewModelOutput {
             observableUsers.insert(contentsOf: fetchedUsers, at: 0)
             return
         }
-        searchUseCase.execute(users: fetchedUsers, searchQuery: searchQuery) { users in
+        searchUseCase.execute(users: fetchedUsers, searchQuery: searchQuery) { response in
             self.observableUsers.removeAll()
-            self.observableUsers.insert(contentsOf: users, at: 0)
+            self.observableUsers.insert(contentsOf: response, at: 0)
         }
     }
     

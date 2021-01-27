@@ -10,13 +10,17 @@ import XCTest
 
 class FetchUseCaseTest: XCTestCase {
     
-    private var repositoryMock: UsersRepository!
+    private var repositoryMock: UsersRepositoryMock!
     private var sut: FetchUserInteractor!
     
+    override func setUp() {
+        repositoryMock = UsersRepositoryMock()
+        sut = FetchUserInteractor(repository: repositoryMock)
+    }
+    
     func testCompletedHandlerResultWithInvalidDataIsFailure() {
-        let usersStub = [User(), User()]
-        let result = getExecuteResutl(usersStub: usersStub)
-        verifyExecute(result, expectedUsers: usersStub, isErrorExpected: false)
+        let result = getExecuteResutl(usersStub: [User()])
+        verifyExecute(result, expectedUsers: repositoryMock.fetchedUsers, isErrorExpected: false)
     }
     
     func testCompletedHandlerResultIsSuccess() {
@@ -30,8 +34,7 @@ class FetchUseCaseTest: XCTestCase {
     }
     
     private func getExecuteResutl(usersStub: [User]?) -> (users: [User]?, error: NSError?) {
-        repositoryMock = UsersRepositoryMock(usersStub: usersStub)
-        sut = FetchUserInteractor(repository: repositoryMock)
+        repositoryMock.fetchedUsers = usersStub
         
         var users: [User]?
         var error: NSError?

@@ -69,13 +69,13 @@ class UsersNetworkRepositoryTests: XCTestCase {
         return (users, error)
     }
     
-    func testSaveUserMethodIsCalled() {
+    func testSaveUserMethodWasCalled() {
         let dummy = User()
         sut.save(user: dummy)
         XCTAssertEqual(persistentStorageMock.isUserSaved, true)
     }
     
-    func testDeleteUserMethodIsCalled() {
+    func testDeleteUserMethodWasCalled() {
         let dummy = User()
         sut.delete(user: dummy)
         XCTAssertEqual(persistentStorageMock.isUserDeleted, true)
