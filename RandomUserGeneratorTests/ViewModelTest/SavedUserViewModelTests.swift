@@ -47,6 +47,29 @@ class SavedUserViewModelTests: XCTestCase {
         XCTAssertNil(sut.observableError.value)
     }
     
+    func testUserDeleteSuccess() {
+        let sut = makeSUT(usersStub: [User()])
+        
+        sut.fetchAll()
+        let usersCountBeforeRemove = sut.observableUsers.count
+        sut.remove(from: IndexPath(row: 0, section: 0))
+        
+        XCTAssertTrue(repostoryMock.isUserDeleted)
+        XCTAssertEqual(sut.observableUsers.count, usersCountBeforeRemove - 1)
+    }
+    
+    func testSearchSuccessful() {
+        let userStub = User()
+        userStub.name?.first = "foo"
+        userStub.name?.last = "bar"
+        let sut = makeSUT(usersStub: [userStub])
+        
+        sut.fetchAll()
+        sut.search(with: "foo")
+        
+        XCTAssertEqual(sut.observableUsers.array.first, userStub)
+    }
+    
     private func makeSUT(usersStub: [User]?) -> SavedUserViewModel {
         let viewModel = container.resolve(SavedUserViewModel.self)!
         repostoryMock.fetchedUsers = usersStub

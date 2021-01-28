@@ -58,23 +58,21 @@ class SavedUserViewModel: SavedUserViewModelInput, SavedUserViewModelOutput {
     }
     
     func search(with searchQuery: String?) {
-        guard let searchQuery = searchQuery, searchQuery != "" else {
-            if fetchedUsers.count == observableUsers.count {
+        searchUseCase.execute(users: fetchedUsers, searchQuery: searchQuery) { users in
+            guard users.count != self.observableUsers.count else {
                 return
             }
-            observableUsers.removeAll()
-            observableUsers.insert(contentsOf: fetchedUsers, at: 0)
-            return
-        }
-        searchUseCase.execute(users: fetchedUsers, searchQuery: searchQuery) { response in
             self.observableUsers.removeAll()
-            self.observableUsers.insert(contentsOf: response, at: 0)
+            self.observableUsers.insert(contentsOf: users, at: 0)
         }
     }
     
     func remove(from indexPath: IndexPath) {
         let user = observableUsers.array[indexPath.row]
+        let fetchedIndex = fetchedUsers.firstIndex(of: user)
+        
         deleteUseCase.execute(user: user)
+        fetchedUsers.remove(at: fetchedIndex!)
         observableUsers.remove(at: indexPath.row)
     }
     
@@ -90,6 +88,7 @@ extension SavedUserViewModel {
         guard let user: User = notification.userInfo?["User"] as? User else {
             return
         }
+        fetchedUsers.append(user)
         observableUsers.append(user)
     }
     
